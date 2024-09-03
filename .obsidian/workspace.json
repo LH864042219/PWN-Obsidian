@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "0af86a9ba8e3e918",
+    "type": "split",
+    "children": [
+      {
+        "id": "4fc5f6380887c8de",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f71b78628b549134",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "一些链接.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ec57bd12674696a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "73812cc8b2da08f3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3061674b0d691f90",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "54b8b52324213e40",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1c013829a547b93f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 358.5
+  },
+  "right": {
+    "id": "50c134b1c6ebec09",
+    "type": "split",
+    "children": [
+      {
+        "id": "df969a70f29ab3a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de5a6782c822a83a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "一些链接.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bb7a049a180b9721",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "一些链接.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "592f3d13c98f1cb4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c09626aeaf0f594a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "一些链接.md"
+              }
+            }
+          },
+          {
+            "id": "7331725d96de70f4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "f71b78628b549134",
+  "lastOpenFiles": [
+    "普通题目/GDB HGAME 2022 week1 test your gdb.md",
+    "picture/Pasted image 20240902224116.png",
+    "picture/Pasted image 20240902224032.png",
+    "picture/Pasted image 20240902223938.png",
+    "picture/Pasted image 20240902223921.png",
+    "picture/Pasted image 20240902223656.png",
+    "普通题目/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
+    "picture/Pasted image 20240902215427.png",
+    "picture/Pasted image 20240902215351.png",
+    "picture/Pasted image 20240902215332.png",
+    "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
+    "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
+    "特点题目/堆？NISACTF 2022 ezheap.md",
+    "二进制程序保护机制.md",
+    "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
+    "picture/Pasted image 20240902214201.png",
+    "picture/Pasted image 20240902214122.png",
+    "一些链接.md",
+    "未命名.md",
+    "特点题目/伪随机 HDCTF 2023 pwnner.md",
+    "特点题目/未命名.md",
+    "ROPgadget命令.md",
+    "普通题目/高版本libc 2024暑假招新pwn5.md",
+    "普通题目/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
+    "未命名.canvas",
+    "2024-09-02.md",
+    "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
+    "普通题目/ret2libc BJDCTF 2020 babyrop.md",
+    "普通题目/ret2libc HNCTF 2022 Week1 ezr0p64.md",
+    "普通题目/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
+    "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
+    "特点题目/栈对齐 CISCN 2019东北 PWN2.md",
+    "特点题目/伪随机 2024暑假招新pwn1.md",
+    "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
+    "特点题目/格式化字符串 2024暑假招新pwn2.md",
+    "普通题目",
+    "picture/pwn5",
+    "未命名 1.canvas",
+    "特点题目",
+    "栈溢出",
+    "picture",
+    "栈溢出/ret2xxx",
+    "PWN"
+  ]
+}
