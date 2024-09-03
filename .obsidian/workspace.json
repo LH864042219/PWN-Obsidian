@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "普通题目/ret2libc 2021 鹤城杯 babyof.md",
+                "file": "普通题目/ret2libc 2021 鹤城杯 littleof.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "普通题目/ret2libc 2021 鹤城杯 babyof.md",
+                "file": "普通题目/ret2libc 2021 鹤城杯 littleof.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "普通题目/ret2libc 2021 鹤城杯 babyof.md",
+                "file": "普通题目/ret2libc 2021 鹤城杯 littleof.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "普通题目/ret2libc 2021 鹤城杯 babyof.md"
+                "file": "普通题目/ret2libc 2021 鹤城杯 littleof.md"
               }
             }
           },
@@ -157,6 +157,7 @@
   },
   "active": "f71b78628b549134",
   "lastOpenFiles": [
+    "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "普通题目/LitCTF 2023 口算题卡.md",
     "普通题目/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
     "普通题目/HNCTF 2022 Week1 ezr0p32.md",
@@ -193,7 +194,6 @@
     "普通题目/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
     "未命名.canvas",
     "2024-09-02.md",
-    "普通题目/ret2libc BJDCTF 2020 babyrop.md",
     "普通题目",
     "picture/pwn5",
     "未命名 1.canvas",
