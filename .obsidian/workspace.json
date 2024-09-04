@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "二进制程序保护机制.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "二进制程序保护机制.md",
+                "file": "一些常用链接.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "二进制程序保护机制.md",
+                "file": "一些常用链接.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "二进制程序保护机制.md"
+                "file": "一些常用链接.md"
               }
             }
           },
@@ -155,8 +155,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f71b78628b549134",
+  "active": "3061674b0d691f90",
   "lastOpenFiles": [
+    "二进制程序保护机制.md",
     "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
     "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
     "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
@@ -181,7 +182,6 @@
     "特点题目/伪随机 2024暑假招新pwn1.md",
     "特点题目/格式化字符串 2024暑假招新pwn2.md",
     "特点题目/堆？NISACTF 2022 ezheap.md",
-    "二进制程序保护机制.md",
     "一些常用链接.md",
     "picture/Pasted image 20240902224116.png",
     "picture/Pasted image 20240902224032.png",
