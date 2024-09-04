@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "一些常用链接.md"
+                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md"
               }
             }
           },
@@ -155,8 +155,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3061674b0d691f90",
+  "active": "f71b78628b549134",
   "lastOpenFiles": [
+    "一些常用链接.md",
+    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "二进制程序保护机制.md",
     "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
     "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
@@ -181,8 +183,6 @@
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
     "特点题目/格式化字符串 2024暑假招新pwn2.md",
-    "特点题目/堆？NISACTF 2022 ezheap.md",
-    "一些常用链接.md",
     "picture/Pasted image 20240902224116.png",
     "picture/Pasted image 20240902224032.png",
     "picture/Pasted image 20240902223938.png",
