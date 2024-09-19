@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
+                "file": "一些常用链接.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
+                "file": "一些常用链接.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md"
+                "file": "一些常用链接.md"
               }
             }
           },
@@ -155,14 +155,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7331725d96de70f4",
+  "active": "f71b78628b549134",
   "lastOpenFiles": [
+    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "picture/Pasted image 20240908192730.png",
     "picture/Pasted image 20240908192622.png",
     "特点题目/堆？NISACTF 2022 ezheap.md",
     "一些常用链接.md",
     "二进制程序保护机制.md",
-    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
     "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
     "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
@@ -192,7 +192,6 @@
     "picture/Pasted image 20240902215427.png",
     "picture/Pasted image 20240902215351.png",
     "picture/Pasted image 20240902215332.png",
-    "picture/Pasted image 20240902214201.png",
     "未命名.canvas",
     "普通题目",
     "picture/pwn5",
