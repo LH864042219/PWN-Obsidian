@@ -1,4 +1,6 @@
 NewStarCTF Week1 Pwn
+![[Pasted image 20240929131422.png]]
+![[Pasted image 20240929131459.png]]
 ![[Pasted image 20240929122557.png]]
 (2024.9.29)
 
@@ -168,7 +170,7 @@ int main()
 ## base64
 ![[Pasted image 20240929124641.png]]
 ![[Pasted image 20240929124912.png]]
-找到主函数并查看所有字符串可以发现内有一串base64加密后的数据，并且索引表为自定义的，可写出解密函数
+找到主函数并查看所有字符串可以发现内有一串base64加密后的数据，并且索引表为自定义的，可写出解密函数:
 
 ```python
 import base64
@@ -190,9 +192,41 @@ def decode_custom_base64(encoded_str, custom_table):
 custom_table = "WHydo3sThiS7ABLElO0k5trange+CZfVIGRvup81NKQbjmPzU4MDc9Y6q2XwFxJ/"
 
 # 测试解码器
-encoded_str = "g84Gg6m2ATtVeYqUZ9xRnaBpBvOVZYtj+Tc="  # 替换为实际的编码字符串
-
+encoded_str = "g84Gg6m2ATtVeYqUZ9xRnaBpBvOVZYtj+Tc="
 decoded_str = decode_custom_base64(encoded_str, custom_table)
-
 print(decoded_str)
 ```
+运行后获取flag
+![[Pasted image 20240929125109.png]]
+
+## ez_debug
+一道练习如何使用xdbg的题，不知道有没有更好的方法，我只是在步进的过程中发现flag就在调试过程中
+![[Pasted image 20240929125735.png]]
+
+## ezAndroidStudy
+一道练习apk的题，模拟器中安装apk后跟着他走就行
+### part1:
+用jadx打开apk，找到AndroidManifest.xml
+![[Pasted image 20240929130505.png]]
+找到activity
+![[Pasted image 20240929130537.png]]
+双击homo进入
+![[Pasted image 20240929130602.png]]
+找到part1
+### part2
+根据提示找到part2
+![[Pasted image 20240929130803.png]]
+### part3
+根据提示，在layout的activity_main中可以找到part3
+![[Pasted image 20240929130939.png]]
+### part4
+在raw中找到part4
+![[Pasted image 20240929131009.png]]
+### part5
+将apk解压，找到lib中的so文件（x86,x86-64皆可)
+![[Pasted image 20240929131124.png]]
+在ida中打开，即可找到part5
+![[Pasted image 20240929131210.png]]
+### 拼凑
+拼凑五个part即可获取flag
+![[Pasted image 20240929131254.png]]
