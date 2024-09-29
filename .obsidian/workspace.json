@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "week1 pwn.md",
+                "file": "普通题目/newstar2024/week1.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "week1 pwn.md",
+                "file": "普通题目/newstar2024/week1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "week1 pwn.md",
+                "file": "普通题目/newstar2024/week1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "week1 pwn.md"
+                "file": "普通题目/newstar2024/week1.md"
               }
             }
           },
@@ -142,7 +142,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -157,19 +158,19 @@
   },
   "active": "1b58c108aea21b8c",
   "lastOpenFiles": [
-    "picture/Pasted image 20240929122007.png",
-    "picture/Pasted image 20240929121931.png",
-    "picture/Pasted image 20240929121602.png",
-    "picture/Pasted image 20240929121418.png",
-    "picture/Pasted image 20240929120950.png",
-    "picture/Pasted image 20240929120941.png",
-    "picture/Pasted image 20240929120552.png",
-    "picture/Pasted image 20240929120517.png",
-    "picture/Pasted image 20240929120213.png",
-    "picture/Pasted image 20240929115948.png",
-    "picture/Pasted image 20240929115852.png",
+    "picture/Pasted image 20240929124912.png",
+    "picture/Pasted image 20240929124641.png",
+    "picture/Pasted image 20240929124429.png",
+    "picture/Pasted image 20240929124312.png",
+    "picture/Pasted image 20240929124036.png",
+    "picture/Pasted image 20240929123854.png",
+    "picture/Pasted image 20240929123824.png",
+    "picture/Pasted image 20240929123804.png",
+    "picture/Pasted image 20240929123745.png",
+    "picture/Pasted image 20240929123716.png",
+    "picture/Pasted image 20240929123640.png",
     "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
-    "week1 pwn.md",
+    "普通题目/newstar2024/week1.md",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
