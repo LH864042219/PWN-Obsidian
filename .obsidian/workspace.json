@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1b58c108aea21b8c",
+            "id": "6d6ffbf0028f8199",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "栈溢出/栈溢出.md",
+                "file": "week 2.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 427.5
+    "width": 305.5
   },
   "right": {
     "id": "50c134b1c6ebec09",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "栈溢出/栈溢出.md",
+                "file": "week 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "栈溢出/栈溢出.md",
+                "file": "week 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "栈溢出/栈溢出.md"
+                "file": "week 2.md"
               }
             }
           },
@@ -156,8 +156,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1b58c108aea21b8c",
+  "active": "6d6ffbf0028f8199",
   "lastOpenFiles": [
+    "picture/Pasted image 20241005215834.png",
+    "picture/Pasted image 20241005215657.png",
+    "picture/Pasted image 20241005215455.png",
+    "picture/Pasted image 20241005215127.png",
+    "picture/Pasted image 20241005215110.png",
+    "picture/Pasted image 20241005215022.png",
+    "普通题目/newstar2024/week1.md",
+    "week 2.md",
+    "栈溢出/栈溢出.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/ret2xxx.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
@@ -180,20 +189,11 @@
     "特点题目/伪随机 2024暑假招新pwn1.md",
     "特点题目/格式化字符串 2024暑假招新pwn2.md",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
-    "普通题目/ret2libc 2021 鹤城杯 littleof.md",
-    "一些常用链接.md",
-    "普通题目/ret2libc HNCTF 2022 Week1 ezr0p64.md",
-    "普通题目/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
     "picture/Pasted image 20240929131459.png",
     "picture/Pasted image 20240929131439.png",
     "picture/Pasted image 20240929131422.png",
     "picture/Pasted image 20240929131254.png",
     "picture/Pasted image 20240929131210.png",
-    "picture/Pasted image 20240929131124.png",
-    "picture/Pasted image 20240929131009.png",
-    "picture/Pasted image 20240929130939.png",
-    "picture/Pasted image 20240929130803.png",
-    "picture/Pasted image 20240929130602.png",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
