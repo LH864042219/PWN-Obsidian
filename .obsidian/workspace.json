@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ROPgadget命令.md",
+                "file": "栈溢出/栈溢出.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ROPgadget命令.md",
+                "file": "栈溢出/栈溢出.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ROPgadget命令.md",
+                "file": "栈溢出/栈溢出.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ROPgadget命令.md"
+                "file": "栈溢出/栈溢出.md"
               }
             }
           },
@@ -158,17 +158,32 @@
   },
   "active": "1b58c108aea21b8c",
   "lastOpenFiles": [
+    "栈溢出/ret2xxx/shellcode.md",
+    "栈溢出/ret2xxx/ret2xxx.md",
+    "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
+    "栈溢出/ret2xxx/buu jarvisoj_level2_x64.md",
+    "栈溢出/ret2xxx/buu jarvisoj_level2.md",
+    "特点题目/ret2syscall CISCN 2023 初赛 烧烤摊儿.md",
+    "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
+    "普通题目/高版本libc 2024暑假招新pwn5.md",
+    "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
+    "普通题目/HNCTF 2022 Week1 ezr0p32.md",
+    "普通题目/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
+    "普通题目/LitCTF 2023 口算题卡.md",
+    "普通题目/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
+    "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
+    "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
+    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
+    "普通题目/ret2libc 2021 鹤城杯 babyof.md",
+    "ROPgadget命令.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
     "特点题目/格式化字符串 2024暑假招新pwn2.md",
-    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "普通题目/ret2libc 2021 鹤城杯 littleof.md",
     "一些常用链接.md",
-    "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "普通题目/ret2libc HNCTF 2022 Week1 ezr0p64.md",
     "普通题目/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
-    "普通题目/ret2libc BJDCTF 2020 babyrop.md",
-    "普通题目/newstar2024/week1.md",
     "picture/Pasted image 20240929131459.png",
     "picture/Pasted image 20240929131439.png",
     "picture/Pasted image 20240929131422.png",
@@ -179,25 +194,10 @@
     "picture/Pasted image 20240929130939.png",
     "picture/Pasted image 20240929130803.png",
     "picture/Pasted image 20240929130602.png",
-    "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
     "普通题目/newstar2024",
-    "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
-    "特点题目/ret2syscall CISCN 2023 初赛 烧烤摊儿.md",
-    "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
-    "特点题目/伪随机 HDCTF 2023 pwnner.md",
-    "二进制程序保护机制.md",
-    "普通题目/HNCTF 2022 Week1 ezr0p32.md",
-    "普通题目/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
-    "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
-    "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
-    "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
-    "普通题目/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
-    "普通题目/LitCTF 2023 口算题卡.md",
-    "普通题目/GDB HGAME 2022 week1 test your gdb.md",
-    "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
     "未命名.canvas",
     "普通题目",
     "picture/pwn5",
