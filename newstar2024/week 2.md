@@ -1,3 +1,5 @@
+![[Pasted image 20241006180918.png]]
+2024.10.6
 # PWN
 ## ez_game
 这周最简单的一道题，一道简单的ret2libc
