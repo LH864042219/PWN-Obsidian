@@ -1,4 +1,10 @@
-NewStarCTF Week1 Pwn
+# NS_Week1_CrazyCat_20233001236_刘涵
+## 信息
+- 平台ID：CrazyCat
+- 姓名：刘涵
+- 学号：20233001236
+- 轮次：Week1
+## 解出题目
 ![[Pasted image 20240929131422.png]]
 ![[Pasted image 20240929131459.png]]
 ![[Pasted image 20240929122557.png]]
