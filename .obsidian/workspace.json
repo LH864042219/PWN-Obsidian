@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/week1.md",
+                "file": "栈溢出/ret2xxx/shellcode.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "newstar2024/week1.md",
+                "file": "栈溢出/ret2xxx/shellcode.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "newstar2024/week1.md",
+                "file": "栈溢出/ret2xxx/shellcode.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "newstar2024/week1.md"
+                "file": "栈溢出/ret2xxx/shellcode.md"
               }
             }
           },
@@ -158,8 +158,12 @@
   },
   "active": "6d6ffbf0028f8199",
   "lastOpenFiles": [
-    "newstar2024/week 2.md",
+    "栈溢出/栈溢出.md",
+    "二进制程序保护机制.md",
+    "一些常用链接.md",
+    "ROPgadget命令.md",
     "newstar2024/week1.md",
+    "newstar2024/week 2.md",
     "picture/Pasted image 20241006180918.png",
     "picture/Pasted image 20241006022233.png",
     "picture/Pasted image 20241006021812.png",
@@ -170,7 +174,6 @@
     "picture/Pasted image 20241005222343.png",
     "picture/Pasted image 20241005222024.png",
     "picture/Pasted image 20241005221833.png",
-    "栈溢出/栈溢出.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/ret2xxx.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
@@ -189,10 +192,8 @@
     "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "普通题目/ret2libc 2021 鹤城杯 babyof.md",
-    "ROPgadget命令.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
     "特点题目/格式化字符串 2024暑假招新pwn2.md",
-    "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
