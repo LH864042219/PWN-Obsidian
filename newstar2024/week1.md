@@ -1,4 +1,4 @@
-# NS_Week1_CrazyCat_20233001236_刘涵
+# NS24_Week1_CrazyCat_20233001236_刘涵
 ## 信息
 - 平台ID：CrazyCat
 - 姓名：刘涵
