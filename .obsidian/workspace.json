@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/week3.md",
+                "file": "newstar2024/week2.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "newstar2024/week3.md",
+                "file": "newstar2024/week2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "newstar2024/week3.md",
+                "file": "newstar2024/week2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "newstar2024/week3.md"
+                "file": "newstar2024/week2.md"
               }
             }
           },
@@ -158,6 +158,12 @@
   },
   "active": "6d6ffbf0028f8199",
   "lastOpenFiles": [
+    "newstar2024/week1.md",
+    "newstar2024/week2.md",
+    "newstar2024/week3.md",
+    "picture/Pasted image 20241013120103.png",
+    "picture/Pasted image 20241013115938.png",
+    "picture/Pasted image 20241013115859.png",
     "picture/Pasted image 20241013115334.png",
     "picture/Pasted image 20241013115052.png",
     "picture/Pasted image 20241013115045.png",
@@ -165,13 +171,6 @@
     "picture/Pasted image 20241013114633.png",
     "picture/Pasted image 20241013114611.png",
     "picture/Pasted image 20241013114502.png",
-    "picture/Pasted image 20241013114454.png",
-    "picture/Pasted image 20241013114242.png",
-    "picture/Pasted image 20241013114232.png",
-    "picture/Pasted image 20241013114131.png",
-    "newstar2024/week2.md",
-    "newstar2024/week3.md",
-    "newstar2024/week1.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/栈溢出.md",
     "二进制程序保护机制.md",

