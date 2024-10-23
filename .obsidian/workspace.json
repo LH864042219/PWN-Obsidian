@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/week4.md",
+                "file": "newstar2024/week3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "week4"
+              "title": "week3"
             }
           }
         ],
@@ -191,6 +191,7 @@
   },
   "active": "4ec655b2ed3fd91e",
   "lastOpenFiles": [
+    "newstar2024/week4.md",
     "picture/Pasted image 20241022152010.png",
     "picture/Pasted image 20241022151528.png",
     "picture/Pasted image 20241022151452.png",
@@ -198,7 +199,6 @@
     "picture/Pasted image 20241022151340.png",
     "picture/Pasted image 20241022151223.png",
     "newstar2024/week3.md",
-    "newstar2024/week4.md",
     "picture/Pasted image 20241022151055.png",
     "newstar2024/week2.md",
     "一些常用链接.md",
@@ -209,7 +209,6 @@
     "picture/Pasted image 20241013120103.png",
     "picture/Pasted image 20241013115938.png",
     "picture/Pasted image 20241013115859.png",
-    "picture/Pasted image 20241013115334.png",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/栈溢出.md",
     "二进制程序保护机制.md",
