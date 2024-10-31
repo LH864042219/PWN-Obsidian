@@ -673,7 +673,13 @@ p.interactive()
 ![[Pasted image 20241031090010.png]]
 复现的时候没有环境了，这个flag是我自己编写的。
 ### One_Last_B1te(复现)
-
+看了`wp`后知道可以把`close`的`got`表改为`write`的从而泄露栈上数据来获取`libcbase`，由于开启了`sandbox`限制了一些`system`的使用，后面采用`orw`的方法来将`flag`泄露出来。
+过程：
+在第一次输入时输入`close`的`got`表，第二次输入单字节时刚好将其修改为`write`的`plt`，之后执行`close`时可以将栈上数据泄露出来：
+![[Pasted image 20241031163320.png]]
+可以看到泄露了很多，在gdb中查看找到有用的部分
+![[Pasted image 20241031163333.png]]
+计算偏移可以算出`__libc_start_main`的真实地址，根据给出的`libc`文件可以算出`libcbase`，
 # Week 4
 ## PWN
 ### Maze_Rust
