@@ -6,4 +6,23 @@ mov rax, 2          ; 系统调用号 2 (sys_open)
 mov rdi, filename   ; 文件名的指针
 mov rsi, O_RDONLY   ; 打开文件的标志
 syscall             ; 调用系统调用
+
+mov rax, 257        ; 系统调用号 257 (sys_openat)
+mov rdi, -100       ; AT_FDCWD
+mov rsi, pathname   ; 文件路径的指针
+mov rdx, O_CREAT | O_WRONLY ; 打开文件的标志
+mov r10, 0644       ; 文件权限
+syscall             ; 调用系统调用
+
+mov rax, 0          ; 系统调用号 0 (sys_read)
+mov rdi, 0          ; 文件描述符 0 (stdin)
+mov rsi, buffer     ; 缓冲区指针
+mov rdx, 100        ; 要读取的字节数
+syscall             ; 调用系统调用
+
+mov rax, 1          ; 系统调用号 1 (sys_write)
+mov rdi, 1          ; 文件描述符 1 (stdout)
+mov rsi, message    ; 缓冲区指针
+mov rdx, 13         ; 要写入的字节数
+syscall             ; 调用系统调用
 ```
