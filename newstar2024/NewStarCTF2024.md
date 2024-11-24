@@ -892,6 +892,8 @@ p.interactive()
 走迷宫的算法我直接让copilot代为生成，实际采用广搜或深搜都可以，找到一条路然后将路径转为wasd保留即可。
 ### MakeHero(复现)
 
+![[Pasted image 20241124091614.png]]
+
 ### reread(复现)
 IDA中查看后发现是打开了`sandbox`的，`seccomp`一下
 ![[Pasted image 20241118143730.png]]
