@@ -1,1 +1,1 @@
-ORW(open,read,write)类的题目一般出现在开启了sandbox的题目中。这类题目通常会禁用一些系统调用(例如execvezhi le)，
+ORW(open,read,write)类的题目一般出现在开启了sandbox的题目中。这类题目通常会禁用一些系统调用(例如execve之类的)，但一般会保留orw中的一些，虽然我们无法获取shell,但这时候我们可以利用这些系统调用来直接读取flag并输出。
