@@ -13,13 +13,35 @@ mov rsi, pathname   ; 文件路径的指针
 mov rdx, O_CREAT | O_WRONLY ; 打开文件的标志
 mov r10, 0644       ; 文件权限
 syscall             ; 调用系统调用
-
+```
+```
 mov rax, 0          ; 系统调用号 0 (sys_read)
 mov rdi, 0          ; 文件描述符 0 (stdin)
 mov rsi, buffer     ; 缓冲区指针
 mov rdx, 100        ; 要读取的字节数
 syscall             ; 调用系统调用
 
+mov rax, 17         ; 系统调用号 17 (sys_pread)
+mov rdi, fd         ; 文件描述符
+mov rsi, buffer     ; 缓冲区指针
+mov rdx, 100        ; 要读取的字节数
+mov r10, offset     ; 读取的起始位置
+syscall             ; 调用系统调用
+
+mov rax, 19         ; 系统调用号 19 (sys_readv)
+mov rdi, fd         ; 文件描述符
+mov rsi, iov        ; iovec 结构体数组的指针
+mov rdx, iovcnt     ; iovec 结构体的数量
+syscall             ; 调用系统调用
+
+mov rax, 295        ; 系统调用号 295 (sys_preadv)
+mov rdi, fd         ; 文件描述符
+mov rsi, iov        ; iovec 结构体数组的指针
+mov rdx, iovcnt     ; iovec 结构体的数量
+mov r10, offset     ; 读取的起始位置
+syscall             ; 调用系统调用
+```
+```
 mov rax, 1          ; 系统调用号 1 (sys_write)
 mov rdi, 1          ; 文件描述符 1 (stdout)
 mov rsi, message    ; 缓冲区指针
