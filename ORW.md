@@ -1,0 +1,1 @@
+ORW(open,read,write)类的题目一般出现在开启了sandbox的题目中。这类题目通常会禁用一些系统调用(例如execvezhi le)，
