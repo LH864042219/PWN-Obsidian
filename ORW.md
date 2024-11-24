@@ -69,5 +69,35 @@ mov r10, offset     ; 写入的起始位置
 syscall             ; 调用系统调用
 ```
 ```
+mov rax, 9          ; 系统调用号 9 (sys_mmap)
+mov rdi, 0          ; addr = NULL
+mov rsi, 4096       ; length = 4096
+mov rdx, PROT_READ | PROT_WRITE ; prot = PROT_READ | PROT_WRITE
+mov r10, MAP_PRIVATE | MAP_ANONYMOUS ; flags = MAP_PRIVATE | MAP_ANONYMOUS
+mov r8, -1          ; fd = -1
+mov r9, 0           ; offset = 0
+syscall             ; 调用系统调用
 
+mov rax, 10         ; 系统调用号 10 (sys_mprotect)
+mov rdi, addr       ; addr = 内存区域的起始地址
+mov rsi, 4096       ; len = 内存区域的长度
+mov rdx, PROT_READ  ; prot = 新的保护标志
+syscall             ; 调用系统调用
 ```
+```
+mov rax, 40         ; 系统调用号 40 (sys_sendfile)
+mov rdi, out_fd     ; 目标文件描述符
+mov rsi, in_fd      ; 源文件描述符
+mov rdx, 0          ; 偏移量的指针 (NULL)
+mov r10, 1024       ; 要发送的字节数
+syscall             ; 调用系统调用
+
+mov rax, 187        ; 系统调用号 187 (sys_sendfile64)
+mov rdi, out_fd     ; 目标文件描述符
+mov rsi, in_fd      ; 源文件描述符
+mov rdx, 0          ; 偏移量的指针 (NULL)
+mov r10, 1024       ; 要发送的字节数
+syscall             ; 调用系统调用
+```
+例题：
+
