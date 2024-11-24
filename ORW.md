@@ -47,4 +47,27 @@ mov rdi, 1          ; 文件描述符 1 (stdout)
 mov rsi, message    ; 缓冲区指针
 mov rdx, 13         ; 要写入的字节数
 syscall             ; 调用系统调用
+
+mov rax, 18         ; 系统调用号 18 (sys_pwrite)
+mov rdi, fd         ; 文件描述符
+mov rsi, buffer     ; 缓冲区指针
+mov rdx, 100        ; 要写入的字节数
+mov r10, offset     ; 写入的起始位置
+syscall             ; 调用系统调用
+
+mov rax, 20         ; 系统调用号 20 (sys_writev)
+mov rdi, fd         ; 文件描述符
+mov rsi, iov        ; iovec 结构体数组的指针
+mov rdx, iovcnt     ; iovec 结构体的数量
+syscall             ; 调用系统调用
+
+mov rax, 296        ; 系统调用号 296 (sys_pwritev)
+mov rdi, fd         ; 文件描述符
+mov rsi, iov        ; iovec 结构体数组的指针
+mov rdx, iovcnt     ; iovec 结构体的数量
+mov r10, offset     ; 写入的起始位置
+syscall             ; 调用系统调用
+```
+```
+
 ```
