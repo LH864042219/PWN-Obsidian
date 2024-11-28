@@ -1160,6 +1160,8 @@ while score <= 1145:
 ![[Pasted image 20241128170246.png]]
 此处`printf`可以一直泄漏到`/x00`。
 栈溢出：
+![[Pasted image 20241128170345.png]]
+可以看到`memcpy`这里可以栈溢出。
 
 ![[Pasted image 20241128165830.png]]
 ### EldenRing(复现)
