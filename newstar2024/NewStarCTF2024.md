@@ -1155,7 +1155,7 @@ while score <= 1145:
 # Week 5
 ## PWN
 ### C_or_CPP(复现)
-
+这道题本是一道简单的题目，两个漏洞，一个格式化zi fu chuan
 ![[Pasted image 20241128165830.png]]
 ### EldenRing(复现)
 ### No Output(复现)
