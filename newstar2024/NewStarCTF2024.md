@@ -1162,7 +1162,9 @@ while score <= 1145:
 栈溢出：
 ![[Pasted image 20241128170345.png]]
 可以看到`memcpy`这里可以栈溢出。
-
+这里看一看格式化字符串这里能泄漏出什么
+![[Pasted image 20241128170639.png]]
+可以看到泄漏出一个不知道是什么的栈地址，大抵是libc环境
 ![[Pasted image 20241128165830.png]]
 ### EldenRing(复现)
 ### No Output(复现)
