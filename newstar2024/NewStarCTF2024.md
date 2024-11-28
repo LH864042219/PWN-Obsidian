@@ -1155,7 +1155,12 @@ while score <= 1145:
 # Week 5
 ## PWN
 ### C_or_CPP(复现)
-这道题本是一道简单的题目，两个漏洞，一个格式化zi fu chuan
+这道题本是一道简单的题目，两个漏洞，一个格式化字符串漏洞可以泄漏栈上信息，另一个栈溢出漏洞执行`ROP`获取`shell`
+格式化字符串：
+![[Pasted image 20241128170246.png]]
+此处`printf`可以一直泄漏到`/x00`。
+栈溢出：
+
 ![[Pasted image 20241128165830.png]]
 ### EldenRing(复现)
 ### No Output(复现)
