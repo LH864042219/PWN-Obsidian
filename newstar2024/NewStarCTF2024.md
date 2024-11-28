@@ -1265,7 +1265,7 @@ p.sendline(payload)
 p.interactive()
 ```
 ![[Pasted image 20241128165830.png]]
-一道简单的题，反编译后看着hu ren
+一道简单的题，反编译后看着唬人，实际简单，需要提高反编译后的提取信息能力。
 ### EldenRing(复现)
 ### No Output(复现)
 ### Simple_Shellcode(复现)
