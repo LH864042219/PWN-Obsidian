@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/NewStarCTF2024.md",
+                "file": "newstar2024/week2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF2024"
+              "title": "week2"
             }
           }
         ],
@@ -190,12 +190,12 @@
   },
   "active": "32b286e6293c5e84",
   "lastOpenFiles": [
+    "newstar2024/NewStarCTF2024.md",
     "栈溢出/ret2xxx/shellcode.md",
     "二进制程序保护机制.md",
     "一些常用链接.md",
     "栈迁移.md",
     "ROPgadget命令.md",
-    "newstar2024/NewStarCTF2024.md",
     "picture/Pasted image 20241128170820.png",
     "picture/b2a0bbe32b7941040086bca65d9c5fb5.png",
     "picture/Pasted image 20241128170639.png",
