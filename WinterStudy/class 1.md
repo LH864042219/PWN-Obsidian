@@ -74,3 +74,7 @@ p.interactive()
 ```
 flag:
 ![[Pasted image 20250115092855.png]]
+# pie
+开启了pie保护
+![[Pasted image 20250115100232.png]]![[Pasted image 20250115100243.png]]
+栈溢出仅能覆盖返回地址的一位，显然
