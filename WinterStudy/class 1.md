@@ -34,3 +34,7 @@ p.interactive()
 ```
 flag:
 ![[Pasted image 20250115091529.png]]
+# game
+
+![[Pasted image 20250115092751.png]]
+反编译后可以看出当local_14l
