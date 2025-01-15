@@ -117,5 +117,10 @@ shell:
 password如上
 shell：
 ![[Pasted image 20250115100635.png]]
-# 
+# ret2text
+
+# shop
+运行后发现是一个简单的商店程序。
+反编译后发现程序都没有明显的漏洞。
+
 
