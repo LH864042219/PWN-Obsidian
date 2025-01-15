@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "二进制程序保护机制.md",
+                "file": "WinterStudy/class 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "二进制程序保护机制"
+              "title": "class 1"
             }
           }
         ],
@@ -175,7 +175,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 296.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -190,10 +191,13 @@
   },
   "active": "32b286e6293c5e84",
   "lastOpenFiles": [
+    "picture/Pasted image 20250115091055.png",
+    "二进制程序保护机制.md",
+    "WinterStudy/class 1.md",
+    "WinterStudy",
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week2.md",
     "栈溢出/ret2xxx/shellcode.md",
-    "二进制程序保护机制.md",
     "一些常用链接.md",
     "栈迁移.md",
     "ROPgadget命令.md",
@@ -224,7 +228,6 @@
     "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
     "普通题目/HNCTF 2022 Week1 ezr0p32.md",
     "普通题目/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
-    "普通题目/LitCTF 2023 口算题卡.md",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
@@ -235,7 +238,6 @@
     "未命名 1.canvas",
     "特点题目",
     "栈溢出",
-    "picture",
-    "栈溢出/ret2xxx"
+    "picture"
   ]
 }
