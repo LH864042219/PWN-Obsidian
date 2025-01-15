@@ -110,3 +110,12 @@ p.interactive()
 ```
 shell:
 ![[Pasted image 20250115100413.png]]
+# real_login
+![[Pasted image 20250115100541.png]]
+当输入为password时获取shell
+![[Pasted image 20250115100606.png]]
+password如上
+shell：
+![[Pasted image 20250115100635.png]]
+# 
+
