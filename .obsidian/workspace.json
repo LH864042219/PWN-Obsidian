@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WinterStudy/class 1.md",
+                "file": "newstar2024/week4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "class 1"
+              "title": "week4"
             }
           }
         ],
@@ -191,11 +191,12 @@
   },
   "active": "32b286e6293c5e84",
   "lastOpenFiles": [
+    "newstar2024/week1.md",
+    "WinterStudy/class 1.md",
     "picture/Pasted image 20250115091529.png",
     "picture/Pasted image 20250115091337.png",
     "picture/Pasted image 20250115091300.png",
     "newstar2024/NewStarCTF2024.md",
-    "WinterStudy/class 1.md",
     "picture/Pasted image 20250115091055.png",
     "二进制程序保护机制.md",
     "WinterStudy",
@@ -211,8 +212,6 @@
     "picture/Pasted image 20241128170246.png",
     "picture/Pasted image 20241128165830.png",
     "ORW.md",
-    "picture/Pasted image 20241124102222.png",
-    "newstar2024/week1.md",
     "newstar2024/week4.md",
     "newstar2024/week3.md",
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
