@@ -162,7 +162,7 @@ p.sendline(payload)
 p.interactive()
 ```
 shell:
-
+![[Pasted image 20250116145301.png]]
 # shop
 运行后发现是一个简单的商店程序。
 反编译后发现程序都没有明显的漏洞。
