@@ -118,7 +118,9 @@ password如上
 shell：
 ![[Pasted image 20250115100635.png]]
 # ret2text
-
+取名为ret2text则大概率有后门函数
+![[Pasted image 20250116145056.png]]
+you min
 # shop
 运行后发现是一个简单的商店程序。
 反编译后发现程序都没有明显的漏洞。
