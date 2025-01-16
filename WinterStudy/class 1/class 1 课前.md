@@ -1,6 +1,10 @@
 # easync
 ![[Pasted image 20250116161939.png]]
-测试nc
+发现是fake的flag
+
+
+flag：
+nssctf{Nc_
 
 # [FSCTF 2023]nc
 ![[Pasted image 20250116162430.png]]
