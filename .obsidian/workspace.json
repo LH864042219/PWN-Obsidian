@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
+                "file": "特点题目/伪随机 HDCTF 2023 pwnner.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SWPUCTF 2022 新生赛 有手就行的栈溢出"
+              "title": "伪随机 HDCTF 2023 pwnner"
             }
           }
         ]
@@ -175,6 +175,10 @@
   },
   "active": "a9301fe3bac7cf19",
   "lastOpenFiles": [
+    "特点题目/伪随机 2024暑假招新pwn1.md",
+    "特点题目/伪随机 HDCTF 2023 pwnner.md",
+    "特点题目/格式化字符串 2024暑假招新pwn2.md",
+    "特点题目/堆？NISACTF 2022 ezheap.md",
     "普通题目/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
     "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
     "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
@@ -201,10 +205,6 @@
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week1.md",
     "栈溢出/ret2xxx/buu jarvisoj_level2_x64.md",
-    "栈溢出/栈溢出.md",
-    "栈溢出/ret2xxx/shellcode.md",
-    "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
-    "特点题目/堆？NISACTF 2022 ezheap.md",
     "picture/Pasted image 20250115100635.png",
     "picture/Pasted image 20250115100606.png",
     "picture/Pasted image 20250115100541.png",
