@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WinterStudy/class 1/class 1 课前.md",
+                "file": "普通题目/ret2libc 2021 鹤城杯 babyof.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "class 1 课前"
+              "title": "ret2libc 2021 鹤城杯 babyof"
             }
           }
         ]
@@ -175,13 +175,14 @@
   },
   "active": "a9301fe3bac7cf19",
   "lastOpenFiles": [
+    "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
+    "WinterStudy/class 1/class 1 课前.md",
     "picture/Pasted image 20250116170023.png",
     "picture/Pasted image 20250116165946.png",
     "picture/Pasted image 20250116162800.png",
     "picture/Pasted image 20250116162430.png",
     "picture/Pasted image 20250116161939.png",
     "WinterStudy/class 1/class 1 课后.md",
-    "WinterStudy/class 1/class 1 课前.md",
     "WinterStudy/class 1",
     "picture/Pasted image 20250116161208.png",
     "picture/Pasted image 20250116145301.png",
@@ -209,7 +210,6 @@
     "栈溢出/ret2xxx/buu jarvisoj_level2.md",
     "栈溢出/ret2xxx/ret2xxx.md",
     "picture/Pasted image 20250115155516.png",
-    "picture/Pasted image 20250115155407.png",
     "newstar2024/week2.md",
     "newstar2024/NewStarCTF2024.md",
     "WinterStudy",
