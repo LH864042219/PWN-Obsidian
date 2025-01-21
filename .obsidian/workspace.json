@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "湘岚杯 2024.md",
+                "file": "newstar2024/NewStarCTF2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "湘岚杯 2024"
+              "title": "NewStarCTF2024"
             }
           }
         ],
@@ -190,6 +190,8 @@
   },
   "active": "0fca5a40170e92a8",
   "lastOpenFiles": [
+    "湘岚杯 2024.md",
+    "picture/Pasted image 20250121163812.png",
     "picture/Pasted image 20250121161654.png",
     "picture/Pasted image 20250121161640.png",
     "picture/Pasted image 20250121161542.png",
@@ -199,9 +201,7 @@
     "picture/Pasted image 20250121141418.png",
     "picture/Pasted image 20250121141259.png",
     "picture/Pasted image 20250121140940.png",
-    "picture/湘岚杯.png",
     "newstar2024/NewStarCTF2024.md",
-    "湘岚杯 2024.md",
     "ORW.md",
     "ROPgadget命令.md",
     "栈迁移.md",
@@ -220,7 +220,6 @@
     "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
     "WinterStudy/class 1/class 1 课前.md",
-    "picture/Pasted image 20250116170023.png",
     "WinterStudy/class 1/class 1 课后.md",
     "WinterStudy/class 1",
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
