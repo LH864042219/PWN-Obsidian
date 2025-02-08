@@ -35,7 +35,8 @@
               "title": "NewStarCTF2024"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -189,12 +190,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "04c01a5873531598",
+  "active": "db8f646309a47ee1",
   "lastOpenFiles": [
+    "栈溢出/ret2xxx/shellcode.md",
     "启航杯 2025.md",
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week1.md",
-    "栈溢出/ret2xxx/shellcode.md",
     "ORW.md",
     "栈迁移.md",
     "ROPgadget命令.md",
