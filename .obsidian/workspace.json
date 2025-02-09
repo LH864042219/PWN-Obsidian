@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "newstar2024/NewStarCTF2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一些常用链接"
+              "title": "NewStarCTF2024"
             }
           }
         ]
@@ -177,6 +177,7 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "一些常用链接.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
     "栈溢出/栈溢出.md",
     "栈溢出/ret2xxx/shellcode.md",
@@ -190,7 +191,6 @@
     "ORW.md",
     "栈迁移.md",
     "ROPgadget命令.md",
-    "一些常用链接.md",
     "湘岚杯 2024.md",
     "picture/Pasted image 20250125094440.png",
     "未命名",
