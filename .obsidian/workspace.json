@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "栈溢出/ret2xxx/shellcode.md",
+                "file": "newstar2024/NewStarCTF2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "shellcode"
+              "title": "NewStarCTF2024"
             }
           }
         ]
@@ -177,10 +177,10 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
     "栈溢出/ret2xxx/buu jarvisoj_level2_x64.md",
     "栈溢出/ret2xxx/buu jarvisoj_level2.md",
-    "栈溢出/ret2xxx/shellcode.md",
     "WinterStudy/class 1/class 1 课后.md",
     "WinterStudy/class 1/class 1 课前.md",
     "newstar2024/NewStarCTF2024.md",
