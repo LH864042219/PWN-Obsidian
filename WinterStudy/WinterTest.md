@@ -74,7 +74,7 @@ shell:
 ![[Pasted image 20250210233720.png]]
 可以看到是一个开启了sandbox的shellcode题。
 ![[Pasted image 20250210233928.png]]
-sandbox仅允许使用rw,可以看到是缺o的，该怎么办呢，
+sandbox仅允许使用rw,可以看到是缺o的，该怎么办呢，搜索后发现fstat函数的系统调用0x5是32位的open函数的系统调用，所以思路就是用mmap开辟一个新的空间来存放一段32位的程序然后在里面调用32位的open，然后再切换回
 shell:
 ![[Pasted image 20250210233827.png]]
 ## walt改造的编译器
