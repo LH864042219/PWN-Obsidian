@@ -48,8 +48,12 @@ p.sendline(payload)
 
 p.interactive()
 ```
+shell:
+![[Pasted image 20250210232813.png]]
 ## fmt_str
-
+有backdoor
+![[Pasted image 20250210232848.png]]
+有两个有用的函数，第一个当
 ## shellcode
 
 ## walt改造的编译器
