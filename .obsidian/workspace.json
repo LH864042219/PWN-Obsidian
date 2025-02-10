@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/NewStarCTF2024.md",
+                "file": "WinterStudy/WinterTest.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF2024"
+              "title": "WinterTest"
             }
           }
         ]
@@ -177,8 +177,9 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
-    "栈溢出/ret2xxx/shellcode.md",
     "newstar2024/NewStarCTF2024.md",
+    "WinterStudy/WinterTest.md",
+    "栈溢出/ret2xxx/shellcode.md",
     "一些常用链接.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
     "栈溢出/栈溢出.md",
@@ -213,7 +214,6 @@
     "newstar2024/week4.md",
     "普通题目/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
     "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
-    "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "WinterStudy/class 1",
     "WinterStudy",
     "普通题目/newstar2024/week1/re",
