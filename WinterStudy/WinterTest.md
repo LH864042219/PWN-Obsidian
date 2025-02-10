@@ -98,6 +98,7 @@ shellcode = '''
 	add sp, 0x100
 	
 	/* mmap(0x40404040, 0x7e, 7, 34, 0, 0) */
+	/* 一定要搞清楚哪个寄存器存哪个参数，不然怎么错的都不知道 */
 	mov rdi, 0x40404040
 	mov rsi, 0x7e
 	mov rdx, 7
@@ -157,3 +158,4 @@ p.interactive()
 shell:
 ![[Pasted image 20250210233827.png]]
 ## walt改造的编译器
+是一个自制的编译器，编译后有一千多行代码不好逐行分析，大致作用就是输入一段c的代码然后会bian y
