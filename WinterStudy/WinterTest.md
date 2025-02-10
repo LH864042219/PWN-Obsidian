@@ -53,7 +53,7 @@ shell:
 ## fmt_str
 有backdoor
 ![[Pasted image 20250210232848.png]]
-有两个有用的函数，第一个当
+有两个有用的函数，第一个当地址为0x404068的值为0x56785678时便可以进入di er
 ## shellcode
 
 ## walt改造的编译器
