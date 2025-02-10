@@ -72,5 +72,9 @@ shell:
 ![[Pasted image 20250210233359.png]]
 ## shellcode
 ![[Pasted image 20250210233720.png]]
-
+可以看到是一个开启了sandbox的shellcode题。
+![[Pasted image 20250210233928.png]]
+sandbox仅允许使用rw,可以看到是缺o的，该怎么办呢，
+shell:
+![[Pasted image 20250210233827.png]]
 ## walt改造的编译器
