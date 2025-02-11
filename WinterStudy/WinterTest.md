@@ -193,7 +193,7 @@ shell:
 # D2
 ## Berial
 ![[Pasted image 20250211191107.png]]
-
+可以看到有栈溢出但不多，可以猜到要用栈迁移，checksec后发现打开了pie，那么我们就需要获取很多东西，一个是每次随机生成的栈地址，一个是
 ## unjoke
 
 ## Natro
