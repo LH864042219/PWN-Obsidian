@@ -191,4 +191,10 @@ shell:
 ![[Pasted image 20250210234818.png]]
 
 # D2
-## 
+## Berial
+![[Pasted image 20250211191107.png]]
+
+## unjoke
+
+## Natro
+不会
