@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/NewStarCTF2024.md",
+                "file": "WinterStudy/WinterTest.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF2024"
+              "title": "WinterTest"
             }
           }
         ]
@@ -177,9 +177,9 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "newstar2024/NewStarCTF2024.md",
     "newstar2024/week2.md",
     "栈迁移.md",
-    "newstar2024/NewStarCTF2024.md",
     "WinterStudy/WinterTest.md",
     "picture/Pasted image 20250210234818.png",
     "ORW.md",

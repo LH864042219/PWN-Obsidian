@@ -189,3 +189,6 @@ p.interactive()
 ```
 shell:
 ![[Pasted image 20250210234818.png]]
+
+# D2
+## 
