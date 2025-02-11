@@ -208,8 +208,12 @@ func_addr = u64(p.recv(6).ljust(8, b'\x00'))
 func_base = func_addr - 0x10138d
 ```
 ![[Pasted image 20250211192422.png]]
-将前面填充后可以看到泄漏了code段的地址，p
-![[Pasted image 20250211192517.png]]
+将前面填充后可以看到泄漏了code段的地址，偏移是0x10138d，然后就获取了code段的基址。
+![[Pasted image 20250211192546.png]]
+第二步，栈溢出劫持返回，让程序回到func的开头准备第二次泄漏
+```python
+
+```
 ## unjoke
 
 ## Natro
