@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/NewStarCTF2024.md",
+                "file": "栈迁移.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF2024"
+              "title": "栈迁移"
             }
           }
         ]
@@ -177,6 +177,7 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "newstar2024/NewStarCTF2024.md",
     "WinterStudy/WinterTest.md",
     "栈迁移.md",
     "picture/Pasted image 20250210234818.png",
@@ -190,7 +191,6 @@
     "picture/Pasted image 20250210232539.png",
     "picture/Pasted image 20250210232500.png",
     "picture/Pasted image 20250210232456.png",
-    "newstar2024/NewStarCTF2024.md",
     "栈溢出/ret2xxx/shellcode.md",
     "一些常用链接.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
