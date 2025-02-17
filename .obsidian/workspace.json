@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WinterStudy/WinterTest.md",
+                "file": "newstar2024/NewStarCTF2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WinterTest"
+              "title": "NewStarCTF2024"
             }
           }
         ]
@@ -176,6 +176,7 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "WinterStudy/WinterTest.md",
     "picture/Pasted image 20250211194321.png",
     "picture/Pasted image 20250211194251.png",
     "picture/Pasted image 20250211194038.png",
@@ -186,11 +187,9 @@
     "picture/Pasted image 20250211192821.png",
     "picture/Pasted image 20250211192546.png",
     "picture/Pasted image 20250211192517.png",
-    "picture/Pasted image 20250211192422.png",
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week2.md",
     "栈迁移.md",
-    "WinterStudy/WinterTest.md",
     "ORW.md",
     "栈溢出/ret2xxx/shellcode.md",
     "一些常用链接.md",
