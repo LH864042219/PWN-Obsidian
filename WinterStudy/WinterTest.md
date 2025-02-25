@@ -190,7 +190,7 @@ p.interactive()
 shell:
 ![[Pasted image 20250210234818.png]]
 
-# D2
+# Day2
 ## Berial
 ![[Pasted image 20250211191107.png]]
 可以看到有栈溢出但不多，可以猜到要用栈迁移，`checksec`后发现打开了`pie`，那么我们就需要获取很多东西，栈地址，`code`地址和`libc`的基址。
