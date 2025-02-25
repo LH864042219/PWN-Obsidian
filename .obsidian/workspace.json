@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WinterStudy/WinterTest.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WinterTest"
+              "title": "一些常用链接"
             }
           }
         ]
@@ -176,6 +176,7 @@
   },
   "active": "04c01a5873531598",
   "lastOpenFiles": [
+    "WinterStudy/WinterTest.md",
     "picture/Pasted image 20250225161306.png",
     "picture/Pasted image 20250225161206.png",
     "启航杯 2025.md",
@@ -186,7 +187,6 @@
     "一些常用链接.md",
     "二进制程序保护机制.md",
     "newstar2024/NewStarCTF2024.md",
-    "WinterStudy/WinterTest.md",
     "picture/Pasted image 20250211194321.png",
     "picture/Pasted image 20250211194251.png",
     "picture/Pasted image 20250211194038.png",
@@ -195,7 +195,6 @@
     "picture/Pasted image 20250211193129.png",
     "picture/Pasted image 20250211193005.png",
     "picture/Pasted image 20250211192821.png",
-    "picture/Pasted image 20250211192546.png",
     "newstar2024/week2.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
