@@ -360,6 +360,7 @@ shell:
 此处为修改某用户的简介部分
 ![[Pasted image 20250225161306.png]]
 修改后发现能泄漏一个地址，再查看发现是puts函数的地址
+泄漏后可以获取system地址，将其修改为system后然后
 
 shell:
 ![[Pasted image 20250225163842.png]]
