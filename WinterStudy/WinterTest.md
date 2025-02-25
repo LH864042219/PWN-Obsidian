@@ -354,3 +354,9 @@ shell:
 ![[Pasted image 20250211194251.png]]
 
 ## Natro
+菜单题，找到哪里有漏洞先。
+最明显的是edit函数部分中有一个栈溢出
+![[Pasted image 20250225161206.png]]
+此处为修改某用户的简介部分
+![[Pasted image 20250225161306.png]]
+修改后发现能泄漏一个地址，zai cha k
