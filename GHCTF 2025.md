@@ -146,11 +146,11 @@ local = True
 ip = 'node2.anna.nssctf.cn'
 port = 28073
 if local:
-p = process('./stack')
-pwnlib.gdb.attach(p, 'b *0x401033')
+	p = process('./stack')
+	pwnlib.gdb.attach(p, 'b *0x401033')
 else:
-p = remote(ip, port)
-# p = websocket()  
+	p = remote(ip, port)
+	# p = websocket()  
 
 ret = 0x401013
 elf = ELF('./stack')
