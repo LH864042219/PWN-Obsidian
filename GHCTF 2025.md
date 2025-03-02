@@ -128,3 +128,7 @@ p.send(payload)
 
 p.interactive()
 ```
+# stack
+反编译后的伪代码看不出什么，需要直接看汇编
+![[Pasted image 20250302223649.png]]
+主函数
