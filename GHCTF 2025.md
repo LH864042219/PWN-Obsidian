@@ -75,3 +75,7 @@ p.sendline(payload)
 
 p.interactive()
 ```
+
+# ret2libc2
+one_gadget类型的题目。
+需要先想办法泄漏libc基址，因为不能直接控制pop rdi; ret x
