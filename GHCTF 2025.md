@@ -1,5 +1,5 @@
 # Hello_world
-签到题，利用栈溢出漏洞劫持返回函数至backdoors即可。
+签到题，利用栈溢出漏洞劫持返回函数至`backdoors`即可。
 exp:
 ```python
 from pwn import *
@@ -21,11 +21,11 @@ p.send(payload)
 p.interactive()
 ```
 # ret2libc1
-菜单题，可以找到栈溢出漏洞在shop函数里
+菜单题，可以找到栈溢出漏洞在`shop`函数里
 ![[Pasted image 20250302221923.png]]
-main函数中可以找到当输入7时会执行see_it函数，可以刷钱，刷了钱后便可以买下商店触发栈溢出漏洞。
+`main`函数中可以找到当输入7时会执行`see_it`函数，可以刷钱，刷了钱后便可以买下商店触发栈溢出漏洞。
 ![[Pasted image 20250302222124.png]]
-利用该漏洞可以泄漏libc基址构造rop。
+利用该漏洞可以泄漏`libc`基址构造`rop`。
 exp:
 ```python
 from pwn import *
@@ -77,16 +77,16 @@ p.interactive()
 ```
 
 # ret2libc2
-one_gadget类型的题目。
-需要先想办法泄漏libc基址，因为不能直接控制pop rdi; ret 需要找别的方法。
+`one_gadget`类型的题目。
+需要先想办法泄漏`libc`基址，因为不能直接控制`pop rdi; ret` 需要找别的方法。
 ![[Pasted image 20250302222628.png]]
-能想到的方法就是利用printf函数将函数的got泄漏出来
+能想到的方法就是利用`printf`函数将函数的`got`泄漏出来
 ![[Pasted image 20250302222757.png]]
-从汇编可以看出这里将rbp - 0x10赋给rax，所以在第一次read时将某一函数的got + 0x10放在此处即可，如下图
+从汇编可以看出这里将`rbp - 0x10`赋给`rax`，所以在第一次`read`时将某一函数的`got + 0x10`放在此处即可，如下图
 ![[Pasted image 20250302223055.png]]
-泄漏之后可以算出libc基址，查找使用哪个gadget
+泄漏之后可以算出`libc`基址，查找使用哪个`gadget`
 ![[Pasted image 20250302223226.png]]
-可以发现都需要rbp-0xXX可以执行，可以看到有leave ret，将rbp迁移到一个可执行的位置即可。
+可以发现都需要`rbp-0xXX`可以执行，可以看到有`leave ret`，将`rbp`迁移到一个可执行的位置即可。
 ```python
 from pwn import *
 from wstube import websocket
@@ -131,12 +131,12 @@ p.interactive()
 # stack
 反编译后的伪代码看不出什么，需要直接看汇编
 ![[Pasted image 20250302223649.png]]
-主函数print了两个msg以及一个rsp指针，然后read之后跳转到rsp指的地方
+主函数`print`了两个``msg``以及一个`rsp`指针，然后`read`之后跳转到`rsp`指的地方
 ![[Pasted image 20250302223809.png]]
-再看看print函数以及gadgets函数，利用这些可以做到控制rax,rsi,rdi,rbx,r13,r15，
+再看看`print`函数以及`gadgets`函数，利用这些可以做到控制`rax,rsi,rdi,rbx,r13,r15`，
 ![[Pasted image 20250302224032.png]]
 接受一下泄漏的地址可以发现是栈地址，可以把文件路径存在这里后面调用。
-调试很久本打算控制寄存器调用execve直接binsh，但发现不能控制rdx用不了execve（也可能我哪里弄错了），最后选择构造orw。
+调试很久本打算控制寄存器调用`execve`直接`binsh`，但发现不能控制`rdx`用不了execve（也可能我哪里弄错了），最后选择构造`orw`。
 ```python
 from pwn import *
 from wstube import websocket
