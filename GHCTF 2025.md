@@ -21,3 +21,6 @@ p.send(payload)
 p.interactive()
 ```
 # ret2libc1
+菜单题，可以找到栈溢出漏洞在shop函数里
+![[Pasted image 20250302221923.png]]
+main函数中可以找到当输入7时会执行see_it函数，可以刷钱，刷了钱后便可以
