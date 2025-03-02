@@ -83,3 +83,7 @@ one_gadget类型的题目。
 能想到的方法就是利用printf函数将函数的got泄漏出来
 ![[Pasted image 20250302222757.png]]
 从汇编可以看出这里将rbp - 0x10赋给rax，所以在第一次read时将某一函数的got + 0x10放在此处即可，如下图
+![[Pasted image 20250302223055.png]]
+泄漏之后可以算出libc基址，查找使用哪个gadget
+![[Pasted image 20250302223226.png]]
+可以发现都需要rbp-0xXX可以执行，
