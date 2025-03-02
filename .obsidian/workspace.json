@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "ORW"
             }
+          },
+          {
+            "id": "152236d2f9b45913",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GHCTF 2025.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "GHCTF 2025"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -189,13 +203,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e7d8c7ee24708611",
+  "active": "152236d2f9b45913",
   "lastOpenFiles": [
+    "ORW.md",
+    "GHCTF 2025.md",
     "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "堆.md",
     "常用命令.md",
     "栈迁移.md",
-    "ORW.md",
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week2.md",
     "WinterStudy/WinterTest.md",
@@ -227,7 +242,6 @@
     "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "newstar2024/week3.md",
-    "newstar2024/week4.md",
     "WinterStudy/class 1",
     "WinterStudy",
     "普通题目/newstar2024/week1/re",
