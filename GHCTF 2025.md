@@ -136,7 +136,7 @@ p.interactive()
 再看看`print`函数以及`gadgets`函数，利用这些可以做到控制`rax,rsi,rdi,rbx,r13,r15`，
 ![[Pasted image 20250302224032.png]]
 接受一下泄漏的地址可以发现是栈地址，可以把文件路径存在这里后面调用。
-调试很久本打算控制寄存器调用`execve`直接`binsh`，但发现不能控制`rdx`用不了execve（也可能我哪里弄错了），最后选择构造`orw`。
+调试很久本打算控制寄存器调用`execve`直接`binsh`，但发现不能控制`rdx`用不了`execve`（也可能我哪里弄错了），最后选择构造`orw`。
 ```python
 from pwn import *
 from wstube import websocket
