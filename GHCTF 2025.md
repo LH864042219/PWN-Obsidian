@@ -78,4 +78,6 @@ p.interactive()
 
 # ret2libc2
 one_gadget类型的题目。
-需要先想办法泄漏libc基址，因为不能直接控制pop rdi; ret x
+需要先想办法泄漏libc基址，因为不能直接控制pop rdi; ret 需要找别的方法。
+![[Pasted image 20250302222628.png]]
+能想到的方法就是利用printf函数将
