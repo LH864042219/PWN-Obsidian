@@ -82,4 +82,4 @@ one_gadget类型的题目。
 ![[Pasted image 20250302222628.png]]
 能想到的方法就是利用printf函数将函数的got泄漏出来
 ![[Pasted image 20250302222757.png]]
-从汇编可以看出这里将rbp - 0x10赋给rax，所以在第一次read时将某一函数的got + 0x
+从汇编可以看出这里将rbp - 0x10赋给rax，所以在第一次read时将某一函数的got + 0x10放在此处即可，如下图
