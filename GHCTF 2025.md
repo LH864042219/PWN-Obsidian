@@ -133,4 +133,6 @@ p.interactive()
 ![[Pasted image 20250302223649.png]]
 主函数print了两个msg以及一个rsp指针，然后read之后跳转到rsp指的地方
 ![[Pasted image 20250302223809.png]]
-再看看print函数以及gadgets函数，利用这些可以做到控制rax,rsi,rdi,rbx,r13,r15
+再看看print函数以及gadgets函数，利用这些可以做到控制rax,rsi,rdi,rbx,r13,r15，
+![[Pasted image 20250302224032.png]]
+接受一下泄漏的地址可以发现是栈地址，可以把文件路径cun
