@@ -131,4 +131,6 @@ p.interactive()
 # stack
 反编译后的伪代码看不出什么，需要直接看汇编
 ![[Pasted image 20250302223649.png]]
-主函数
+主函数print了两个msg以及一个rsp指针，然后read之后跳转到rsp指的地方
+![[Pasted image 20250302223809.png]]
+再看看print函数以及gadgets函数，利用这些可以做到控制rax,rsi,rdi,rbx,r13,r15
