@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GHCTF 2025.md",
+                "file": "v8.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "GHCTF 2025 的大纲"
+              "title": "v8 的大纲"
             }
           },
           {
@@ -180,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
