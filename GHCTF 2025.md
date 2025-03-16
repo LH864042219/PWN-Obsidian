@@ -449,4 +449,17 @@ f();
 ```
 # my_vm
 程序实现了一个简单的虚拟机，可以通过执行指令来操作寄存器和内存
-0x10
+- `0x10`：将 [param_1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的低 16 位存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x20`：将寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值压入栈，并增加栈指针。
+- `0x30`：从栈中弹出值到寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)，并减少栈指针。
+- `0x40`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 和 [bVar3](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值相加，结果存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x50`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 和 [bVar3](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值相减，结果存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x60`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 和 [bVar3](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值按位异或，结果存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x70`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值右移 [bVar3](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 指定的位数，结果存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x80`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值左移 [bVar3](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 指定的位数，结果存入寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)。
+- `0x90`：将寄存器 [bVar2](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 的值存入内存地址（由寄存器 [bVar1](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) 指定）。
+分别对应的是
+- `0x10` - `imm`
+- `0x20` - `push`
+- `0x30` - `pop`
+- 
