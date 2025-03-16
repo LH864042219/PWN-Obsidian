@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GHCTF 2025.md",
+                "file": "WinterStudy/WinterTest.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GHCTF 2025"
+              "title": "WinterTest"
             }
           }
         ],
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GHCTF 2025.md",
+                "file": "WinterStudy/WinterTest.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "GHCTF 2025 的大纲"
+              "title": "WinterTest 的大纲"
             }
           },
           {
@@ -194,9 +194,9 @@
   },
   "active": "1de43f2e2ba76d08",
   "lastOpenFiles": [
+    "GHCTF 2025.md",
     "picture/Pasted image 20250316171258.png",
     "v8.md",
-    "GHCTF 2025.md",
     "picture/Pasted image 20250316154928.png",
     "picture/Pasted image 20250316154815.png",
     "picture/Pasted image 20250316152504.png",
@@ -229,7 +229,6 @@
     "picture/Pasted image 20250302223809.png",
     "picture/Pasted image 20250302223649.png",
     "picture/Pasted image 20250302223226.png",
-    "picture/Pasted image 20250302223055.png",
     "未命名",
     "WinterStudy/class 1",
     "WinterStudy",
