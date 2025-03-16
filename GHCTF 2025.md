@@ -220,3 +220,96 @@ p.sendline(payload)
 p.interactive()
 ```
 # my_v8
+环境搭建遇到的问题比做题遇到的问题还多，具体看这边[[v8]]。
+首先看一下diff文件
+```diff
+diff --git a/src/bootstrapper.cc b/src/bootstrapper.cc
+index b027d36b5e9..406ca1eac98 100644
+--- a/src/bootstrapper.cc
++++ b/src/bootstrapper.cc
+@@ -1666,6 +1666,10 @@ void Genesis::InitializeGlobal(Handle<JSGlobalObject> global_object,
+                           false);
+     SimpleInstallFunction(isolate_, proto, "copyWithin",
+                           Builtins::kArrayPrototypeCopyWithin, 2, false);
++    SimpleInstallFunction(isolate_, proto, "Myread",
++                          Builtins::kMyread, 1, false);
++    SimpleInstallFunction(isolate_, proto, "Mywrite",
++                          Builtins::kMywrite, 2, false);
+     SimpleInstallFunction(isolate_, proto, "fill",
+                           Builtins::kArrayPrototypeFill, 1, false);
+     SimpleInstallFunction(isolate_, proto, "find",
+diff --git a/src/builtins/builtins-array.cc b/src/builtins/builtins-array.cc
+index 8df340ece7a..604a876df01 100644
+--- a/src/builtins/builtins-array.cc
++++ b/src/builtins/builtins-array.cc
+@@ -361,6 +361,39 @@ V8_WARN_UNUSED_RESULT Object GenericArrayPush(Isolate* isolate,
+   return *final_length;
+ }
+ }  // namespace
++BUILTIN(Myread) {
++  uint32_t len = args.length();
++  if( len > 1 ) return ReadOnlyRoots(isolate).undefined_value();
++  Handle<JSReceiver> receiver;
++  ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++         isolate, receiver, Object::ToObject(isolate,args.receiver()));
++  Handle<JSArray> array = Handle<JSArray>::cast(receiver);
++  FixedDoubleArray elements = FixedDoubleArray::cast(array->elements());
++  uint32_t length = static_cast<uint32_t>(array->length()->Number());
++  return *(isolate->factory()->NewNumber(elements.get_scalar(length)));
++}
++
++BUILTIN(Mywrite) {
++  uint32_t len = args.length();
++  if( len > 2 ) return ReadOnlyRoots(isolate).undefined_value();
++  Handle<JSReceiver> receiver;
++  ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++         isolate, receiver, Object::ToObject(isolate,args.receiver()));
++  Handle<JSArray> array = Handle<JSArray>::cast(receiver);
++  FixedDoubleArray elements = FixedDoubleArray::cast(array->elements());
++  uint32_t length = static_cast<uint32_t>(array->length()->Number());
++   
++  if( len == 2) {
++    Handle<Object> value;
++    ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++            isolate, value, Object::ToNumber(isolate, args.at<Object>(1)));
++    elements.set(length,value->Number());
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++  else{
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++}
+ 
+ BUILTIN(ArrayPush) {
+   HandleScope scope(isolate);
+diff --git a/src/builtins/builtins-definitions.h b/src/builtins/builtins-definitions.h
+index 04472309fc0..752a08ce7ca 100644
+--- a/src/builtins/builtins-definitions.h
++++ b/src/builtins/builtins-definitions.h
+@@ -368,6 +368,8 @@ namespace internal {
+   TFJ(ArrayPrototypeFlat, SharedFunctionInfo::kDontAdaptArgumentsSentinel)     \
+   /* https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap */   \
+   TFJ(ArrayPrototypeFlatMap, SharedFunctionInfo::kDontAdaptArgumentsSentinel)  \
++  CPP(Myread)                                                                  \
++  CPP(Mywrite)                                                                 \
+                                                                                \
+   /* ArrayBuffer */                                                            \
+   /* ES #sec-arraybuffer-constructor */                                        \
+diff --git a/src/compiler/typer.cc b/src/compiler/typer.cc
+index ed1e4a5c6d8..11b28a92e13 100644
+--- a/src/compiler/typer.cc
++++ b/src/compiler/typer.cc
+@@ -1678,6 +1678,10 @@ Type Typer::Visitor::JSCallTyper(Type fun, Typer* t) {
+       return Type::Boolean();
+     case Builtins::kArrayPrototypeSplice:
+       return Type::Receiver();
++    case Builtins::kMyread:
++      return Type::Receiver();
++    case Builtins::kMywrite:
++      return Type::Receiver();
+     case Builtins::kArrayUnshift:
+       return t->cache_->kPositiveSafeInteger;
+ 
+
+```
+这个
