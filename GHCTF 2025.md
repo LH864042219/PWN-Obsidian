@@ -329,3 +329,8 @@ var fake_array = [
 有这个漏洞，有两种利用方法，一种是使用传统的堆利用漏洞，泄漏libc地址修改free_hook，一方面我现在还没学过，另一方面这题没给libc版本，这里用另一个方法Wasm
 Wasm简单来说就是让java直接执行高级语言生成的机器码的一种技术
 有一个网站：[https://wasdk.github.io/WasmFiddle/](https://wasdk.github.io/WasmFiddle/)
+由于安全性的考虑不，浏览器不允许通过wasm直接调用系统函数，但可以先将无害的wasm写入，然后通过上面的任意写的漏洞，将shellcode写入wasm,就可以再调用wasm时，实际调用的就是shellcode了。
+exp:
+```
+
+```
