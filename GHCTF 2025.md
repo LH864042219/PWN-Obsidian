@@ -448,3 +448,5 @@ data_view.setFloat64(16, i2f(shellcode[2]), true);
 f();
 ```
 # my_vm
+程序实现了一个简单的虚拟机，可以通过执行指令来操作寄存器和内存
+0x10
