@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "栈溢出/ret2xxx/shellcode.md",
+                "file": "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "shellcode"
+              "title": "mprotect HNCTF 2022 Week1 ret2shellcode"
             }
           }
         ],
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "栈溢出/ret2xxx/shellcode.md",
+                "file": "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "shellcode 的大纲"
+              "title": "mprotect HNCTF 2022 Week1 ret2shellcode 的大纲"
             }
           },
           {
@@ -194,6 +194,7 @@
   },
   "active": "1de43f2e2ba76d08",
   "lastOpenFiles": [
+    "栈溢出/ret2xxx/shellcode.md",
     "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
     "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
     "堆.md",
@@ -229,7 +230,6 @@
     "ORW.md",
     "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
     "普通题目/ret2libc 2021 鹤城杯 littleof.md",
-    "普通题目/ret2libc 2021 鹤城杯 babyof.md",
     "未命名",
     "WinterStudy/class 1",
     "WinterStudy",
