@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "堆"
             }
+          },
+          {
+            "id": "092b715d581c4857",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "如何commit.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "如何commit"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -177,11 +192,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "db87b83730eb64bd",
+  "active": "092b715d581c4857",
   "lastOpenFiles": [
+    "picture/Pasted image 20250326123747.png",
+    "picture/Pasted image 20250326123719.png",
+    "堆.md",
+    "如何commit.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "WinterStudy/WinterTest.md",
-    "堆.md",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
     "newstar2024/NewStarCTF2024.md",
@@ -194,7 +212,6 @@
     "picture/Pasted image 20250323155622.png",
     "picture/Pasted image 20250323155525.png",
     "picture/Pasted image 20250323150324.png",
-    "picture/Pasted image 20250323145909.png",
     "栈溢出/ret2xxx/shellcode.md",
     "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
     "普通题目/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
@@ -213,7 +230,6 @@
     "普通题目/高版本libc 2024暑假招新pwn5.md",
     "普通题目/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
     "普通题目/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
-    "ORW.md",
     "未命名",
     "WinterStudy/class 1",
     "WinterStudy",
