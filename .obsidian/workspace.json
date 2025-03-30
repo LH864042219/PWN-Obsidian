@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "湘岚杯 2024.md",
+                "file": "堆.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "湘岚杯 2024"
+              "title": "堆"
             }
           }
         ]
@@ -164,8 +164,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -180,6 +179,7 @@
   },
   "active": "f79b4813d41690d0",
   "lastOpenFiles": [
+    "湘岚杯 2024.md",
     "WinterStudy/WinterTest.md",
     "newstar2024/NewStarCTF2024.md",
     "newstar2024/week3.md",
@@ -215,7 +215,6 @@
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
     "特点题目/栈对齐 CISCN 2019东北 PWN2.md",
     "普通题目/GDB HNCTF 2022 Week1 ezcmp.md",
-    "普通题目/GDB HGAME 2022 week1 test your gdb.md",
     "未命名",
     "WinterStudy/class 1",
     "WinterStudy",
