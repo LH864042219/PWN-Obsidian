@@ -35,7 +35,8 @@
               "title": "XYCTF"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -127,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "堆.md",
+                "file": "XYCTF.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "堆 的出链列表"
+              "title": "XYCTF 的出链列表"
             }
           },
           {
@@ -191,14 +192,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f79b4813d41690d0",
+  "active": "4eadf0c95c01fd02",
   "lastOpenFiles": [
+    "堆.md",
     "ORW.md",
     "newstar2024/week4.md",
     "newstar2024/NewStarCTF2024.md",
     "XYCTF.md",
     "picture/Pasted image 20250406204722.png",
-    "堆.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "newstar2024/week2.md",
     "一些常用链接.md",
