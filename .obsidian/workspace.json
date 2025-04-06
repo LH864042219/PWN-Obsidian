@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "newstar2024/NewStarCTF2024.md",
+                "file": "ORW.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF2024"
+              "title": "ORW"
             }
           },
           {
@@ -35,8 +35,7 @@
               "title": "XYCTF"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -192,11 +191,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4eadf0c95c01fd02",
+  "active": "f79b4813d41690d0",
   "lastOpenFiles": [
-    "picture/Pasted image 20250406204722.png",
+    "newstar2024/week4.md",
     "newstar2024/NewStarCTF2024.md",
     "XYCTF.md",
+    "picture/Pasted image 20250406204722.png",
     "堆.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "ORW.md",
@@ -220,7 +220,6 @@
     "WinterStudy/WinterTest.md",
     "newstar2024/week3.md",
     "如何commit.md",
-    "picture/Pasted image 20250326125416.png",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
     "栈溢出/ret2xxx/shellcode.md",
