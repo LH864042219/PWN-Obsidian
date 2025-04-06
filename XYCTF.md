@@ -214,7 +214,7 @@ p.interactive()
 
 题目很简单，有`system`函数，有`/bin/cat falg.txt`，只需要找到`gadgets`来赋值即可
 ![[Pasted image 20250406204722.png]]
-很阴的是这个 `gadgets` 我的`ghidra`最开始还没显示，结果找了半天找不到合适的gadgets，后面问了组里的师傅才知道，结果`disasmble`一下又出来了
+很阴的是这个 `gadgets` 我的`ghidra`最开始还没显示，结果找了半天找不到合适的`gadgets`，后面问了组里的师傅才知道，结果`disasmble`一下又出来了
 圈中部分即是`gadgets`，`a0`存放`/bin/cat`的地址，然后`t9`跳转`system`即可
 
 ```Python
