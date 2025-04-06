@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "newstar2024/week4.md",
+                "file": "ORW.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "week4 的出链列表"
+              "title": "ORW 的出链列表"
             }
           },
           {
@@ -174,7 +174,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -191,7 +191,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f79b4813d41690d0",
+  "active": "bb7a049a180b9721",
   "lastOpenFiles": [
     "newstar2024/week4.md",
     "newstar2024/NewStarCTF2024.md",
