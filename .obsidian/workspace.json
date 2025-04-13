@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "堆.md",
+                "file": "栈迁移.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "堆"
+              "title": "栈迁移"
             }
           }
         ],
@@ -128,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "堆.md",
+                "file": "栈迁移.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "堆 的出链列表"
+              "title": "栈迁移 的出链列表"
             }
           },
           {
@@ -194,13 +194,13 @@
   },
   "active": "4eadf0c95c01fd02",
   "lastOpenFiles": [
+    "堆.md",
     "栈迁移.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/ret2xxx.md",
     "ORW.md",
     "常用命令.md",
     "XYCTF.md",
-    "堆.md",
     "newstar2024/week4.md",
     "newstar2024/NewStarCTF2024.md",
     "picture/Pasted image 20250406204722.png",
