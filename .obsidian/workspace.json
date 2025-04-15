@@ -15,7 +15,17 @@
               "state": {
                 "file": "堆.md",
                 "mode": "preview",
-                "source": true
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
               "title": "堆"
@@ -176,7 +186,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "de5a6782c822a83a",
+  "active": "14b66208da62586c",
   "lastOpenFiles": [
     "堆.md",
     "picture/Pasted image 20250227153925.png",
