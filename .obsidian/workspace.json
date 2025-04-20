@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "堆.md",
+                "file": "Notes/堆.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名.md",
+                "file": "Notes/栈迁移.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "栈迁移"
             }
           },
           {
@@ -216,13 +216,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8074b40633d1cc14",
+  "active": "3061674b0d691f90",
   "lastOpenFiles": [
-    "堆.md",
-    "未命名.md",
+    "WriteUp/TGCTF.md",
+    "Notes",
+    "WriteUp",
+    "Notes/堆.md",
     "ret2xxx.md",
     "v8.md",
-    "XYCTF.md",
+    "WriteUp/XYCTF.md",
     "protobuf.md",
     "ORW.md",
     "picture/Pasted image 20250420145704.png",
@@ -235,36 +237,33 @@
     "picture/Pasted image 20250420105453.png",
     "picture/Pasted image 20250420103353.png",
     "picture/Pasted image 20250420102830.png",
-    "newstar2024/week3.md",
-    "GHCTF 2025.md",
-    "栈迁移.md",
-    "栈溢出/ret2xxx/shellcode.md",
-    "栈溢出/ret2xxx/ret2xxx.md",
+    "WriteUp/newstar2024/week3.md",
+    "WriteUp/GHCTF 2025.md",
+    "Notes/栈迁移.md",
+    "Notes/栈溢出/ret2xxx/shellcode.md",
+    "Notes/栈溢出/ret2xxx/ret2xxx.md",
     "常用命令.md",
-    "newstar2024/week4.md",
-    "newstar2024/NewStarCTF2024.md",
+    "WriteUp/newstar2024/week4.md",
+    "WriteUp/newstar2024/NewStarCTF2024.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
-    "newstar2024/week2.md",
+    "WriteUp/newstar2024/week2.md",
     "一些常用链接.md",
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
-    "湘岚杯 2024.md",
-    "WinterStudy/WinterTest.md",
+    "WriteUp/湘岚杯 2024.md",
+    "WriteUp/WinterStudy/WinterTest.md",
     "如何commit.md",
     "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
     "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
-    "特点题目/mprotect HNCTF 2022 Week1 ret2shellcode.md",
-    "未命名",
-    "WinterStudy/class 1",
-    "WinterStudy",
+    "WriteUp/WinterStudy/class 1",
+    "WriteUp/WinterStudy",
     "普通题目/newstar2024/week1/re",
     "普通题目/newstar2024/week1/pwn",
     "普通题目/newstar2024/week1",
-    "newstar2024",
+    "WriteUp/newstar2024",
     "未命名.canvas",
     "普通题目",
     "picture/pwn5",
-    "未命名 1.canvas",
-    "特点题目"
+    "未命名 1.canvas"
   ]
 }
