@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/protobuf.md",
+                "file": "WriteUp/newstar2024/NewStarCTF2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "protobuf"
+              "title": "NewStarCTF2024"
             }
           },
           {
@@ -137,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/protobuf.md",
+                "file": "WriteUp/newstar2024/NewStarCTF2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +147,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "protobuf 的反向链接列表"
+              "title": "NewStarCTF2024 的反向链接列表"
             }
           },
           {
@@ -221,6 +221,7 @@
   },
   "active": "6d32e7ad603afcb5",
   "lastOpenFiles": [
+    "Notes/protobuf.md",
     "Notes/ret2xxx.md",
     "Notes/格式化字符串漏洞.md",
     "picture/Pasted image 20250420205842.png",
@@ -228,7 +229,6 @@
     "Notes/MIPS.md",
     "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
-    "Notes/protobuf.md",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/TGCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
