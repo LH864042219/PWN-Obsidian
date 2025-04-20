@@ -59,4 +59,88 @@ sudo apt install protobuf-compiler          # 安装protoc以及protobuflib
 sudo apt install protobuf-c-compiler        # 安装protoc-gen-c
 ```
 简单直接
-# 
+# 基本语法
+
+先来看一个官方文档给出的例子：
+```proto
+// demo.proto
+syntax = "proto3";
+
+package tutorial;
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+
+  enum PhoneType {
+    PHONE_TYPE_UNSPECIFIED = 0;
+    PHONE_TYPE_MOBILE = 1;
+    PHONE_TYPE_HOME = 2;
+    PHONE_TYPE_WORK = 3;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
+```
+## syntax
+syntax指明protobuf的版本，有proto2和proto3两个版本，省略默认为proto2。
+```
+syntax = "proto2";
+syntax = "proto3";
+```
+## package
+package可以防止命名空间冲突，简单的项目中可以省略。
+```
+package tutorial;
+```
+## message
+message用于定义消息结构体，类似C语言中的struct。
+每个字段包括**修饰符 类型 字段名**，并且末尾通过**等号**设置**唯一字段编号**。
+修饰符包括如下几种：
+- optional：可以不提供字段值，字段将被初始化为默认值。（Proto3中不允许显示声明，不加修饰符即optional）
+- repeated：类似vector，表明该字段为动态数组，可重复任意次。
+- required：必须提供字段值。（Proto3不再支持required）
+常见的基本类型：
+- bool
+- in32
+- float
+- double
+- string
+# 编译
+
+可以通过如下命令编译proto文件：
+```shell
+protoc -I=$SRC_DIR --c_out=$DST_DIR $SRC_DIR/demo.proto
+```
+- -I=$SRC_DIR用于指定源码目录，默认使用当前目录。
+- --cpp_out=$DST_DIR用于指定目标代码存放位置。
+因此，以上命令也可以简化为：
+
+|   |   |
+|---|---|
+|1|`protoc --c_out=. demo.proto`|
+
+这会编译生成以下两个文件：
+
+- **demo.pb-c.h**：类的声明。
+- **demo.pb-c.c**：类的实现。
+
+CTF题目通常为C语言编写，因此为了后续逆向工作，需要理解编译后的C语言文件相关结构。
+
+如果想要编译为Python代码，用如下命令（在CTF中通常编译为Python代码以在脚本中与程序交互）：
+
+|   |   |
+|---|---|
+|1|`protoc --python_out=. demo.proto`|
+
+会生成 **demo_pb2.py**。（pb2后缀只是为了和protobuf1区分）
