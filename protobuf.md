@@ -343,3 +343,6 @@ typedef enum {
 首先我们可以找到他有unpack函数以及descriptor结构体
 ![[Pasted image 20250420145311.png]]
 结构体中我们可以看出message_request结构有5个字段，后面的fields指向的就是储存字段和数据的结构体。
+![[Pasted image 20250420145501.png]]
+例如第一个字段名为id，后面的1, 0, 0分别为id, label, type。
+![[Pasted image 20250420145654.png]]
