@@ -73,3 +73,6 @@ r_offset 域用于保存解析后的符号地址写入内存的位置， r_info 
 通过 link_map_obj 参数定位 .dynamic 段，再根据偏移定位到 .dynstr 段、.dynsym 段、.rel.plt 段后，再通过 reloc_offset + .rel.plt 确定了 .rel.plt 段中对应函数的 Elf.Rel 结构体后，就能确定其中的 r_offset 也就是对应函数的 GOT 表地址，还有 r_info，根据 (r_info >> 8) + .dynsym 确定对应函数在 .dynsym 段中的 Elf_Sym 结构体，那么我们又获得了 st_name ，根据 st_name + .dynstr 来确定对应函数的名称字符串地址，最后，根据获得的函数名字符串来在 libc 中寻找对应函数的 libc 地址，再返回写在 got 表上。
 
 那么简而言之，只要我们能改变最后的 st_name的内容，就能修改最后确定绑定的是哪个函数，而 st_name 是间接由 reloc 来控制的，这部分我们是可控的
+
+bss段要用0x800原因，左边是正常的程序，右边是栈迁移后模拟执行的绑定，可以看到由于偏移过小，已经覆盖到了got表段，用0x800可以避免zhe
+![[Pasted image 20250420205842.png]]
