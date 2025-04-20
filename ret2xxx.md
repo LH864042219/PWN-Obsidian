@@ -49,3 +49,12 @@ typedef struct {
 
 .dynstr 段：存放了各个函数的名称字符串。
 ![[Pasted image 20250420102516.png]]
+.rel.plt 段：由 Elf_Rel 结构体集合而成
+![[Pasted image 20250420103353.png]]其中的 Elf_Rel 结构体如代码
+```c
+typedef struct {
+    ELF32_Addr r_offset;
+    ELF32_Addr r_info;
+} Elf32_Rel;
+```
+r_offset 域用于保存解析后的符号地址写入内存的位置， r_info 域的值在 右移 8 位之后的值用于标识该符号在 .dynsym 段中的位置，也就是确定该函数的 Elf_Sym 结构体地址。其中的 r_offset 域也就是 GOT 表，当解析完成后，GOT 表中对应的函数地址也就被写上了对应函数的 libc 地址。
