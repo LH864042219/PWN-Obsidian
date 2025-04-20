@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -137,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/ret2xxx.md",
+                "file": "Notes/格式化字符串漏洞.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +147,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "ret2xxx 的反向链接列表"
+              "title": "格式化字符串漏洞 的反向链接列表"
             }
           },
           {
@@ -219,15 +219,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4b3af963561955b9",
+  "active": "6d32e7ad603afcb5",
   "lastOpenFiles": [
+    "Notes/ret2xxx.md",
     "picture/Pasted image 20250420205842.png",
     "Notes/SROP.md",
     "Notes/MIPS.md",
     "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
     "Notes/格式化字符串漏洞.md",
-    "Notes/ret2xxx.md",
     "Notes/protobuf.md",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/TGCTF 2025.md",
@@ -252,7 +252,6 @@
     "picture/Pasted image 20250420105612.png",
     "picture/Pasted image 20250420105453.png",
     "picture/Pasted image 20250420103353.png",
-    "picture/Pasted image 20250420102830.png",
     "WriteUp/newstar2024/week3.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
     "Notes/栈溢出/ret2xxx/ret2xxx.md",
