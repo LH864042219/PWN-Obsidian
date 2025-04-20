@@ -6,3 +6,5 @@ ret2dlresolve 是栈溢出下的一种攻击方法，主要用于程序没有办
 以 32 位程序为例，如图
 ![[Pasted image 20250420100625.png]]
 可以看到在 read@plt 中时会利用jmp跳转到 0x804a010 ，即
+![[Pasted image 20250420100956.png]]
+也可以看到在绑定前read@got里存放的不是read的直接地址，
