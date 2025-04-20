@@ -237,29 +237,23 @@ fields是ProtobufCFieldDescriptor类型。
 struct ProtobufCFieldDescriptor {
     /** Name of the field as given in the .proto file. */
     const char      *name;
- 
     /** Tag value of the field as given in the .proto file. */
     uint32_t        id;
- 
     /** Whether the field is `REQUIRED`, `OPTIONAL`, or `REPEATED`. */
     ProtobufCLabel      label;
- 
     /** The type of the field. */
     ProtobufCType       type;
- 
     /**
      * The offset in bytes of the message's C structure's quantifier field
      * (the `has_MEMBER` field for optional members or the `n_MEMBER` field
      * for repeated members or the case enum for oneofs).
      */
     unsigned        quantifier_offset;
- 
     /**
      * The offset in bytes into the message's C structure for the member
      * itself.
      */
     unsigned        offset;
- 
     /**
      * A type-specific descriptor.
      *
