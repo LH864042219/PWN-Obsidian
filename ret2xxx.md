@@ -28,7 +28,9 @@ link_map:
 而在.dynamic中
 ![[Pasted image 20250420105612.png]]
 - .dynstr = .dynamic + 0x44 > 0x804826c
-- .dynsym = .dynamic + 0x
+- .dynsym = .dynamic + 0x4c > 0x80481cc
+- .rel.plt = .dynamic + 0x84 > 0x8048324
+
 而 reloc_offset 是对应函数的 plt 提供的，起到定位对应函数的 ELF_Rel 结构体的作用。
 ![[Pasted image 20250420102830.png]]
 通过上图我们可以看到 plt 中的各个函数的 push 的值都是不同的，也就是说 reloc_index 的值是不同的。从图中可以看到，plt 段开头就是 PLT0。
