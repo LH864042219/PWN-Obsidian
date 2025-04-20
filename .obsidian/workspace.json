@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "protobuf.md",
+                "file": "XYCTF.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "protobuf"
+              "title": "XYCTF"
             }
           }
         ],
@@ -218,19 +218,20 @@
   },
   "active": "ae5d211781df970f",
   "lastOpenFiles": [
+    "ret2xxx.md",
+    "protobuf.md",
+    "v8.md",
+    "ORW.md",
     "picture/Pasted image 20250420145704.png",
     "picture/Pasted image 20250420145654.png",
     "picture/Pasted image 20250420145501.png",
     "picture/Pasted image 20250420145311.png",
     "picture/Pasted image 20250420145058.png",
     "picture/Pasted image 20250420144800.png",
-    "ret2xxx.md",
-    "protobuf.md",
     "picture/Pasted image 20250420105612.png",
     "picture/Pasted image 20250420105453.png",
     "picture/Pasted image 20250420103353.png",
     "picture/Pasted image 20250420102830.png",
-    "picture/Pasted image 20250420102710.png",
     "堆.md",
     "newstar2024/week3.md",
     "XYCTF.md",
@@ -238,7 +239,6 @@
     "栈迁移.md",
     "栈溢出/ret2xxx/shellcode.md",
     "栈溢出/ret2xxx/ret2xxx.md",
-    "ORW.md",
     "常用命令.md",
     "newstar2024/week4.md",
     "newstar2024/NewStarCTF2024.md",
@@ -247,7 +247,6 @@
     "一些常用链接.md",
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
-    "v8.md",
     "湘岚杯 2024.md",
     "WinterStudy/WinterTest.md",
     "如何commit.md",
