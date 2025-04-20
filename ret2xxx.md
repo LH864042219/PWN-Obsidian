@@ -34,5 +34,18 @@ objdump -s -j .dynsym pwn
 ```
 .dynsym 段：由 Elf_Sym 结构体集合而成
 ![[Pasted image 20250420102501.png]]
+其中的 Elf_Sym 结构体如代码
+```
+typedef struct {
+    ELF32_Word st_name;
+    ELF32_Addr st_value;
+    ELF32_Word st_size;
+    unsigned char st_info;
+    unsigned char st_other;
+    Elf32_Section st_shndx;
+} Elf32_Sym;
+```
+其中 st_name 域是相对于 .dynstr 段的偏移，来确定函数名称字符串在 .dynstr 段的地址；st_value 域是当前符合被导出时存放虚拟地址的。
+
 .dynstr 段：存放了各个函数的名称字符串。
 ![[Pasted image 20250420102516.png]]
