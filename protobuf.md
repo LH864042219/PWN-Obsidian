@@ -38,20 +38,25 @@ sudo ln -s /usr/local/lib/libprotoc.so.17 libprotoc.so.17
 ```
 再次输入protoc命令，发现正常打印版本号：
 ```python
-
+➜  tools protoc --version
+libprotoc 3.6.1
 ```
 ## protobuf-c
 
 Protobuf官方支持C++、C#、Dart、Go、Java、Kotlin、Python等语言，但是不支持C语言。
-
 而CTF中的Pwn题通常由C语言编写，这就用到了一个第三方库 **protobuf-c**。
-
 Github项目地址：[https://github.com/protobuf-c/protobuf-c](https://bbs.kanxue.com/elink@814K9s2c8@1M7s2y4Q4x3@1q4Q4x3V1k6Q4x3V1k6Y4K9i4c8Z5N6h3u0Q4x3X3g2U0L8$3#2Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3y4Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3x3%60.)
-
 下载Protobuf-c项目：[https://github.com/protobuf-c/protobuf-c/releases](https://bbs.kanxue.com/elink@813K9s2c8@1M7s2y4Q4x3@1q4Q4x3V1k6Q4x3V1k6Y4K9i4c8Z5N6h3u0Q4x3X3g2U0L8$3#2Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3y4Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3y4Q4x3V1k6J5k6h3I4W2j5i4y4W2M7H3%60.%60.)
-
 进入Protobuf-c目录配置、编译并安装：
-
-|   |   |
-|---|---|
-|1<br><br>2<br><br>3<br><br>4|`tar` `-xzvf protobuf-c.``tar``.gz`<br><br>`cd` `protobuf-c`<br><br>`.``/configure` `&&` `make`<br><br>`sudo` `make` `install`|
+```shell
+➜  tools protoc --version
+libprotoc 3.6.1
+```
+## apt
+当然也可以直接用apt安装
+```shell
+sudo apt install protobuf-compiler          # 安装protoc以及protobuflib
+sudo apt install protobuf-c-compiler        # 安装protoc-gen-c
+```
+简单直接
+# 
