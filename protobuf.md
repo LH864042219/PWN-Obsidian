@@ -364,31 +364,29 @@ syntax的版本需查看ProtobufCFieldDescriptor结构体中是否有default_val
 ```python
 from pwn import *
 import de_pb2
+
 def edit(id, len, content):
-message = de_pb2.message_request()
-message.sender = 'admin'
-message.len = len
-message.content = content
-message.actionid = 1
-message.id = id
-data = message.SerializeToString()
-p.sendafter(b'TESTTESTTEST!', data)
+	message = de_pb2.message_request()
+	message.sender = 'admin'
+	message.len = len
+	message.content = content
+	message.actionid = 1
+	message.id = id
+	data = message.SerializeToString()
+	p.sendafter(b'TESTTESTTEST!', data)
 
 def show(id):
-message = de_pb2.message_request()
-message.sender = 'admin'
-message.len = 1
-message.content = b'hello'
-message.actionid = 2
-message.id = id
-data = message.SerializeToString()
-p.sendafter(b'TESTTESTTEST!', data)
+	message = de_pb2.message_request()
+	message.sender = 'admin'
+	message.len = 1
+	message.content = b'hello'
+	message.actionid = 2
+	message.id = id
+	data = message.SerializeToString()
+	p.sendafter(b'TESTTESTTEST!', data)
 
 debug()
-
 edit(0, 8, b'deadbeef')
-
 edit(1, 8, b'deadbeef')
-
 show(2)
 ```
