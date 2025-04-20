@@ -29,9 +29,10 @@ ret2dlresolve 是栈溢出下的一种攻击方法，主要用于程序没有办
 接下来我们介绍下 .dynstr 段、.dynsym 段、.rel.plt 段。
 
 通过以下命令可以找出各个段的地址
+```shell
+objdump -s -j .dynsym pwn
 ```
-
-```
+.dynsym 段：由 Elf_Sym 结构体集合而成
 ![[Pasted image 20250420102501.png]]
-
+.dynstr 段：存放了各个函数的名称字符串。
 ![[Pasted image 20250420102516.png]]
