@@ -341,3 +341,5 @@ typedef enum {
 这里用XYCTF的bot作为例题
 ![[Pasted image 20250420144800.png]]
 首先我们可以找到他有unpack函数以及descriptor结构体
+![[Pasted image 20250420145058.png]]
+结构体中我们可以看出message_request结构有
