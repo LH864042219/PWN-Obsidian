@@ -125,22 +125,50 @@ protoc -I=$SRC_DIR --c_out=$DST_DIR $SRC_DIR/demo.proto
 - -I=$SRC_DIR用于指定源码目录，默认使用当前目录。
 - --cpp_out=$DST_DIR用于指定目标代码存放位置。
 因此，以上命令也可以简化为：
-
-|   |   |
-|---|---|
-|1|`protoc --c_out=. demo.proto`|
-
+```shell
+protoc --c_out=. demo.proto
+```
 这会编译生成以下两个文件：
-
 - **demo.pb-c.h**：类的声明。
 - **demo.pb-c.c**：类的实现。
-
 CTF题目通常为C语言编写，因此为了后续逆向工作，需要理解编译后的C语言文件相关结构。
-
 如果想要编译为Python代码，用如下命令（在CTF中通常编译为Python代码以在脚本中与程序交互）：
-
-|   |   |
-|---|---|
-|1|`protoc --python_out=. demo.proto`|
-
+```shell
+protoc --python_out=. demo.proto
+```
 会生成 **demo_pb2.py**。（pb2后缀只是为了和protobuf1区分）
+# 使用
+
+## 引入
+
+可以直接在Python中import后调用：
+```python
+import demo_pb2
+ 
+person = demo_pb2.Person()
+person.id = 1234
+person.name = "John Doe"
+person.email = "jdoe@example.com"
+ 
+phone = person.phones.add()
+phone.number = "555-4321"
+phone.type = demo_pb2.Person.PHONE_TYPE_HOME
+```
+## 序列化与反序列化
+
+可以通过 **SerializeToString序列化** 或 **ParseFromString反序列化**：
+```python
+# Write the new address book back to disk.
+with open(sys.argv[1], "wb") as f:
+  f.write(demo_pb2.SerializeToString())
+  
+demo = demo_pb2.AddressBook()
+ 
+# Read the existing address book.
+try:
+  with open(sys.argv[1], "rb") as f:
+    demo_pb2.ParseFromString(f.read())
+except IOError:
+  print(sys.argv[1] + ": Could not open file.  Creating a new one.")
+```
+# 逆向分析
