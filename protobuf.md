@@ -345,4 +345,18 @@ typedef enum {
 结构体中我们可以看出message_request结构有5个字段，后面的fields指向的就是储存字段和数据的结构体。
 ![[Pasted image 20250420145501.png]]
 例如第一个字段名为id，后面的1, 0, 0分别为id, label, type。
-![[Pasted image 20250420145654.png]]
+这里放出剩下四个字段
+![[Pasted image 20250420145654.png]]![[Pasted image 20250420145704.png]]
+经过查询可以得出该结构体的样子
+```proto
+syntax = "proto2";
+
+message message_request{
+    required int32 id = 1;
+    required string sender = 2;
+    required uint32 len = 3;
+    required bytes content = 4;
+    required int32 actionid = 5;
+}
+```
+syntax的版本需查看ProtobufCFieldDescriptor结构体中是否有default_value字段，proto3中shan chu l
