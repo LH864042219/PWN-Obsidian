@@ -291,14 +291,11 @@ struct ProtobufCFieldDescriptor {
 };
 ```
 我们需要关注的有：
-
 - name：字段名。
 - id：唯一字段编号。
 - label：修饰符，如：required、optional、repeated。
 - type：数据类型，如：bool、int32、float、double等。
-
 ### label和type
-
 label和type都是枚举类型，我们看一下它的定义：
 ```c
 typedef enum {
@@ -346,3 +343,7 @@ typedef enum {
     PROTOBUF_C_TYPE_MESSAGE,    /**< nested message */
 } ProtobufCType;
 ```
+# 例题
+这里用XYCTF的bot作为例题
+![[Pasted image 20250420144800.png]]
+首先我们可以找到他有unpack函数以及descriptor结构体
