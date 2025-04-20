@@ -4,63 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "054d91c25d956f32",
+        "id": "ec6f9c0901434d2c",
         "type": "tabs",
         "children": [
           {
-            "id": "14b66208da62586c",
+            "id": "394858ec1a21d999",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notes/堆.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "堆"
-            }
-          },
-          {
-            "id": "8074b40633d1cc14",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notes/栈迁移.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "栈迁移"
-            }
-          },
-          {
-            "id": "ae5d211781df970f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ret2xxx.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ret2xxx"
+              "title": "新标签页"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -133,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "堆.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "堆 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -202,8 +158,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -216,17 +171,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3061674b0d691f90",
+  "active": "394858ec1a21d999",
   "lastOpenFiles": [
-    "WriteUp/TGCTF.md",
+    "Notes/heap.md",
+    "WriteUp/XYCTF 2025.md",
+    "Notes/orw.md",
+    "Notes/二进制程序保护机制.md",
+    "Notes/常用命令.md",
+    "Notes/如何commit.md",
+    "一些常用链接.md",
+    "WriteUp/SQCTF 2025.md",
+    "WriteUp/TGCTF 2025.md",
+    "WriteUp/GHCTF 2025.md",
+    "WriteUp/湘岚杯 2025.md",
+    "WriteUp/启航杯 2025.md",
+    "Notes/栈迁移.md",
     "Notes",
     "WriteUp",
-    "Notes/堆.md",
-    "ret2xxx.md",
-    "v8.md",
-    "WriteUp/XYCTF.md",
-    "protobuf.md",
-    "ORW.md",
+    "Notes/ret2xxx.md",
+    "Notes/v8.md",
+    "Notes/protobuf.md",
     "picture/Pasted image 20250420145704.png",
     "picture/Pasted image 20250420145654.png",
     "picture/Pasted image 20250420145501.png",
@@ -238,23 +202,15 @@
     "picture/Pasted image 20250420103353.png",
     "picture/Pasted image 20250420102830.png",
     "WriteUp/newstar2024/week3.md",
-    "WriteUp/GHCTF 2025.md",
-    "Notes/栈迁移.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
     "Notes/栈溢出/ret2xxx/ret2xxx.md",
-    "常用命令.md",
     "WriteUp/newstar2024/week4.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
     "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "WriteUp/newstar2024/week2.md",
-    "一些常用链接.md",
     "特点题目/伪随机 HDCTF 2023 pwnner.md",
     "特点题目/伪随机 2024暑假招新pwn1.md",
-    "WriteUp/湘岚杯 2024.md",
     "WriteUp/WinterStudy/WinterTest.md",
-    "如何commit.md",
-    "特点题目/fmt HUBUCTF 2022 新生赛 fmt.md",
-    "特点题目/CANARY+PIE 深育杯 2021 find_flag.md",
     "WriteUp/WinterStudy/class 1",
     "WriteUp/WinterStudy",
     "普通题目/newstar2024/week1/re",
