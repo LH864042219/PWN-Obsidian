@@ -23,8 +23,15 @@ ret2dlresolve 是栈溢出下的一种攻击方法，主要用于程序没有办
 
 其中 link_map_obj 参数的作用是为了能够定位 .dynamic 段，而定位了 .dynamic 段就能接着定位(根据偏移）到 .dynstr 段、.dynsym 段、.rel.plt 段，该参数是 PLT0 默认提供的，程序中所有函数在动态链接过程中的该参数都是相同的；
 而 reloc_offset 是对应函数的 plt 提供的，起到定位对应函数的 ELF_Rel 结构体的作用。
+![[Pasted image 20250420102830.png]]
+通过上图我们可以看到 plt 中的各个函数的 push 的值都是不同的，也就是说 reloc_index 的值是不同的。从图中可以看到，plt 段开头就是 PLT0。
 
+接下来我们介绍下 .dynstr 段、.dynsym 段、.rel.plt 段。
 
+通过以下命令可以找出各个段的地址
+```
+
+```
 ![[Pasted image 20250420102501.png]]
 
 ![[Pasted image 20250420102516.png]]
