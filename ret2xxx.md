@@ -9,4 +9,4 @@ ret2dlresolve 是栈溢出下的一种攻击方法，主要用于程序没有办
 ![[Pasted image 20250420100956.png]]
 也可以看到在绑定前 read@got 里存放的不是 read 直接地址，而是 read@plt 的后续语句 0x8048396
 ![[Pasted image 20250420101230.png]]
-接着压入两个参数（8, dword ptr [0x804a004]），分别是 reloc_offset 和 l
+接着压入两个参数（8, dword ptr [0x804a004]），分别是 reloc_offset 和 link_map_obj 参数，然后就会进入 _dl_runtime_resolve 函数
