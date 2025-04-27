@@ -159,7 +159,8 @@
               "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -176,7 +177,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "12aa8a665d44e2dd",
+  "active": "3061674b0d691f90",
   "lastOpenFiles": [
     "Notes/如何commit.md",
     "Notes/栈迁移.md",
