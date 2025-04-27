@@ -10,18 +10,12 @@ SROP(Sigreturn Oriented Programming)，简单来说就是通过系统调用号�
 
 signal 机制是类 unix 系统中进程之间相互传递信息的一种方法。一般，我们也称其为软中断信号，或者软中断。比如说，进程之间可以通过系统调用 kill 来发送软中断信号。一般来说，信号机制常见的步骤如下图所示：
 
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=ODk0MjFiMmRjNzE3ZTQzNzIwYWMwNGFiNGU3NzliOWFfT0I4aUNqa1BMRUJkbHV3d21yeVVxUUxRektVOTNZTjFfVG9rZW46RkNDU2JkclAxbzFVeVd4bVdYa2M4cUhBbmpmXzE3NDUxMzc2NTI6MTc0NTE0MTI1Ml9WNA)
+![[Pasted image 20250427151753.png]]
 
 1. 内核向某个进程发送 signal 机制，该进程会被暂时挂起，进入内核态。
-    
-2. 内核会为该进程保存相应的上下文，**主要是将所有寄存器压****入栈****中，以及压入 signal 信息，以及指向 sigreturn 的系统调用地址**。此时栈的结构如下图所示，我们称 ucontext 以及 siginfo 这一段为 Signal Frame。**需要注意的是，这一部分是在用户进程的****地址空间****的。**之后会跳转到注册过的 signal handler 中处理相应的 signal。因此，当 signal handler 执行完之后，就会执行 sigreturn 代码。
-    
-
+2. 内核会为该进程保存相应的上下文，**主要是将所有寄存器压入栈中，以及压入 signal 信息，以及指向 sigreturn 的系统调用地址**。此时栈的结构如下图所示，我们称 ucontext 以及 siginfo 这一段为 Signal Frame。**需要注意的是，这一部分是在用户进程的****地址空间****的。**之后会跳转到注册过的 signal handler 中处理相应的 signal。因此，当 signal handler 执行完之后，就会执行 sigreturn 代码。
 对于 signal Frame 来说，会因为架构的不同而有所区别，这里给出分别给出 x86 以及 x64 的 sigcontext
-
 - x86
-    
-
 ```Plain
 struct sigcontext{  
     unsigned short gs, __gsh;  
@@ -48,10 +42,7 @@ struct sigcontext{
     unsigned long cr2;
 };
 ```
-
 - x64
-    
-
 ```Plain
 struct _fpstate{  
     /* FPU environment matching the 64-bit FXSAVE layout.  */  
@@ -101,12 +92,8 @@ struct sigcontext{
     __uint64_t __reserved1 [8];
 };
 ```
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTE4OTQ2MmM4ZTc1MDU0MzhmZTY2NWIxNTE3ZGY5MWVfbEpsTzlMRFlHOTJyVjJNaTlxVVluVkJYQUtpYjZTTWlfVG9rZW46U2ZiOGJEZGw1bzFaZW94bWJFb2NlYWxZbmtlXzE3NDUxMzc2NTI6MTc0NTE0MTI1Ml9WNA)
-
+![[Pasted image 20250427151907.png]]
 3. signal handler 返回后，内核为执行 sigreturn 系统调用，为该进程恢复之前保存的上下文，其中包括将所有压入的寄存器，重新 pop 回对应的寄存器，最后恢复进程的执行。其中，32 位的 sigreturn 的调用号为 119(0x77)，64 位的系统调用号为 15(0xf)。
-    
-
 # 利用
 
 `SROP`的利用很简单，只需要攻击者可以控制栈空间，即可以向栈空间写入大量（长度至少包含构造的`fake frame`)数据，**然后控制****`rsp`****指向存有我们构造的****`fake frame`****，并控制****`rax`****为****`0xf`****，然后执行****`syscall`****就可以实现****`srop`****的攻击。**
