@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/TGCTF 2025.md",
+                "file": "Notes/SROP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TGCTF 2025"
+              "title": "SROP"
             }
           }
         ],
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WriteUp/TGCTF 2025.md",
+                "file": "Notes/SROP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "TGCTF 2025 的反向链接列表"
+              "title": "SROP 的反向链接列表"
             }
           },
           {
@@ -193,6 +193,8 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/v8.md",
+    "WriteUp/TGCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
     "Notes/格式化字符串漏洞.md",
     "Notes/如何commit.md",
@@ -203,12 +205,10 @@
     "Notes/protobuf.md",
     "Notes/ret2xxx.md",
     "Notes/SROP.md",
-    "Notes/v8.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
     "picture/Pasted image 20250420205842.png",
     "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
-    "WriteUp/TGCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
     "WriteUp/GHCTF 2025.md",
     "一些常用链接.md",
