@@ -1,4 +1,4 @@
-XYCTF的EZ3.0 [XYCTF-PWN-CrazyCat](https://hnusec-team.feishu.cn/docx/IadwdxucBoVZ0FxnlLJcFmXOnvd#share-CfQrdo2gMowMh3xsYz3cYh2Hnbe)
+XYCTF的EZ3.0
 # 环境安装与调试
 MIPS是一个架构，与x86, x86-64有很大的区别
 首先下载依赖库和qemu

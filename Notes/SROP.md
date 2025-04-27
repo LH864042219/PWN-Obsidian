@@ -1,5 +1,5 @@
-SQCTF的 当时只道是寻常 [SQCTF-PWN-CrazyCat](https://hnusec-team.feishu.cn/docx/NNWUdbFanoUB0wxUSK9cZHJinIb#share-S57gd77RFox1sAxsDmxcjhzon4g)
-TGCTF 的 norop [TGCTF-PWN-CrazyCat](https://hnusec-team.feishu.cn/docx/JsIsd70Dmo0z4BxIalkcE95anCh#share-Pll1dM7sNoOcncxZxsLc7KMxnhb)
+SQCTF的 当时只道是寻常 
+TGCTF 的 norop 
 之前就听队里师傅问我SROP学了没，这次刚好有个契机就学了
 SROP(Sigreturn Oriented Programming)，简单来说就是通过系统调用号为0xf(sigreturn)的系统调用执行一个可以将所有寄存器赋值的函数来实现对所有寄存器的控制，从而直接执行某个函数的操作。
 # Signal 机制

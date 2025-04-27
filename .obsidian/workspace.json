@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1105091a6357b0e7",
+            "id": "12aa8a665d44e2dd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,24 +20,8 @@
               "icon": "lucide-file",
               "title": "常用命令"
             }
-          },
-          {
-            "id": "12aa8a665d44e2dd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notes/heap.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "heap"
-            }
           }
-        ],
-        "currentTab": 1,
-        "stacked": true
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "Notes/常用命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "heap 的反向链接列表"
+              "title": "常用命令 的反向链接列表"
             }
           },
           {
@@ -179,8 +163,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,31 +178,35 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/栈溢出/栈溢出.md",
+    "Notes/栈溢出/ret2xxx/shellcode.md",
+    "Notes/栈溢出/ret2xxx/ret2xxx.md",
+    "Notes/栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
+    "Notes/栈溢出/ret2xxx/buu jarvisoj_level2.md",
+    "Notes/栈迁移.md",
+    "Notes/heap.md",
+    "Notes/MIPS.md",
+    "Notes/orw.md",
+    "Notes/protobuf.md",
+    "Notes/ret2xxx.md",
+    "Notes/SROP.md",
+    "Notes/v8.md",
+    "Notes/常用命令.md",
     "picture/Pasted image 20250427152448.png",
     "picture/Pasted image 20250427152415.png",
     "picture/Pasted image 20250427152408.png",
     "picture/Pasted image 20250427152405.png",
     "picture/Pasted image 20250427152401.png",
     "picture/Pasted image 20250427152358.png",
-    "Notes/MIPS.md",
     "picture/Pasted image 20250427152226.png",
-    "Notes/heap.md",
-    "Notes/orw.md",
-    "Notes/protobuf.md",
-    "Notes/ret2xxx.md",
-    "Notes/SROP.md",
     "picture/Pasted image 20250427152040.png",
     "picture/Pasted image 20250427152025.png",
     "picture/Pasted image 20250427152016.png",
-    "picture/Pasted image 20250427151951.png",
-    "Notes/v8.md",
     "WriteUp/TGCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
     "Notes/格式化字符串漏洞.md",
     "Notes/如何commit.md",
-    "Notes/栈迁移.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
-    "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
     "WriteUp/SQCTF 2025.md",
     "WriteUp/GHCTF 2025.md",
@@ -229,10 +216,6 @@
     "Notes",
     "WriteUp",
     "WriteUp/newstar2024/week3.md",
-    "Notes/栈溢出/ret2xxx/shellcode.md",
-    "Notes/栈溢出/ret2xxx/ret2xxx.md",
-    "WriteUp/newstar2024/week4.md",
-    "特点题目/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
     "WriteUp/WinterStudy/class 1",
     "WriteUp/WinterStudy",
     "普通题目/newstar2024/week1/re",
