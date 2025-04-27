@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/HnuSec Winter 2025.md",
+                "file": "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HnuSec Winter 2025"
+              "title": "ret2syscall WUSTCTF 2020 getshell2"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WriteUp/HnuSec Winter 2025.md",
+                "file": "特点题目/ret2syscall WUSTCTF 2020 getshell2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "HnuSec Winter 2025 的反向链接列表"
+              "title": "ret2syscall WUSTCTF 2020 getshell2 的反向链接列表"
             }
           },
           {
@@ -176,14 +176,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3061674b0d691f90",
+  "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
-    "WriteUp/启航杯 2025.md",
-    "WriteUp/湘岚杯 2025.md",
-    "WriteUp/GHCTF 2025.md",
-    "WriteUp/SQCTF 2025.md",
-    "WriteUp/TGCTF 2025.md",
+    "Notes/heap.md",
+    "Notes/栈溢出/ret2xxx/buu jarvisoj_level2.md",
+    "Notes/栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
+    "Notes/栈溢出/ret2xxx/buu jarvisoj_level2_x64.md",
+    "Notes/栈溢出/栈溢出.md",
+    "Notes/栈溢出/ret2xxx/shellcode.md",
+    "Notes/栈溢出/ret2xxx/ret2xxx.md",
+    "Notes/ret2xxx.md",
     "WriteUp/XYCTF 2025.md",
+    "WriteUp/TGCTF 2025.md",
+    "WriteUp/SQCTF 2025.md",
+    "WriteUp/GHCTF 2025.md",
+    "WriteUp/HnuSec Winter 2025.md",
+    "WriteUp/湘岚杯 2025.md",
+    "WriteUp/启航杯 2025.md",
+    "WriteUp/NewStarCTF 2024.md",
+    "WriteUp/WinterStudy/class 1/class 1 课前.md",
+    "WriteUp/WinterStudy/class 1/class 1 课后.md",
     "picture/Pasted image 20250427153154.png",
     "picture/Pasted image 20250427153144.png",
     "picture/Pasted image 20250427153136.png",
@@ -195,24 +207,13 @@
     "picture/Pasted image 20250427152930.png",
     "picture/Pasted image 20250427152917.png",
     "Notes/常用命令.md",
-    "Notes/栈溢出/栈溢出.md",
-    "Notes/栈溢出/ret2xxx/shellcode.md",
-    "Notes/栈溢出/ret2xxx/ret2xxx.md",
-    "Notes/栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
-    "Notes/栈溢出/ret2xxx/buu jarvisoj_level2.md",
     "Notes/栈迁移.md",
-    "Notes/heap.md",
     "Notes/MIPS.md",
     "Notes/orw.md",
     "Notes/protobuf.md",
-    "Notes/ret2xxx.md",
     "Notes/SROP.md",
     "Notes/v8.md",
     "Notes/格式化字符串漏洞.md",
-    "Notes/如何commit.md",
-    "WriteUp/newstar2024/NewStarCTF2024.md",
-    "Notes/二进制程序保护机制.md",
-    "一些常用链接.md",
     "Notes",
     "WriteUp",
     "WriteUp/WinterStudy/class 1",
