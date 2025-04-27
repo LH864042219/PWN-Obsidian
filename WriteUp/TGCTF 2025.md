@@ -164,21 +164,13 @@ p.interactive()
 里可以看到`rsp`指针是指向我们读入的`stack`的位置的，
 ![[Pasted image 20250427153100.png]]
 我们进入`printf`函数中可以看到`rsp`往回了`0x8`的位置，这里这个`0x401276`就是`printf`函数后面接着的code段的地址
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=NzUxZTMwODRkZDY2MWNmODEzZmJlNTQ3MjVmMWU5YzVfbzViNVh3RzZodHB5bjZFZnhXTVQ1ZGI4aTRlQnBON3VfVG9rZW46QklFcmJsNXFhb3RlTVd4RXAxUmNTYlRsbjJmXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427153136.png]]
 这里就可以看到最后是返回了`0x401276`的位置，如果我们将这里的位置修改了呢
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=M2UzNWEwZGIyZDNkNjdhMWYwYmZlYTk4ODJhMzIzY2JfeXYzS2J4SWwzUVNGVFM2VUJHb2FiUkNseUd4aXZqQTZfVG9rZW46VnRDMGJreFR2b0NRREx4MThuZmNFakF4bmJoXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427153144.png]]
 可以看到这里将`rsp`指向的`stack`的内容修改后返回的地址也修改了，那么就很明确了，这个位置控制的是`printf`函数执行后的返回地址，我们将这个位置修改后就能在劫持`printf`执行后的返回。
-
 那么回到这道题，这道题在执行一次`printf`后会立刻修改`magic`变量，使得即使我们修改了返回地址想要多次执行格式化字符串漏洞也无法实现。那么我们这里就可以通过刚刚这个点，修改`printf`函数的返回地址，让其不执行`magic = 0`这条语句，并将printf函数的返回地址改为函数起始，这样就可以再次利用`printf`函数漏洞。
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=YzdjZGVlMmQyY2QwM2Q0ZjEyNDc3MzE3NWZlOWEyYjRfeVlFZE50RnREZGhjblBqeXRBVTlHRnc3cDduUGVrdk9fVG9rZW46UjRNYWJKaFQ2b25SVXV4TTdmNWNvQXJCbjZiXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427153154.png]]
 剩下的思路就很明显了，第一次格式化字符串漏洞泄漏`libc`并劫持`printf`返回函数到`main`函数的起始，然后第二次构造格式化字符串漏洞修改返回地址为`ogg`即可`get shell`。
-
 ```Python
 from pwn import *
 
@@ -212,13 +204,8 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # Heap
-
 已经通过 fastbins 和 unsorted bins 获取了 libc 基址，只需要再劫持`__malloc_hook`为 ogg 就能 get shell，可以找到在`__malloc_hook - 0x23`的位置可以构造一个`fake chunk`，大小为 0x70 左右，那么我们申请的大小就需要小于 0x70 ，比赛时一直没注意到这点导致一直 malloc 失败，修改之后就可以用 double free 来修改`__malloc_hook`来 get shell
-
-__malloc_hook [Heap](https://hnusec-team.feishu.cn/wiki/XrWxwFQJ4in8RbkE37Bcid4Snkc?larkTabName=space#share-BP3zdCZNqosPIAxTesPc8QYwnoe)
-
 ```Python
 from pwn import *
 
@@ -315,11 +302,8 @@ p.sendline(b'32')
 
 p.interactive()
 ```
-
 # Noret
-
 没有ret，可以找到控制点，构造SROP即可
-
 ```Python
 from pwn import *
 
@@ -392,9 +376,6 @@ submit(payload)
 
 p.interactive()
 ```
-
 # Onlygets
-
-  
 
 # qheap

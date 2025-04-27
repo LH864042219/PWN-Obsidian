@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/TGCTF 2025.md",
+                "file": "WriteUp/GHCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TGCTF 2025"
+              "title": "GHCTF 2025"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WriteUp/TGCTF 2025.md",
+                "file": "WriteUp/GHCTF 2025.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "TGCTF 2025 的反向链接列表"
+              "title": "GHCTF 2025 的反向链接列表"
             }
           },
           {
@@ -178,6 +178,11 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/SQCTF 2025.md",
+    "WriteUp/TGCTF 2025.md",
+    "picture/Pasted image 20250427153154.png",
+    "picture/Pasted image 20250427153144.png",
+    "picture/Pasted image 20250427153136.png",
     "picture/Pasted image 20250427153100.png",
     "picture/Pasted image 20250427153054.png",
     "picture/Pasted image 20250427153029.png",
@@ -186,7 +191,6 @@
     "picture/Pasted image 20250427152930.png",
     "picture/Pasted image 20250427152917.png",
     "WriteUp/XYCTF 2025.md",
-    "picture/Pasted image 20250427152823.png",
     "Notes/常用命令.md",
     "Notes/栈溢出/栈溢出.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
@@ -201,15 +205,10 @@
     "Notes/ret2xxx.md",
     "Notes/SROP.md",
     "Notes/v8.md",
-    "picture/Pasted image 20250427152448.png",
-    "picture/Pasted image 20250427152415.png",
-    "picture/Pasted image 20250427152408.png",
-    "WriteUp/TGCTF 2025.md",
     "Notes/格式化字符串漏洞.md",
     "Notes/如何commit.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
     "Notes/二进制程序保护机制.md",
-    "WriteUp/SQCTF 2025.md",
     "WriteUp/GHCTF 2025.md",
     "一些常用链接.md",
     "WriteUp/湘岚杯 2025.md",
