@@ -552,14 +552,13 @@ p.interactive()
 ## fastbins attack
 fastbin
 释放前 
-![[Pasted image 20250401162826.png]]
+![[Pasted image 20250427152358.png]]
 释放后
-![[Pasted image 20250401162844.png]]
-![[Pasted image 20250401162901.png]]
-
+![[Pasted image 20250427152401.png]]
+![[Pasted image 20250427152405.png]]
 ### Fastbin Double Free
 如果连续两次free同一个fastbin chunk，会触发double free检测导致报错，但若是先 free chunk1 再 free chunk2 ，然后再 free chunk1 则不会报错，同时还会使 fastbin 的链表变成下面这样
-![[Pasted image 20250401162323.png]]
+![[Pasted image 20250427152408.png]]
 原因在与
 	1. fastbin 的 chunk 被 free 后 next_chunk 的 pre_inuse 位不会被清空
 	2. fastbin 在执行 free 的时候仅验证了 main_arena 直接指向的块，即链表指针头部的块。对于链表后面的块，并没有进行验证。
@@ -573,10 +572,15 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 - fake chunk 的 size 大小需要满足对应的 fastbin 的需求，同时也得对齐。
 - fake chunk 的 next chunk 的大小不能小于 `2 * SIZE_SZ`，同时也不能大于`av->system_mem` 。
 - fake chunk 对应的 fastbin 链表头部不能是该 fake chunk，即不能构成 double free 的情况。
-![[Pasted image 20250401164539.png]]
+![[Pasted image 20250427152415.png]]
 即对于有如上这样一个区域，我们利用可控区域1和可控区域2，构造一个符合 fastbin 条件的 chunk 然后 free 他，之后再申请这个 chunk ，这样就可以控制目标区域内的内容
 ### Alloc to Stack
 劫持 fastbin 的 fd 去栈上(**前提是栈上有对应的size值**)，malloc 后就会获得一个在栈上的 chunk 从而可以覆盖返回变量之类的。
 ### Arbitrary Alloc
 和 Alloc to Stack 完全一样，区别就是 Arbitrary Alloc 是将 fastbin 的 fd 劫持到任意目标地址有size域的地址，从而修改对于地址。
 比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
+## Hook
+### __malloc_hook (2.34之前）
+__malloc_hook 相当于给 malloc 函数套了一层外壳，在其不为空的时候在调用 malloc 时会知道hook所指向的函数，一般可以劫持 __malloc_hook 为 ogg 来 get shell。
+在`__malloc_hook - 0x23`的位置一般可以利用 double free 来劫持 __malloc_hook 。
+![[Pasted image 20250427152448.png]]

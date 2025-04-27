@@ -36,7 +36,8 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 1,
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -178,7 +179,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,6 +195,12 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "picture/Pasted image 20250427152448.png",
+    "picture/Pasted image 20250427152415.png",
+    "picture/Pasted image 20250427152408.png",
+    "picture/Pasted image 20250427152405.png",
+    "picture/Pasted image 20250427152401.png",
+    "picture/Pasted image 20250427152358.png",
     "Notes/MIPS.md",
     "picture/Pasted image 20250427152226.png",
     "Notes/heap.md",
@@ -204,8 +212,6 @@
     "picture/Pasted image 20250427152025.png",
     "picture/Pasted image 20250427152016.png",
     "picture/Pasted image 20250427151951.png",
-    "picture/Pasted image 20250427151907.png",
-    "picture/Pasted image 20250427151753.png",
     "Notes/v8.md",
     "WriteUp/TGCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
@@ -213,7 +219,6 @@
     "Notes/如何commit.md",
     "Notes/栈迁移.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
-    "picture/Pasted image 20250420205842.png",
     "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
     "WriteUp/SQCTF 2025.md",
@@ -223,8 +228,6 @@
     "WriteUp/启航杯 2025.md",
     "Notes",
     "WriteUp",
-    "picture/Pasted image 20250420145704.png",
-    "picture/Pasted image 20250420145654.png",
     "WriteUp/newstar2024/week3.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
     "Notes/栈溢出/ret2xxx/ret2xxx.md",
