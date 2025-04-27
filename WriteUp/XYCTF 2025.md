@@ -1,9 +1,6 @@
 # Ret2libc's Revenge
-
 ret2libc的题目，但开启了setvbuf(stdout, 0, 0, 0)导致需要将输出缓冲区填满才能有输出
-
 Exp:
-
 ```Python
 from pwn import *
 
@@ -84,13 +81,9 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # Girlfriend
-
 综合类型的题目，可以用格式化字符串漏洞泄漏出栈地址，libc地址和code段基址。
-
 题目没给libc版本，也没有gadgets，也不能修改got表，本来以为要用非栈上格式化字符串漏洞去做，后来师傅说去靶机上找到libc版本是2.35，就可以构造ORW了。
-
 ```Python
 from pwn import *
 
@@ -207,19 +200,11 @@ p.send(payload)
 
 p.interactive()
 ```
-
 # EZ3.0
-
-第一次遇见MIPS架构的题目，后面再写专门的知识点。[MIPS](https://hnusec-team.feishu.cn/wiki/YQVhwbhe9ifWarkOaSDc7aBCnsf)
-
+第一次遇见MIPS架构的题目，后面再写专门的知识点。
 题目很简单，有`system`函数，有`/bin/cat falg.txt`，只需要找到`gadgets`来赋值即可
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2RlMzk5OTBhYjUyNjY0NDRhYzhhMGM4Y2E4MDFiNTJfZmE5NUlnbVB1R0ZBOUlqV3F6Z0lMWXBTVU5YYU5mb3BfVG9rZW46Wk0xdWJtSGpyb1BWQjl4cEdMMWNqdWZKbk1iXzE3NDUxMzc1MTE6MTc0NTE0MTExMV9WNA)
-
-很阴的是这个 `gadgets` 我的`ghidra`最开始还没显示，结果找了半天找不到合适的`gadgets`，后面问了组里的师傅才知道，结果`disasmble`一下又出来了
-
+![[Pasted image 20250427152823.png]]果`disasmble`一下又出来了
 圈中部分即是`gadgets`，`a0`存放`/bin/cat`的地址，然后`t9`跳转`system`即可
-
 ```Python
 from pwn import *
 
@@ -264,15 +249,10 @@ p.sendlineafter(b'> ', payload)
 
 p.interactive()
 ```
-
 # 明日方舟寻访模拟器
-
 没找到`getshell`的方法，有个大胆的想法，控制抽出来的卡，让其在内存里刚好显示为`/bin/sh`，这样就可以得到地址存`/bin/sh`了。
-
 思路没错，后来问了组里做出来的师傅，就是这么做的，只是不需要让其为/bin/sh，让其为 $0, /sh 一样可以获取shell，而且控制难度要小很多。
-
 官方wp还是更简单，有一个位置直接存的是抽卡总次数，也不用控制三星了，直接抽这个次数的卡就行了。
-
 ```Python
 from pwn import *
 
@@ -320,19 +300,11 @@ p.sendline(b'exec 1>&2')
 
 p.interactive()
 ```
-
 # 奶龙回家
-
-  
 
 # heap2
 
-  
-
 # web苦手
-
 需要使注册密码和登陆密码一个比0x40长一个比0x40短的同时，两者又完全一样，没想到好方法
-
 # bot
-
-protobuf + FSOP的题目 [FSOP](https://hnusec-team.feishu.cn/wiki/JsO2w0Q9jiUxBOkRQHyceea5nIh)[protobuf](https://hnusec-team.feishu.cn/wiki/VaVcwRM5Ai4laukEickcZAQknsh)
+protobuf + FSOP的题目

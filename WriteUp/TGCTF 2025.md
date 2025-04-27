@@ -2,7 +2,7 @@
 
 32位的栈溢出，找到offset即可，看不懂汇编的逻辑的话就在gdb里面慢慢调
 
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=YzZkM2ZhZDg5YTA2ODczNjc1YjMwY2EzODVjNDY5MzdfQlJDZVdFdmRLYVozc092eHhiY1k5S1BvYzJvclVVNndfVG9rZW46QU9oMmJ4ek9tb3E5REF4YzdJdWNXcWVqbkxlXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
+![[Pasted image 20250427152917.png]]
 
 这里可以看到`gets`函数是向栈上读入数据的
 

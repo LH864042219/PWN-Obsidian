@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/常用命令.md",
+                "file": "WriteUp/TGCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常用命令"
+              "title": "TGCTF 2025"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/常用命令.md",
+                "file": "WriteUp/TGCTF 2025.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "常用命令 的反向链接列表"
+              "title": "TGCTF 2025 的反向链接列表"
             }
           },
           {
@@ -178,6 +178,10 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "picture/Pasted image 20250427152917.png",
+    "WriteUp/XYCTF 2025.md",
+    "picture/Pasted image 20250427152823.png",
+    "Notes/常用命令.md",
     "Notes/栈溢出/栈溢出.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
     "Notes/栈溢出/ret2xxx/ret2xxx.md",
@@ -191,7 +195,6 @@
     "Notes/ret2xxx.md",
     "Notes/SROP.md",
     "Notes/v8.md",
-    "Notes/常用命令.md",
     "picture/Pasted image 20250427152448.png",
     "picture/Pasted image 20250427152415.png",
     "picture/Pasted image 20250427152408.png",
@@ -201,9 +204,7 @@
     "picture/Pasted image 20250427152226.png",
     "picture/Pasted image 20250427152040.png",
     "picture/Pasted image 20250427152025.png",
-    "picture/Pasted image 20250427152016.png",
     "WriteUp/TGCTF 2025.md",
-    "WriteUp/XYCTF 2025.md",
     "Notes/格式化字符串漏洞.md",
     "Notes/如何commit.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
@@ -215,7 +216,6 @@
     "WriteUp/启航杯 2025.md",
     "Notes",
     "WriteUp",
-    "WriteUp/newstar2024/week3.md",
     "WriteUp/WinterStudy/class 1",
     "WriteUp/WinterStudy",
     "普通题目/newstar2024/week1/re",
