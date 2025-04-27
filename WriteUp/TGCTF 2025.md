@@ -1,19 +1,12 @@
 # Overflow
 
 32位的栈溢出，找到offset即可，看不懂汇编的逻辑的话就在gdb里面慢慢调
-
 ![[Pasted image 20250427152917.png]]
-
 这里可以看到`gets`函数是向栈上读入数据的
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWYyYzJmNDRkMGFmNGQ0YzllMWJiZTIyYTkyNDlkZjlfdno1cGE4M1RmdmxJdXFLV2FwQkZMajhtWTNaWTB6UFpfVG9rZW46SjBzYmJtc25kb09CRTZ4OVRveWNNcms5bkpmXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427152930.png]]
 读入完数据后将`esp`迁移到`ebp-8`的位置，而这个位置我们是可以覆盖到的，然后开始将栈上的数据给`pop`出来给寄存器，接着将`esp`转移到`ecx-4`的位置，也就是说我们只要控制了`ecx`的位置就可以做到劫持程序
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=MzExYzUzY2VkODk5MDY1NTdlZjI4Mjg4MjJhMzYzMDRfTExRMWVKMGl5ZTRNd0xRNDd4RTJuckl2dmhwcllaNGpfVG9rZW46SDFDNmIzd09hb3E4UkN4Q2JUUmNZT1A1blNmXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427152945.png]]
 这里也可以看到我们将`ecx`设置为`0x80ef32c`，其实也就是第一步`read`函数读入的位置，第一个`read`函数我们构造了一段`ROP`链来获取`shell`，这里`esp`迁移过来后就可以开始执行我们的`ROP`链来获取shell
-
 ```Python
 from pwn import *
 
@@ -54,11 +47,8 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # Shellcode
-
 除rdi和rip以外全部置零，只能读入0x12长度的shellcode
-
 ```Python
 from pwn import *
 
@@ -82,15 +72,10 @@ shellcode = asm('''
 p.send(shellcode + b'/bin/sh\x00')
 p.interactive()
 ```
-
 # Stack
-
 有一个比较函数，通过这个函数后就可以控制rdi,rax,rdx,可以ret2syscall
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=YmNlMThhODZlZjJjMjI5OGM5NDY5M2FmMDBlNDRkYWFfS2xyV3BzY01ialJ0dWNBVnRVVFU3ekoySXl1NGVpYXpfVG9rZW46V2dDbGI1RlhSbzBFSTJ4NUxLR2NHdUFybkZjXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=NGIzMWRhMWJlNWJhYzc3ZDcxZWI0ZTU0ZWRhNmM4ZGFfMDNRajd5ZWRRRGlXVDlmbVhoS05ETTNReVdjbjZGbjVfVG9rZW46Um56T2J0aVZob0lrRDF4endhdGNGeThJbkhiXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427153024.png]]
+![[Pasted image 20250427153029.png]]
 ```Python
 from pwn import *
 from wstube import websocket
@@ -124,11 +109,8 @@ p.sendline(payload2)
 
 p.interactive()
 ```
-
 # Signin
-
 普通的ret2libc
-
 ```Python
 from pwn import *
 
@@ -175,19 +157,12 @@ p.sendline(payload)
 
 p.interactive()
 ```
-
 # Fmt
-
 做这题的时候一直在想办法让程序循环起来但最终是没找到办法，看了wp才知道方法
-
 这题应该是用到了 call 的一个特点
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=MzRlYmYyZGQ4MjNlNDUyZmIyM2Y5NjQ0M2MyYzk2N2RfU1NxN1hjNnBibzRucVZ1OEZzV3dRN2QzOXd1ZGIxczZfVG9rZW46QldBeGJ6UDlBb09nU2p4bFR5SWNZZG9tbktmXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
-这里可以看到`rsp`指针是指向我们读入的`stack`的位置的，
-
-![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=YWY4ZTZmYmQyMDM5MmJkYzhjZWZlYWNmZTExODBmYTZfbnNrZm9xYXNZT3g4aG1Jdkx6MUR2TElETG9QaEtuMGVfVG9rZW46TmltR2J4NzZhb1NIV0p4cTlxdWN6elNRbmJIXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
-
+![[Pasted image 20250427153054.png]]
+里可以看到`rsp`指针是指向我们读入的`stack`的位置的，
+![[Pasted image 20250427153100.png]]
 我们进入`printf`函数中可以看到`rsp`往回了`0x8`的位置，这里这个`0x401276`就是`printf`函数后面接着的code段的地址
 
 ![](https://hnusec-team.feishu.cn/space/api/box/stream/download/asynccode/?code=NzUxZTMwODRkZDY2MWNmODEzZmJlNTQ3MjVmMWU5YzVfbzViNVh3RzZodHB5bjZFZnhXTVQ1ZGI4aTRlQnBON3VfVG9rZW46QklFcmJsNXFhb3RlTVd4RXAxUmNTYlRsbjJmXzE3NDUxMzcyNjk6MTc0NTE0MDg2OV9WNA)
