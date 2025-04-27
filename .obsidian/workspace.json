@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/SROP.md",
+                "file": "Notes/ret2xxx.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SROP"
+              "title": "ret2xxx"
             }
           }
         ],
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/SROP.md",
+                "file": "Notes/ret2xxx.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "SROP 的反向链接列表"
+              "title": "ret2xxx 的反向链接列表"
             }
           },
           {
@@ -193,6 +193,11 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/SROP.md",
+    "picture/Pasted image 20250427152040.png",
+    "picture/Pasted image 20250427152025.png",
+    "picture/Pasted image 20250427152016.png",
+    "picture/Pasted image 20250427151951.png",
     "picture/Pasted image 20250427151907.png",
     "picture/Pasted image 20250427151753.png",
     "Notes/v8.md",
@@ -206,7 +211,6 @@
     "Notes/orw.md",
     "Notes/protobuf.md",
     "Notes/ret2xxx.md",
-    "Notes/SROP.md",
     "WriteUp/newstar2024/NewStarCTF2024.md",
     "picture/Pasted image 20250420205842.png",
     "Notes/常用命令.md",
@@ -221,11 +225,6 @@
     "picture/Pasted image 20250420145704.png",
     "picture/Pasted image 20250420145654.png",
     "picture/Pasted image 20250420145501.png",
-    "picture/Pasted image 20250420145311.png",
-    "picture/Pasted image 20250420145058.png",
-    "picture/Pasted image 20250420144800.png",
-    "picture/Pasted image 20250420105612.png",
-    "picture/Pasted image 20250420105453.png",
     "WriteUp/newstar2024/week3.md",
     "Notes/栈溢出/ret2xxx/shellcode.md",
     "Notes/栈溢出/ret2xxx/ret2xxx.md",
