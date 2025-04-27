@@ -1,12 +1,9 @@
 # 概念
 [Protocol Buffers Wiki](https://zh.wikipedia.org/wiki/Protocol_Buffers)
 protobuf就是一种google开发的一种可以跨平台的数据结构协议，用这个可以实现多平台共用一个数据结构而无需每种语言都写。
-
 在pwn题中，我们需要先逆向分析得到Protobuf结构体，然后构造序列化后的Protobuf与程序交互
-
 # 安装
 ## protobuf
-
 官方GitHub地址：[https://github.com/protocolbuffers/protobuf](https://bbs.kanxue.com/elink@e31K9s2c8@1M7s2y4Q4x3@1q4Q4x3V1k6Q4x3V1k6Y4K9i4c8Z5N6h3u0Q4x3X3g2U0L8$3#2Q4x3V1k6H3M7X3!0@1L8$3y4G2L8r3u0#2k6X3k6W2M7Y4y4Q4x3V1k6H3M7X3!0@1L8$3u0#2k6R3%60.%60.)
 需要安装 **Protobuf运行时** 和 **协议编译器（用于编译.proto文件）**。
 下载Protobuf项目（不要下载版本太高的，否则后面的protobuf-c无法安装）：
@@ -42,7 +39,6 @@ sudo ln -s /usr/local/lib/libprotoc.so.17 libprotoc.so.17
 libprotoc 3.6.1
 ```
 ## protobuf-c
-
 Protobuf官方支持C++、C#、Dart、Go、Java、Kotlin、Python等语言，但是不支持C语言。
 而CTF中的Pwn题通常由C语言编写，这就用到了一个第三方库 **protobuf-c**。
 Github项目地址：[https://github.com/protobuf-c/protobuf-c](https://bbs.kanxue.com/elink@814K9s2c8@1M7s2y4Q4x3@1q4Q4x3V1k6Q4x3V1k6Y4K9i4c8Z5N6h3u0Q4x3X3g2U0L8$3#2Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3y4Q4x3V1k6H3M7X3!0@1L8$3u0#2k6W2\)9J5k6r3x3%60.)
@@ -184,9 +180,7 @@ Tutorial__AddressBook * tutorial__address_book__unpack(ProtobufCAllocator *alloc
 }
 ```
 这个反序列化函数传入描述**消息结构体数据**的**descriptor**。我们可以在IDA中分析descriptor还原消息结构体。
-
 ### Descriptor结构体
-
 Descriptor定义如下：
 ```c
 struct ProtobufCMessageDescriptor {
@@ -231,7 +225,6 @@ struct ProtobufCMessageDescriptor {
 - fields：指向一个储存字段和数据的结构体。
 fields是ProtobufCFieldDescriptor类型。
 ### ProtobufCFieldDescriptor结构体
-
 我们看一下它的定义：
 ```c
 struct ProtobufCFieldDescriptor {
