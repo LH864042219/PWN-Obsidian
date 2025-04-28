@@ -71,6 +71,9 @@ struct malloc_chunk* bk;
 这边刚创建完一个堆，指针指向0x804b1a0
 ![[Pasted image 20250303171857.png]]
 高亮处是size，由于没有前一个堆块，所以可以发现pre size字段没有指向，可以看出这个堆块是由mmap(malloc)分配的，且前一堆块被占用。
+## C++下的堆
+PolarCTF的garden
+
 # 漏洞利用
 ## UAF and fastbins
 UAF(use after free)即使用释放后的指针，这是一种漏洞，指堆被释放后指向该堆的指针没有被赋为NULL，这会导致程序错误，若是该指针指向的位置被修改为其他函数，则可以控制程序。
