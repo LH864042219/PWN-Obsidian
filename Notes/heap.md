@@ -72,7 +72,8 @@ struct malloc_chunk* bk;
 ![[Pasted image 20250303171857.png]]
 高亮处是size，由于没有前一个堆块，所以可以发现pre size字段没有指向，可以看出这个堆块是由mmap(malloc)分配的，且前一堆块被占用。
 ## C++下的堆
-PolarCTF的garden
+PolarCTF 2025的garden
+C++中为了实现多态，会在new一个类的时候创建一个虚函数表，里面存放着这个类
 
 # 漏洞利用
 ## UAF and fastbins
