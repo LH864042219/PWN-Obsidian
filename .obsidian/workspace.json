@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "orw"
+              "title": "ISCC 2025"
             },
             "group": "f6d84bf2cb614043"
           }
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "orw 的大纲"
+              "title": "ISCC 2025 的大纲"
             },
             "group": "f6d84bf2cb614043"
           }
@@ -204,6 +204,8 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/orw.md",
+    "WriteUp/ISCC 2025.md",
     "WriteUp/NewStarCTF 2024.md",
     "WriteUp/GHCTF 2025.md",
     "Notes/格式化字符串漏洞.md",
@@ -215,7 +217,6 @@
     "picture/Pasted image 20250428100824.png",
     "Notes/heap.md",
     "Notes/MIPS.md",
-    "Notes/orw.md",
     "Notes/protobuf.md",
     "Notes/SROP.md",
     "Notes/v8.md",
@@ -237,7 +238,6 @@
     "Notes/栈溢出/ret2xxx/nss [GDOUCTF 2023]Shellcode.md",
     "Notes/栈溢出/ret2xxx/buu jarvisoj_level2_x64.md",
     "Notes/栈溢出/栈溢出.md",
-    "Notes/栈溢出/ret2xxx/shellcode.md",
     "picture/Pasted image 20250427153154.png",
     "picture/Pasted image 20250427153144.png",
     "picture/Pasted image 20250427153136.png",
