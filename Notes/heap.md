@@ -602,6 +602,7 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
 ## Hook
 ### __realloc_hook
+
 ### __malloc_hook (2.34之前）
 __malloc_hook 相当于给 malloc 函数套了一层外壳，在其不为空的时候在调用 malloc 时会知道hook所指向的函数，一般可以劫持 __malloc_hook 为 ogg 来 get shell。
 在`__malloc_hook - 0x23`的位置一般可以利用 double free 来劫持 __malloc_hook 。
