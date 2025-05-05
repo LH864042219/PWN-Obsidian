@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "WriteUp/XYCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "orw"
+              "title": "XYCTF 2025"
             },
             "group": "f6d84bf2cb614043"
           }
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "WriteUp/XYCTF 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "orw 的大纲"
+              "title": "XYCTF 2025 的大纲"
             },
             "group": "f6d84bf2cb614043"
           }
@@ -204,12 +204,13 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/SQCTF 2025.md",
     "WriteUp/ISCC 2025.md",
-    "WriteUp/GHCTF 2025.md",
     "WriteUp/HnuSec Winter 2025.md",
+    "WriteUp/GHCTF 2025.md",
+    "Notes/orw.md",
     "WriteUp/启航杯 2025.md",
     "WriteUp/NewStarCTF 2024.md",
-    "Notes/orw.md",
     "Notes/heap.md",
     "picture/Pasted image 20250505102543.png",
     "picture/Pasted image 20250505102515.png",
@@ -230,7 +231,6 @@
     "picture/Pasted image 20250428093147.png",
     "WriteUp/PolarCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
-    "WriteUp/SQCTF 2025.md",
     "Notes/如何commit.md",
     "Notes/栈迁移.md",
     "Notes/二进制程序保护机制.md",
