@@ -609,7 +609,7 @@ realloc在库中的作用是重新调整malloc和calloc所分配的堆大小
 ![[Pasted image 20250505102515.png]]
 ![[Pasted image 20250505102543.png]]
 标记处就是将rax设置为__realloc_hook的值然后跳转到__realloc_hook。
-__realloc_hook 一般的作用就是调整栈帧，一般劫持__malloc_hook为
+__realloc_hook 一般的作用就是调整栈帧，一般劫持__malloc_hook为ogg时不一定就刚好符合条件，这时候可以将__malloc_hook设置为__realloc_hook，
 ### __malloc_hook (2.34之前）
 __malloc_hook 相当于给 malloc 函数套了一层外壳，在其不为空的时候在调用 malloc 时会知道hook所指向的函数，一般可以劫持 __malloc_hook 为 ogg 来 get shell。
 在`__malloc_hook - 0x23`的位置一般可以利用 double free 来劫持 __malloc_hook 。
