@@ -570,7 +570,7 @@ to_backdoor()
 
 p.interactive()
 ```
-## fastbins attack
+## Fast bin
 fastbin
 释放前 
 ![[Pasted image 20250427152358.png]]
@@ -600,6 +600,8 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 ### Arbitrary Alloc
 和 Alloc to Stack 完全一样，区别就是 Arbitrary Alloc 是将 fastbin 的 fd 劫持到任意目标地址有size域的地址，从而修改对于地址。
 比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
+## teache bin
+
 ## Hook
 ### __realloc_hook
 
