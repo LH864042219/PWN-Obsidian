@@ -606,6 +606,7 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 ### __realloc_hook
 __realloc_hook和__malloc_hook一样，在不为空时会跳转执行hook中的函数。
 realloc在库中的作用是重新调整malloc和calloc所分配的堆大小
+
 ### __malloc_hook (2.34之前）
 __malloc_hook 相当于给 malloc 函数套了一层外壳，在其不为空的时候在调用 malloc 时会知道hook所指向的函数，一般可以劫持 __malloc_hook 为 ogg 来 get shell。
 在`__malloc_hook - 0x23`的位置一般可以利用 double free 来劫持 __malloc_hook 。
