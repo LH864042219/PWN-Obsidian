@@ -88,10 +88,11 @@ else:
 https://www.cnblogs.com/M0x1n/p/binwalk.html
 文件分析工具，可以探测文件里是否有可识别的文件
 ## zsteg(linux)
-
+https://github.com/zed-0xff/zsteg
 可以检测PNG和BMP图片里的隐写数据
-
 ## foremost(linux)
+https://www.cnblogs.com/Horizon-asd/p/16961639.html
+可以提取隐写的文件
 
 # 取证分析
 ## volatility(linux)
