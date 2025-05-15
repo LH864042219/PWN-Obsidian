@@ -35,7 +35,8 @@ Advanced Archive Password Recovery(Windows)，好用的爆破工具
 
 # 音频
 ## audacity(windows)
-
+音频波形查看工具
+![[Pasted image 20250514163412.png]]
 
 # 二维码
 QR_Research(Windows)，二维码扫描工具，别的扫不出来他可以扫出来
