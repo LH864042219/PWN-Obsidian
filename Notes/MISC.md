@@ -85,8 +85,11 @@ else:
   使用：`python crc32.py reverse 你的crc32密文`（密文需要加上0x变成16进制）
 # 图片
 ## binwalk(linux)
-文件分析工具，可以探测文件里是否you
+https://www.cnblogs.com/M0x1n/p/binwalk.html
+文件分析工具，可以探测文件里是否有可识别的文件
 ## zsteg(linux)
+
+可以检测PNG和BMP图片里的隐写数据
 
 ## foremost(linux)
 
