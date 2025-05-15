@@ -1,4 +1,7 @@
 还是没想到有做misc的一天，最近做iscc做misc的时间比做pwn的时间都长，总结一下，毕竟也学了。
+# 通用工具
+## winhex
+二进制数据查看工具，可以查看er j
 # ZIP
 ## 爆破
 Advanced Archive Password Recovery(Windows)，好用的爆破工具
@@ -34,3 +37,4 @@ Advanced Archive Password Recovery(Windows)，好用的爆破工具
 ## audacity
 
 # 二维码
+QR_Research(Windows)，二维码扫描工具，别的扫不出来他可以扫出来
