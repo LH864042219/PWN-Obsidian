@@ -37,7 +37,8 @@
               "title": "MISC"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "44859f6870736435",
@@ -216,10 +217,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "12aa8a665d44e2dd",
+  "active": "94ff0d3db51e313a",
   "lastOpenFiles": [
-    "Notes/MISC.md",
     "WriteUp/ISCC 2025.md",
+    "Notes/MISC.md",
     "Notes/MIPS.md",
     "WriteUp/NewStarCTF 2024.md",
     "WriteUp/HnuSec Winter 2025.md",
