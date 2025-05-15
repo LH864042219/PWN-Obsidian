@@ -50,9 +50,42 @@ CRC32攻击
 - 我们去计算文件的 CRC32 值发现和上图中的 CRC32 值吻合
 ![[Pasted image 20250515212815.png]]
 - 在爆破时我们所枚举的所有可能字符串的 CRC32 值是要与压缩源文件数据区中的 CRC32 值所对应
+```python
+# -*- coding: utf-8 -*-
+import zlib
+import base64
+import string
+import itertools
+import struct
+
+# 爆破所有可能的crc，存起来
+alph = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/='
+crcdict = {}
+print("computing all possible CRCs...")
+for x in itertools.product(list(alph), repeat=3):
+    st = ''.join(x)
+    testcrc = zlib.crc32(st.encode('utf8'))
+    crcdict[testcrc] = st
+print("Done!")
+print(crcdict)
+
+# 判断crc是否在集合中
+f = open('flag.zip','rb')
+data = f.read()
+f.close()
+crc = "".join('%s' %id for id in data[14:18])
+if crc in crcdict:
+    print(crcdict[crc])
+else:
+    print("FAILED!")
+
+```
+- 推荐一个好用的6位的CRC32爆破工具  
+  下载：https://github.com/theonlypwner/crc32  
+  使用：`python crc32.py reverse 你的crc32密文`（密文需要加上0x变成16进制）
 # 图片
 ## binwalk(linux)
-
+文件分析工具，可以探测文件里是否you
 ## zsteg(linux)
 
 ## foremost(linux)
