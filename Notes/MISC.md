@@ -4,11 +4,11 @@
 Advanced Archive Password Recovery(Windows)，好用的爆破工具
 ![[Pasted image 20250515211218.png]]
 ### 暴力
-字面意思
+字面意思，纯暴力破解，题目的话没什么提示没必要用，大概率爆不出来
 ### 字典 
-
+也是字面意思，还没用过，也没去收集字典
 ### 掩码
-
+题目可能会给出类似 bfs??? 的格式就大概率是掩码爆破 ??? 就是要爆破的位置
 ## 明文攻击
 
 ## 伪加密
@@ -32,3 +32,5 @@ Advanced Archive Password Recovery(Windows)，好用的爆破工具
 
 # 音频
 ## audacity
+
+# 二维码
