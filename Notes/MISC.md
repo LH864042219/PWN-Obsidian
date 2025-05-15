@@ -93,10 +93,12 @@ https://github.com/zed-0xff/zsteg
 ## foremost(linux)
 https://www.cnblogs.com/Horizon-asd/p/16961639.html
 可以提取隐写的文件
+## 猫映射
+https://www.cnblogs.com/alexander17/p/18551089
 
 # 取证分析
 ## volatility(linux)
-
+https://wiki.wgpsec.org/knowledge/ctf/Volatility.html
 # word
 https://blog.csdn.net/qq_63522833/article/details/128628121
 ## 隐藏

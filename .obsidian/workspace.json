@@ -36,8 +36,7 @@
               "title": "MISC"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "44859f6870736435",
@@ -50,13 +49,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/MISC.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "MISC 的大纲"
+              "title": "ISCC 2025 的大纲"
             }
           }
         ]
@@ -215,12 +214,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "94ff0d3db51e313a",
+  "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/MISC.md",
     "picture/Pasted image 20250515212815.png",
     "picture/Pasted image 20250515212802.png",
     "WriteUp/ISCC 2025.md",
-    "Notes/MISC.md",
     "picture/Pasted image 20250515212421.png",
     "picture/Pasted image 20250515212416.png",
     "picture/Pasted image 20250515212355.png",
@@ -240,7 +239,6 @@
     "picture/Pasted image 20250514220755.png",
     "picture/Pasted image 20250514220719.png",
     "picture/Pasted image 20250514220613.png",
-    "picture/Pasted image 20250514220434.png",
     "一些常用链接.md",
     "Notes/heap.md",
     "Notes/格式化字符串漏洞.md",
