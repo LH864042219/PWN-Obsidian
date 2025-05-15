@@ -13,20 +13,28 @@ Advanced Archive Password Recovery(Windows)，好用的爆破工具
 ### 掩码
 题目可能会给出类似 bfs??? 的格式就大概率是掩码爆破 ??? 就是要爆破的位置
 ## 明文攻击
+明文攻击：
+
+找到压缩包内其中一个已知的文件（文件大小要大于12Byte），用相同的压缩软件压缩算法去压缩无密码压缩包，得到明文。
+通过比较两个压缩包相同位置不同的12个字节，就可以还原出3个key，绕过密码提取出所有的文件。
+注意明文攻击需要CRC32值相同才行。
+一个例子：
+
+现有加密压缩包
 
 ## 伪加密
 
 ## CRC32碰撞
 
 # 图片
-## binwalk
+## binwalk(linux)
 
-## zsteg
+## zsteg(linux)
 
-## foremost
+## foremost(linux)
 
 # 取证分析
-## volatility
+## volatility(linux)
 
 # word
 ## 隐藏
