@@ -28,15 +28,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/MISC.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MISC"
+              "title": "ISCC 2025"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "44859f6870736435",
@@ -214,12 +215,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "12aa8a665d44e2dd",
+  "active": "94ff0d3db51e313a",
   "lastOpenFiles": [
     "Notes/MISC.md",
+    "picture/0001_6.png",
+    "WriteUp/ISCC 2025.md",
     "picture/Pasted image 20250515212815.png",
     "picture/Pasted image 20250515212802.png",
-    "WriteUp/ISCC 2025.md",
     "picture/Pasted image 20250515212421.png",
     "picture/Pasted image 20250515212416.png",
     "picture/Pasted image 20250515212355.png",
@@ -238,7 +240,6 @@
     "Notes/orw.md",
     "picture/Pasted image 20250514220755.png",
     "picture/Pasted image 20250514220719.png",
-    "picture/Pasted image 20250514220613.png",
     "一些常用链接.md",
     "Notes/heap.md",
     "Notes/格式化字符串漏洞.md",

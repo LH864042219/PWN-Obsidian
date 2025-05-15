@@ -1,6 +1,6 @@
 还是没想到有做misc的一天，最近做iscc做misc的时间比做pwn的时间都长，总结一下，毕竟也学了。
 # 通用工具
-## winhex
+## winhex(windows)
 二进制数据查看工具，可以查看二进制数据
 # ZIP
 ## 爆破
@@ -95,6 +95,8 @@ https://www.cnblogs.com/Horizon-asd/p/16961639.html
 可以提取隐写的文件
 ## 猫映射
 https://www.cnblogs.com/alexander17/p/18551089
+类似这样的图片
+![[0001_6.png]]
 
 # 取证分析
 ## volatility(linux)
