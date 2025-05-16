@@ -28,12 +28,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "Notes/orw.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一些常用链接"
+              "title": "orw"
             }
           }
         ],
@@ -50,13 +50,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "一些常用链接.md",
+                "file": "Notes/orw.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "一些常用链接 的大纲"
+              "title": "orw 的大纲"
             }
           }
         ]
@@ -217,6 +217,7 @@
   },
   "active": "94ff0d3db51e313a",
   "lastOpenFiles": [
+    "一些常用链接.md",
     "Notes/orw.md",
     "Notes/MISC.md",
     "WriteUp/ISCC 2025.md",
@@ -240,7 +241,6 @@
     "WriteUp/SQCTF 2025.md",
     "picture/Pasted image 20250514220755.png",
     "picture/Pasted image 20250514220719.png",
-    "一些常用链接.md",
     "Notes/heap.md",
     "Notes/格式化字符串漏洞.md",
     "Notes/ret2xxx.md",
