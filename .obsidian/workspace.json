@@ -28,12 +28,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "Notes/v8.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "orw"
+              "title": "v8"
             }
           }
         ],
@@ -50,13 +50,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "Notes/v8.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "orw 的大纲"
+              "title": "v8 的大纲"
             }
           }
         ]
@@ -217,8 +217,8 @@
   },
   "active": "94ff0d3db51e313a",
   "lastOpenFiles": [
-    "一些常用链接.md",
     "Notes/orw.md",
+    "一些常用链接.md",
     "Notes/MISC.md",
     "WriteUp/ISCC 2025.md",
     "picture/0001_6.png",
