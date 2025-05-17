@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/ISCC 2025.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ISCC 2025"
+              "title": "一些常用链接"
             }
           }
         ]
@@ -35,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/ISCC 2025.md",
+                "file": "一些常用链接.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ISCC 2025 的大纲"
+              "title": "一些常用链接 的大纲"
             }
           }
         ]
@@ -202,6 +202,7 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/ISCC 2025.md",
     "picture/Pasted image 20250517144452.png",
     "picture/Pasted image 20250517144131.png",
     "picture/Pasted image 20250517143437.png",
@@ -210,7 +211,6 @@
     "Notes/orw.md",
     "一些常用链接.md",
     "Notes/MISC.md",
-    "WriteUp/ISCC 2025.md",
     "picture/0001_6.png",
     "picture/Pasted image 20250515212815.png",
     "picture/Pasted image 20250515212802.png",
@@ -218,7 +218,6 @@
     "picture/Pasted image 20250515212416.png",
     "picture/Pasted image 20250515212355.png",
     "picture/Pasted image 20250515212313.png",
-    "picture/Pasted image 20250515211218.png",
     "Notes/MIPS.md",
     "WriteUp/NewStarCTF 2024.md",
     "WriteUp/HnuSec Winter 2025.md",
