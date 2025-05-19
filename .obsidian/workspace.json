@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/XYCTF 2025.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "XYCTF 2025"
+              "title": "ISCC 2025"
             }
           }
         ]
@@ -35,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/XYCTF 2025.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "XYCTF 2025 的大纲"
+              "title": "ISCC 2025 的大纲"
             }
           }
         ]
@@ -202,6 +202,7 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/XYCTF 2025.md",
     "WriteUp/ISCC 2025.md",
     "WriteUp-unwritten",
     "WriteUp-unwritten/御网杯 2025.md",
@@ -228,7 +229,6 @@
     "WriteUp/GHCTF 2025.md",
     "WriteUp/湘岚杯 2025.md",
     "WriteUp/启航杯 2025.md",
-    "WriteUp/XYCTF 2025.md",
     "WriteUp/TGCTF 2025.md",
     "WriteUp/PolarCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
