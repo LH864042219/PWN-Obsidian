@@ -21,37 +21,8 @@
               "icon": "lucide-file",
               "title": "ISCC 2025"
             }
-          },
-          {
-            "id": "9e8dcd9470df4bee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "御网杯 2025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "御网杯 2025"
-            }
-          },
-          {
-            "id": "3c849307967397a6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ParlooCTF 2025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ParlooCTF 2025"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "44859f6870736435",
@@ -64,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ParlooCTF 2025.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ParlooCTF 2025 的大纲"
+              "title": "ISCC 2025 的大纲"
             }
           }
         ]
@@ -229,9 +200,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3c849307967397a6",
+  "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
     "御网杯 2025.md",
+    "Mini-L CTF 2025.md",
     "ParlooCTF 2025.md",
     "WriteUp/ISCC 2025.md",
     "picture/image-20250518192319098.png",
@@ -266,7 +238,6 @@
     "Notes/如何commit.md",
     "Notes/栈迁移.md",
     "Notes/二进制程序保护机制.md",
-    "Notes/常用命令.md",
     "刷题记录",
     "Notes",
     "WriteUp",
