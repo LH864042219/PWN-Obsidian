@@ -243,11 +243,6 @@ delete_heap(3)
   
 p.interactive()
 ```
-## House of Orange
-**libc2.23->libc2.26**
-
-## House of Apple
-
 ## Unlink
 unlink存在于大于fastbins大小的heap中，其目的是把一个双向链表中的空闲块拿出来（例如 free 时和目前物理相邻的 free chunk 进行合并）。其基本的过程如下
 ![[Pasted image 20250323162721.png]]
@@ -360,8 +355,6 @@ pause()
 
 p.interactive()
 ```
-
-## Large bin attack
 
 ## Unsorted bin
 ### 什么是unsorted bin
@@ -529,8 +522,12 @@ House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
 比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
 ## teache bin
 
+## large bin
+### 概念
+large_bin是一种堆分配的管理方式，是**双向链表**，用于管理大于某个特定大小阈值的内存块。**一般而言，进入large_bin的最低字节为0x200(512)**。但由于引入了tcache_bin，使得**在tcache_bin尚未填满的情况下，进入large_bin的最低字节为0x410(1040)**，所以一般我们设置大堆块都是0x410起步
+
 ## House of XXX
-## House of Force
+### House of Force
 **在开始之前，首先要强调，该漏洞的使用对libc版本有要求，即仅能在libc2.23-2.29的版本使用该漏洞**
 ~~看的几篇文章都没有说过这一点导致调试了半天，都怀疑是surfacepro可怜的4G的内存不够用导致的malloc失败~~
 `House of Force(HOF)`,是一种堆利用方法，利用该漏洞需要满足下面条件:
@@ -611,6 +608,11 @@ exit()
 
 p.interactive()
 ```
+
+### House of Apple
+
+### House of Orange
+**libc2.23->libc2.26**
 
 ## Hook
 ### realloc_hook
