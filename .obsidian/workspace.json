@@ -28,12 +28,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/格式化字符串漏洞.md",
+                "file": "Notes/heap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "格式化字符串漏洞"
+              "title": "heap"
             }
           }
         ],
@@ -50,13 +50,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/格式化字符串漏洞.md",
+                "file": "Notes/heap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "格式化字符串漏洞 的大纲"
+              "title": "heap 的大纲"
             }
           }
         ]
@@ -217,6 +217,7 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "Notes/格式化字符串漏洞.md",
     "Notes/orw.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/MISC.md",
@@ -251,7 +252,6 @@
     "WriteUp/TGCTF 2025.md",
     "WriteUp/PolarCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
-    "Notes/格式化字符串漏洞.md",
     "Notes/ret2xxx.md",
     "Notes/protobuf.md",
     "刷题记录",
