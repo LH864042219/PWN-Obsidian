@@ -28,12 +28,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/MISC.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MISC"
+              "title": "ISCC 2025"
             }
           }
         ],
@@ -50,13 +50,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/MISC.md",
+                "file": "WriteUp/ISCC 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "MISC 的大纲"
+              "title": "ISCC 2025 的大纲"
             }
           }
         ]
@@ -217,9 +217,10 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "WriteUp/NewStarCTF 2024.md",
+    "Notes/MISC.md",
     "WriteUp/ISCC 2025.md",
     "Notes/heap.md",
-    "Notes/MISC.md",
     "Notes/MIPS.md",
     "Notes/orw.md",
     "Notes/栈迁移.md",
@@ -245,7 +246,6 @@
     "picture/Pasted image 20250518183858.png",
     "picture/Pasted image 20250518183657.png",
     "picture/Pasted image 20250518174123.png",
-    "WriteUp/NewStarCTF 2024.md",
     "Notes/v8.md",
     "WriteUp/GHCTF 2025.md",
     "WriteUp/湘岚杯 2025.md",
