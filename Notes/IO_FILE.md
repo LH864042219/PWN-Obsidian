@@ -302,7 +302,7 @@ def get_IO_str_jumps():
             return possible_IO_str_jumps_addr
 ```
 可以进行如下构造：
-```
+```c
 ._chain => chunk_addr
 chunk_addr
 {

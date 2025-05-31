@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "Notes/IO_FILE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "orw"
+              "title": "IO_FILE"
             }
           }
         ],
@@ -128,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "Notes/IO_FILE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "orw 的出链列表"
+              "title": "IO_FILE 的出链列表"
             }
           },
           {
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "Notes/IO_FILE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "orw 的大纲"
+              "title": "IO_FILE 的大纲"
             }
           },
           {
@@ -196,7 +196,13 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "Notes/heap.md",
+    "Notes/栈迁移.md",
+    "Notes/IO_FILE.md",
+    "Notes/MIPS.md",
+    "WriteUp/HnuSec Winter 2025.md",
     "WriteUp/ISCC 2025.md",
+    "Notes/orw.md",
     "WriteUp/NewStarCTF 2024.md",
     "WriteUp/TGCTF 2025.md",
     "WriteUp-unwritten/轩辕杯 2025.md",
@@ -204,9 +210,6 @@
     "WriteUp-unwritten/Mini-L CTF 2025.md",
     "WriteUp-unwritten/LitCTF 2025.md",
     "WriteUp-unwritten/御网杯 2025.md",
-    "Notes/IO_FILE.md",
-    "Notes/heap.md",
-    "WriteUp/HnuSec Winter 2025.md",
     "picture/Pasted image 20250531115700.png",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
@@ -220,9 +223,6 @@
     "picture/Pasted image 20250531111354.png",
     "一些常用链接.md",
     "Notes/MISC.md",
-    "Notes/MIPS.md",
-    "Notes/orw.md",
-    "Notes/栈迁移.md",
     "Notes/格式化字符串漏洞.md",
     "刷题记录/伪随机 2024暑假招新pwn1.md",
     "刷题记录/伪随机 HDCTF 2023 pwnner.md",
