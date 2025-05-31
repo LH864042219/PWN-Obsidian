@@ -246,3 +246,31 @@ void attribute_hidden _IO_vtable_check (void)
   __libc_fatal ("Fatal error: glibc detected an invalid stdio handle\n");
 }
 ```
+因此，最好的办法是：我们伪造的`vtable`在`glibc`的`vtable`段中，从而得以绕过该检查。  
+目前来说，有四种思路：利用`_IO_str_jumps`中`_IO_str_overflow()`函数，利用`_IO_str_jumps`中`_IO_str_finish()`函数与利用`_IO_wstr_jumps`中对应的这两种函数，先来介绍最为方便的：利用`_IO_str_jumps`中`_IO_str_finish()`函数的手段。  
+`_IO_str_jumps`的结构体如下：
+```c
+const struct _IO_jump_t _IO_str_jumps libio_vtable =
+{
+    JUMP_INIT_DUMMY,
+    JUMP_INIT(finish, _IO_str_finish),
+    JUMP_INIT(overflow, _IO_str_overflow),
+    JUMP_INIT(underflow, _IO_str_underflow),
+    JUMP_INIT(uflow, _IO_default_uflow),
+    ...
+}
+```
+其中，`_IO_str_finish`源代码如下：
+```c
+void _IO_str_finish (_IO_FILE *fp, int dummy)
+{
+  if (fp->_IO_buf_base && !(fp->_flags & _IO_USER_BUF))
+    (((_IO_strfile *) fp)->_s._free_buffer) (fp->_IO_buf_base); //执行函数
+  fp->_IO_buf_base = NULL;
+  _IO_default_finish (fp, 0);
+}
+```
+其中相关的`_IO_str_fields`结构体与`_IO_strfile_`结构体的定义：
+```c
+
+```
