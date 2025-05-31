@@ -614,14 +614,17 @@ p.interactive()
 ### House of Apple
 https://bbs.kanxue.com/thread-273418.htm
 ### House of Orange
-**libc2.23->libc2.26**
+ libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
 具体利用方法，改小 top chunk 的值，然后再申请一个大于该值的堆块，
 如下图
 ![[Pasted image 20250531111354.png]]
 ![[Pasted image 20250531111401.png]]
 原先的 top chunk 是0x20ee1,现在将他修改为0xee1，
-这里修改的大小要注意伪造的size要对齐到内存页，简单来说是原本
+**这里修改的大小要注意伪造的size要对齐到内存页，简单来说和原本 size 的后三位一样即可。**
+然后我们申请一个 0xf00大小的 chunk
+![[Pasted image 20250531111707.png]]
+
 
 ## Hook
 ### realloc_hook
