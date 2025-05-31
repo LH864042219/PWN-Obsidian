@@ -358,7 +358,7 @@ p.interactive()
 
 ## teache bin
 ### teache poisoning
-即修改 teache 中的 next ，不需要伪造任何 chunk 结构即可实现 malloc 到任意地址，不过在 2.29 后加入了 key 指针，构造的时候需要注意 key 小于 0 后就不会在 bins 中提取地址来作为 malloc 的位置。
+即修改 teache 中的 next ，不需要伪造任何 chunk 结构即可实现 malloc 到任意地址~~，不过在 2.29 后加入了 key 指针，构造的时候需要注意 key 小于 0 后就不会在 bins 中提取地址来作为 malloc 的位置。~~
 总体而言和 fast bins attack 类似，但不像 fast bins attack 一样需要位置上有一个符合 fast bins 条件的 size 。
 
 
@@ -530,7 +530,8 @@ p.interactive()
 ## large bin
 https://bbs.kanxue.com/thread-273418.htm
 ### 概念
-large_bin是一种堆分配的管理方式，是**双向链表**，用于管理大于某个特定大小阈值的内存块。**一般而言，进入large_bin的最低字节为0x200(512)**。但由于引入了tcache_bin，使得**在tcache_bin尚未填满的情况下，进入large_bin的最低字节为0x410(1040)**，所以一般我们设置大堆块都是0x410起步
+large_bin是一种堆分配的管理方式，是**双向链表**，用于管理大于某个特定大小阈值的内存块。**一般而言，进入large_bin的最低字节为0x200(512)**。但由于引入了tcache_bin，使得**在tcache_bin尚未填满的情况下，进入large_bin的最低字节为0x410(1040)**，所以一般我们设置大堆块都是0x410起步。
+
 
 
 ## House of XXX
