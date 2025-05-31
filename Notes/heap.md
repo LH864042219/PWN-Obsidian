@@ -625,7 +625,8 @@ https://bbs.kanxue.com/thread-273418.htm
 然后我们申请一个 0xf00大小的 chunk
 ![[Pasted image 20250531111707.png]]
 可以看到原先 top chunk 的位置已经成为了一个 unsorted bin ，然后再申请一个小于这个 size 的 chunk 即可切割这个 unsorted bin
-
+![[Pasted image 20250531112113.png]]
+可以看到切割下来的 chunk 里可以泄漏出libc基址和heap的基址，之后的内容就需要结合IOFile来做。
 ## Hook
 ### realloc_hook
  `__realloc_hook` 和`__malloc_hook`一样，在不为空时会跳转执行 hook 中的函数。
