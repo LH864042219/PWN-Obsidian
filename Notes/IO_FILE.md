@@ -1,4 +1,4 @@
-主要内容是下面文章大佬的，写的非常不错，如果有自己的想法会在里面补充
+主要内容是下面文章大佬的，写的非常不错，如果有自己的想法会补充
 https://bbs.kanxue.com/thread-273418.htm
 https://bbs.kanxue.com/thread-272098.htm
 # IO_FILE相关结构体
@@ -272,5 +272,22 @@ void _IO_str_finish (_IO_FILE *fp, int dummy)
 ```
 其中相关的`_IO_str_fields`结构体与`_IO_strfile_`结构体的定义：
 ```c
-
+struct _IO_str_fields
+{
+  _IO_alloc_type _allocate_buffer;
+  _IO_free_type _free_buffer;
+};
+ 
+typedef struct _IO_strfile_
+{
+  struct _IO_streambuf _sbf;
+  struct _IO_str_fields _s;
+} _IO_strfile;
 ```
+可以看到，它使用了`IO`结构体中的值当作函数地址来直接调用，如果满足条件，将直接将`fp->_s._free_buffer`当作**函数指针**来调用。  
+首先，仍然需要绕过之前的`_IO_flush_all_lokcp`函数中的输出缓冲区的检查`_mode<=0`以及`_IO_write_ptr>_IO_write_base`进入到`_IO_OVERFLOW`中。  
+我们可以将`vtable`的地址覆盖成`_IO_str_jumps-8`，这样会使得`_IO_str_finish`函数成为了伪造的`vtable`地址的`_IO_OVERFLOW`函数（因为`_IO_str_finish`偏移为`_IO_str_jumps`中`0x10`，而`_IO_OVERFLOW`为`0x18`）。这个`vtable`（地址为`_IO_str_jumps-8`）可以绕过检查，因为它在`vtable`的地址段中。  
+构造好`vtable`之后，需要做的就是构造`IO FILE`结构体其他字段，以进入将`fp->_s._free_buffer`当作函数指针的调用：先构造`fp->_IO_buf_base`为`/bin/sh`的地址，然后构造`fp->_flags`不包含`_IO_USER_BUF`，它的定义为`#define _IO_USER_BUF 1`，即`fp->_flags`最低位为`0`。  
+最后构造`fp->_s._free_buffer`为`system_addr`或`one gadget`即可`getshell`。  
+由于`libc`中没有`_IO_str_jump`的符号，因此可以通过`_IO_str_jumps`是`vtable`中的倒数第二个表，用`vtable`的最后地址减去`0x168`定位。  
+也可以用如下函数进行定位：
