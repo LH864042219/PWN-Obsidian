@@ -358,7 +358,7 @@ p.interactive()
 
 ## teache bin
 ### teache poisoning
-即修改 teache 中的 next ，不需要伪造任何 chunk 结构即可实现 malloc 到任意地址
+即修改 teache 中的 next ，不需要伪造任何 chunk 结构即可实现 malloc 到任意地址，不过在2.2
 
 ## Fast bin
 fastbin
