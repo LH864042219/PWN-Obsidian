@@ -624,7 +624,7 @@ https://bbs.kanxue.com/thread-273418.htm
 **这里修改的大小要注意伪造的size要对齐到内存页，简单来说和原本 size 的后三位一样即可。**
 然后我们申请一个 0xf00大小的 chunk
 ![[Pasted image 20250531111707.png]]
-可以看到原先 top chunk 的位置已经成为了一个 unsorted bin ，然后就可以用
+可以看到原先 top chunk 的位置已经成为了一个 unsorted bin ，然后再申请一个小于这个 size 的 chunk 即可切割这个 unsorted bin
 
 ## Hook
 ### realloc_hook
