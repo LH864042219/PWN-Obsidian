@@ -198,3 +198,51 @@ heap_addr
 因此这样构造，通过`_IO_OVERFLOW (fp)`，我们就实现了`system("/bin/sh\x00")`。
 
 而`libc-2.24`加入了对虚表的检查`IO_validate_vtable()`与`IO_vtable_check()`，若无法通过检查，则会报错：`Fatal error: glibc detected an invalid stdio handle`。
+```c
+#define _IO_OVERFLOW(FP, CH) JUMP1 (__overflow, FP, CH)
+#define JUMP1(FUNC, THIS, X1) (_IO_JUMPS_FUNC(THIS)->FUNC) (THIS, X1)
+# define _IO_JUMPS_FUNC(THIS) \
+  (IO_validate_vtable                                                   \
+   (*(struct _IO_jump_t **) ((void *) &_IO_JUMPS_FILE_plus (THIS)   \
+                 + (THIS)->_vtable_offset)))
+```
+可见在最终调用`vtable`的函数之前，内联进了`IO_validate_vtable`函数，其源码如下：
+```c
+static inline const struct _IO_jump_t * IO_validate_vtable (const struct _IO_jump_t *vtable)
+{
+  uintptr_t section_length = __stop___libc_IO_vtables - __start___libc_IO_vtables;
+  const char *ptr = (const char *) vtable;
+  uintptr_t offset = ptr - __start___libc_IO_vtables;
+  if (__glibc_unlikely (offset >= section_length)) //检查vtable指针是否在glibc的vtable段中。
+    _IO_vtable_check ();
+  return vtable;
+}
+```
+`glibc`中有一段完整的内存存放着各个`vtable`，其中`__start___libc_IO_vtables`指向第一个`vtable`地址`_IO_helper_jumps`，而`__stop___libc_IO_vtables`指向最后一个`vtable_IO_str_chk_jumps`结束的地址。  
+若指针不在`glibc`的`vtable`段，会调用`_IO_vtable_check()`做进一步检查，以判断程序是否使用了外部合法的`vtable`（重构或是动态链接库中的`vtable`），如果不是则报错。  
+具体源码如下：
+```c
+void attribute_hidden _IO_vtable_check (void)
+{
+#ifdef SHARED
+  void (*flag) (void) = atomic_load_relaxed (&IO_accept_foreign_vtables);
+#ifdef PTR_DEMANGLE
+  PTR_DEMANGLE (flag);
+#endif
+  if (flag == &_IO_vtable_check) //检查是否是外部重构的vtable
+    return;
+ 
+  {
+    Dl_info di;
+    struct link_map *l;
+    if (_dl_open_hook != NULL
+        || (_dl_addr (_IO_vtable_check, &di, &l, NULL) != 0
+            && l->l_ns != LM_ID_BASE)) //检查是否是动态链接库中的vtable
+      return;
+  }
+ 
+...
+ 
+  __libc_fatal ("Fatal error: glibc detected an invalid stdio handle\n");
+}
+```
