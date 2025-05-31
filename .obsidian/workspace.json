@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "Notes/MISC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IO_FILE"
+              "title": "MISC"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "Notes/MISC.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "IO_FILE 的大纲"
+              "title": "MISC 的大纲"
             }
           },
           {
@@ -196,9 +196,9 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "Notes/IO_FILE.md",
     "Notes/heap.md",
     "Notes/栈迁移.md",
-    "Notes/IO_FILE.md",
     "Notes/MIPS.md",
     "WriteUp/HnuSec Winter 2025.md",
     "WriteUp/ISCC 2025.md",
