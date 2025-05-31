@@ -531,6 +531,7 @@ p.interactive()
 https://bbs.kanxue.com/thread-273418.htm
 ### 概念
 large_bin是一种堆分配的管理方式，是**双向链表**，用于管理大于某个特定大小阈值的内存块。**一般而言，进入large_bin的最低字节为0x200(512)**。但由于引入了tcache_bin，使得**在tcache_bin尚未填满的情况下，进入large_bin的最低字节为0x410(1040)**，所以一般我们设置大堆块都是0x410起步。
+在 free 一个 unsorted bin 后再申请一个da
 ### large bin attack
 
 
