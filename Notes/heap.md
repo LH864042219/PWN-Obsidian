@@ -356,6 +356,40 @@ pause()
 p.interactive()
 ```
 
+## teache bin
+### 
+
+## Fast bin
+fastbin
+释放前 
+![[Pasted image 20250427152358.png]]
+释放后
+![[Pasted image 20250427152401.png]]
+![[Pasted image 20250427152405.png]]
+### Fastbin Double Free
+如果连续两次free同一个fastbin chunk，会触发double free检测导致报错，但若是先 free chunk1 再 free chunk2 ，然后再 free chunk1 则不会报错，同时还会使 fastbin 的链表变成下面这样
+![[Pasted image 20250427152408.png]]
+原因在与
+	1. fastbin 的 chunk 被 free 后 next_chunk 的 pre_inuse 位不会被清空
+	2. fastbin 在执行 free 的时候仅验证了 main_arena 直接指向的块，即链表指针头部的块。对于链表后面的块，并没有进行验证。
+注意因为 chunk1 被再次释放因此其 fd 值不再为 0 而是指向 chunk2，这时如果我们可以控制 chunk1 的内容，便可以写入其 fd 指针从而实现在我们想要的任意地址分配 fastbin 块。 例如构造一个上面这样的 fastbin 链表，malloc chunk1 后，将 chunk1 的 fd 修改为我们编造的在其他位置(比如在  bss 段构造的一个 fake chunk )的 fake chunk(**注意该 fake chunk 的 size域需要与当前 fastbin 链表应有的 size 相符**)，然后再次申请到 chunk1 的时候就可以申请到 fake chunk 的位置，之后就可以修改 fake chunk 里的内容，实现任意写的需求。
+### House of Spirit
+House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
+该技术的核心在于在目标位置处伪造 fastbin chunk，并将其释放，从而达到分配**指定地址**的 chunk 的目的。
+要想构造 fastbin fake chunk，并且将其释放时，可以将其放入到对应的 fastbin 链表中，需要绕过一些必要的检测，即
+- fake chunk 的 ISMMAP 位不能为 1，因为 free 时，如果是 mmap 的 chunk，会单独处理。
+- fake chunk 地址需要对齐， MALLOC_ALIGN_MASK
+- fake chunk 的 size 大小需要满足对应的 fastbin 的需求，同时也得对齐。
+- fake chunk 的 next chunk 的大小不能小于 `2 * SIZE_SZ`，同时也不能大于`av->system_mem` 。
+- fake chunk 对应的 fastbin 链表头部不能是该 fake chunk，即不能构成 double free 的情况。
+![[Pasted image 20250427152415.png]]
+即对于有如上这样一个区域，我们利用可控区域1和可控区域2，构造一个符合 fastbin 条件的 chunk 然后 free 他，之后再申请这个 chunk ，这样就可以控制目标区域内的内容
+### Alloc to Stack
+劫持 fastbin 的 fd 去栈上(**前提是栈上有对应的size值**)，malloc 后就会获得一个在栈上的 chunk 从而可以覆盖返回变量之类的。
+### Arbitrary Alloc
+和 Alloc to Stack 完全一样，区别就是 Arbitrary Alloc 是将 fastbin 的 fd 劫持到任意目标地址有size域的地址，从而修改对于地址。
+比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
+
 ## Unsorted bin
 ### 什么是unsorted bin
 首先看一下unsorted bin是什么
@@ -490,38 +524,6 @@ to_backdoor()
 
 p.interactive()
 ```
-## Fast bin
-fastbin
-释放前 
-![[Pasted image 20250427152358.png]]
-释放后
-![[Pasted image 20250427152401.png]]
-![[Pasted image 20250427152405.png]]
-### Fastbin Double Free
-如果连续两次free同一个fastbin chunk，会触发double free检测导致报错，但若是先 free chunk1 再 free chunk2 ，然后再 free chunk1 则不会报错，同时还会使 fastbin 的链表变成下面这样
-![[Pasted image 20250427152408.png]]
-原因在与
-	1. fastbin 的 chunk 被 free 后 next_chunk 的 pre_inuse 位不会被清空
-	2. fastbin 在执行 free 的时候仅验证了 main_arena 直接指向的块，即链表指针头部的块。对于链表后面的块，并没有进行验证。
-注意因为 chunk1 被再次释放因此其 fd 值不再为 0 而是指向 chunk2，这时如果我们可以控制 chunk1 的内容，便可以写入其 fd 指针从而实现在我们想要的任意地址分配 fastbin 块。 例如构造一个上面这样的 fastbin 链表，malloc chunk1 后，将 chunk1 的 fd 修改为我们编造的在其他位置(比如在  bss 段构造的一个 fake chunk )的 fake chunk(**注意该 fake chunk 的 size域需要与当前 fastbin 链表应有的 size 相符**)，然后再次申请到 chunk1 的时候就可以申请到 fake chunk 的位置，之后就可以修改 fake chunk 里的内容，实现任意写的需求。
-### House of Spirit
-House of Spirit 是 `the Malloc Maleficarum` 中的一种技术。
-该技术的核心在于在目标位置处伪造 fastbin chunk，并将其释放，从而达到分配**指定地址**的 chunk 的目的。
-要想构造 fastbin fake chunk，并且将其释放时，可以将其放入到对应的 fastbin 链表中，需要绕过一些必要的检测，即
-- fake chunk 的 ISMMAP 位不能为 1，因为 free 时，如果是 mmap 的 chunk，会单独处理。
-- fake chunk 地址需要对齐， MALLOC_ALIGN_MASK
-- fake chunk 的 size 大小需要满足对应的 fastbin 的需求，同时也得对齐。
-- fake chunk 的 next chunk 的大小不能小于 `2 * SIZE_SZ`，同时也不能大于`av->system_mem` 。
-- fake chunk 对应的 fastbin 链表头部不能是该 fake chunk，即不能构成 double free 的情况。
-![[Pasted image 20250427152415.png]]
-即对于有如上这样一个区域，我们利用可控区域1和可控区域2，构造一个符合 fastbin 条件的 chunk 然后 free 他，之后再申请这个 chunk ，这样就可以控制目标区域内的内容
-### Alloc to Stack
-劫持 fastbin 的 fd 去栈上(**前提是栈上有对应的size值**)，malloc 后就会获得一个在栈上的 chunk 从而可以覆盖返回变量之类的。
-### Arbitrary Alloc
-和 Alloc to Stack 完全一样，区别就是 Arbitrary Alloc 是将 fastbin 的 fd 劫持到任意目标地址有size域的地址，从而修改对于地址。
-比如可以分配 fastbin 到 `_malloc_hook` 的位置，相当于覆盖 `_malloc_hook`来控制程序流程
-## teache bin
-
 ## large bin
 https://bbs.kanxue.com/thread-273418.htm
 ### 概念
