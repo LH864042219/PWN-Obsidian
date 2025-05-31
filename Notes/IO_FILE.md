@@ -119,3 +119,19 @@ struct _IO_wide_data
 #define _IO_BAD_SEEN 0x4000
 #define _IO_USER_LOCK 0x8000
 ```
+此外，许多`Pwn`题初始化的时候都会有下面三行：
+```c
+setvbuf(stdin, 0LL, 2, 0LL);
+setvbuf(stdout, 0LL, 2, 0LL);
+setvbuf(stderr, 0LL, 2, 0LL);
+```
+这是初始化程序的`io`结构体，只有初始化之后，`io`函数才能在程序过程中打印数据，如果不初始化，就只能在`exit`结束的时候，才能一起把数据打印出来。
+# FSOP
+主要原理为劫持`vtable`与`_chain`，伪造`IO_FILE`，主要利用方式为调用`IO_flush_all_lockp()`函数触发。  
+`IO_flush_all_lockp()`函数将在以下三种情况下被调用：
+
+1. `libc`检测到**内存错误**，从而执行`abort`函数时（在`glibc-2.26`删除）。
+2. 程序执行`exit`函数时。
+3. 程序从`main`函数返回时。
+
+源码：
