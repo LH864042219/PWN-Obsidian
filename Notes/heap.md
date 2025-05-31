@@ -535,8 +535,11 @@ large_bin是一种堆分配的管理方式，是**双向链表**，用于管理�
 ### large bin attack
 首先 large bin 可以泄漏 libc 基址和 heap 基址
 ![[Pasted image 20250531115700.png]]
-其次，简单来说，只要修改 bk_nextsize 为 target_addr - 0x20 就能完成一次任意写，将
-
+其次，在largebin插入的过程中，伪造largebin的bk_nextsize以及bk，实现任意地址写堆地址。
+**基本步骤**
+1.首先需要把一个可控的堆块送入largebin，设为chunk1
+2.利用uaf或者其他手段，修改chunk1的bk为triggr_addr1-0x10,chunk1的bk_nextsize修改为triggr_addr2-0x20。
+3.再free一个属于largebin范围的chunk2，然后malloc一个大堆块，就能做到largebin_attack。
 
 ## House of XXX
 ### House of Force
