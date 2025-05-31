@@ -357,7 +357,7 @@ p.interactive()
 ```
 
 ## teache bin
-### 
+
 
 ## Fast bin
 fastbin
