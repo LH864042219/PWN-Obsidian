@@ -615,7 +615,8 @@ p.interactive()
 https://bbs.kanxue.com/thread-273418.htm
 ### House of Orange
 **libc2.23->libc2.26**
-用处在与题目中没用free类型的操作时
+在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
+具体利用方法，改小 top chunk 的值，然后再申请一个大于该值的堆块
 
 ## Hook
 ### realloc_hook
