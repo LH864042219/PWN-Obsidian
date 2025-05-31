@@ -615,6 +615,7 @@ p.interactive()
 https://bbs.kanxue.com/thread-273418.htm
 ### House of Orange
 **libc2.23->libc2.26**
+用处在与题目中没用free类型的操作时
 
 ## Hook
 ### realloc_hook
