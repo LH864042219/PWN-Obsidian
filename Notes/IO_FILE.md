@@ -99,7 +99,7 @@ struct _IO_wide_data
 };
 ```
 还有一些宏的定义：
-```
+```c
 #define _IO_MAGIC 0xFBAD0000
 #define _OLD_STDIO_MAGIC 0xFABC0000
 #define _IO_MAGIC_MASK 0xFFFF0000
@@ -434,4 +434,4 @@ payload += p64(libc_base + libc.sym["system"])
 ```
 而在`libc-2.28`及以后，由于不再使用偏移找`_s._allocate_buffer`和`_s._free_buffer`，而是直接用`malloc`和`free`代替，所以`FSOP`也失效了。
 
-看下来后如果没理解错的话FSOP和SROP感觉类似，都是劫持程序流之类的东西到一个自己可控的区域，然后伪造对应的
+看下来后如果没理解错的话FSOP和SROP感觉类似，都是劫持程序流之类的东西到一个自己可控的区域，然后伪造对应的数据，让程序执行时调用伪造部分数据来get shell。
