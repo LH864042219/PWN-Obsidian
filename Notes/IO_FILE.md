@@ -433,3 +433,5 @@ payload += p64(libc_base + get_IO_str_jumps_offset()) # _IO_str_jumps
 payload += p64(libc_base + libc.sym["system"])
 ```
 而在`libc-2.28`及以后，由于不再使用偏移找`_s._allocate_buffer`和`_s._free_buffer`，而是直接用`malloc`和`free`代替，所以`FSOP`也失效了。
+
+看下来后如果没理解错的话FSOP和SROP感觉类似，都是劫持程序流之类的东西到一个自己可控的区域，然后伪造对应的
