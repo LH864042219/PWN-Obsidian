@@ -1,3 +1,4 @@
+主要内容是下面文章大佬的，写的非常不错，如果有自己的想法会在里面补充
 https://bbs.kanxue.com/thread-273418.htm
 https://bbs.kanxue.com/thread-272098.htm
 # IO_FILE相关结构体
@@ -135,3 +136,30 @@ setvbuf(stderr, 0LL, 2, 0LL);
 3. 程序从`main`函数返回时。
 
 源码：
+```c
+int _IO_flush_all_lockp (int do_lock)
+{
+  int result = 0;
+  struct _IO_FILE *fp;
+  int last_stamp;
+ 
+  fp = (_IO_FILE *) _IO_list_all;
+  while (fp != NULL)
+    {
+        ...
+      if (((fp->_mode <= 0 && fp->_IO_write_ptr > fp->_IO_write_base)
+#if defined _LIBC || defined _GLIBCPP_USE_WCHAR_T
+       || (_IO_vtable_offset (fp) == 0
+           && fp->_mode > 0 && (fp->_wide_data->_IO_write_ptr
+                    > fp->_wide_data->_IO_write_base))
+#endif
+       )
+      && _IO_OVERFLOW (fp, EOF) == EOF)   //如果输出缓冲区有数据，刷新输出缓冲区
+    result = EOF;
+ 
+ 
+    fp = fp->_chain; //遍历链表
+    }
+    [...]
+}
+```
