@@ -163,3 +163,8 @@ int _IO_flush_all_lockp (int do_lock)
     [...]
 }
 ```
+可以看到，当满足：
+```c
+fp->_mode = 0
+fp->_IO_write_ptr > fp->_IO_write_base
+```
