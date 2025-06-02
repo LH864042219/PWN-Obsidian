@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "WriteUp/PolarCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "heap"
+              "title": "PolarCTF 2025"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "WriteUp/PolarCTF 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "heap 的大纲"
+              "title": "PolarCTF 2025 的大纲"
             }
           },
           {
@@ -196,11 +196,11 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "WriteUp/NewStarCTF 2024.md",
+    "WriteUp/ISCC 2025.md",
+    "Notes/heap.md",
     "picture/QQ.jpg",
     "一些常用链接.md",
-    "Notes/heap.md",
-    "WriteUp/ISCC 2025.md",
-    "WriteUp/NewStarCTF 2024.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/MISC.md",
     "Notes/IO_FILE.md",
@@ -232,7 +232,6 @@
     "picture/image-20250518191828971.png",
     "picture/image-20250518191734086.png",
     "picture/Pasted image 20250518185414.png",
-    "picture/Pasted image 20250518185337.png",
     "刷题记录",
     "Notes",
     "WriteUp",
