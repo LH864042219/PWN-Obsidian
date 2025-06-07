@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/NewStarCTF 2024.md",
+                "file": "Notes/orw.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NewStarCTF 2024"
+              "title": "orw"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/NewStarCTF 2024.md",
+                "file": "Notes/orw.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "NewStarCTF 2024 的大纲"
+              "title": "orw 的大纲"
             }
           },
           {
@@ -196,6 +196,7 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "WriteUp/NewStarCTF 2024.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/ret2xxx.md",
     "Notes/heap.md",
@@ -221,7 +222,6 @@
     "WriteUp-unwritten/LitCTF 2025.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
     "一些常用链接.md",
-    "WriteUp-unwritten/御网杯 2025.md",
     "picture/QQ.jpg",
     "picture/Pasted image 20250531115700.png",
     "picture/Pasted image 20250531112113.png",
