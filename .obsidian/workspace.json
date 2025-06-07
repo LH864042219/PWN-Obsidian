@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "WriteUp/NewStarCTF 2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "heap"
+              "title": "NewStarCTF 2024"
             }
           }
         ],
@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 393.5124969482422
   },
   "right": {
     "id": "50c134b1c6ebec09",
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "WriteUp/NewStarCTF 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "heap 的大纲"
+              "title": "NewStarCTF 2024 的大纲"
             }
           },
           {
@@ -196,16 +196,17 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "WriteUp/HnuSec Winter 2025.md",
+    "Notes/ret2xxx.md",
+    "Notes/heap.md",
     "Notes/常用命令.md",
     "Notes/v8.md",
     "Notes/SROP.md",
-    "Notes/ret2xxx.md",
     "Notes/protobuf.md",
     "Notes/orw.md",
     "Notes/MISC.md",
     "Notes/MIPS.md",
     "Notes/IO_FILE.md",
-    "Notes/heap.md",
     "Notes/栈迁移.md",
     "Notes/如何commit.md",
     "Notes/二进制程序保护机制.md",
@@ -213,7 +214,6 @@
     "WriteUp/TGCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/ISCC 2025.md",
-    "WriteUp/HnuSec Winter 2025.md",
     "WriteUp/GHCTF 2025.md",
     "WriteUp/启航杯 2025.md",
     "WriteUp/湘岚杯 2025.md",
