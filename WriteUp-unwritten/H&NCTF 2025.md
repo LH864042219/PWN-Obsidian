@@ -288,3 +288,5 @@ p.interactive()
 ```
 ## 梦中情pwn | Working | CrazyCat
 类似堆的菜单题，flag从环境变量中读取
+```pytho
+```
