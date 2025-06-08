@@ -140,7 +140,7 @@ p.interactive()
 
 ```
 ## shellcode | Solved | CrazyCat
-侧信道爆破，还在爆
+侧信道爆破
 ```
 from pwn import *
 from wstube import websocket
@@ -287,4 +287,4 @@ p.interactive()
 
 ```
 ## 梦中情pwn | Working | CrazyCat
-类似堆的菜单题，flag在环境变量中
+类似堆的菜单题，flag从环境变量中读取
