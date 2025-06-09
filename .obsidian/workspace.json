@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp-unwritten/H&NCTF 2025.md",
+                "file": "Notes/heap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "H&NCTF 2025"
+              "title": "heap"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp-unwritten/H&NCTF 2025.md",
+                "file": "Notes/heap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "H&NCTF 2025 的大纲"
+              "title": "heap 的大纲"
             }
           },
           {
@@ -196,6 +196,7 @@
   },
   "active": "b41532bb0d25f796",
   "lastOpenFiles": [
+    "WriteUp/H&NCTF 2025.md",
     "picture/Pasted image 20250609154355.png",
     "picture/Pasted image 20250609154203.png",
     "picture/Pasted image 20250609153946.png",
@@ -203,7 +204,6 @@
     "picture/Pasted image 20250609153225.png",
     "Notes/heap.md",
     "picture/Pasted image 20250609151836.png",
-    "WriteUp-unwritten/H&NCTF 2025.md",
     "WriteUp/PolarCTF 2025.md",
     "WriteUp/TGCTF 2025.md",
     "Notes/orw.md",
@@ -231,7 +231,6 @@
     "picture/Pasted image 20250531115700.png",
     "picture/Pasted image 20250531112113.png",
     "picture/Pasted image 20250531111707.png",
-    "picture/Pasted image 20250531111401.png",
     "WriteUp-unwritten",
     "刷题记录",
     "Notes",
