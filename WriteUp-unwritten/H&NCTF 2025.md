@@ -293,7 +293,9 @@ p.interactive()
 题目从环境变量中读取flag然后存放在heap上下标为0的chunk里，
 ![[Pasted image 20250609153225.png]]
 删除和查找函数所用的collect_num函数过滤了下标为0的时候的输入所以无法直接对这个chunk来操作。
-但删除时存在漏洞，删除函数的逻辑会直接free对应的chunk然后再清除指针，但指针清除时如果
+但删除时存在漏洞，删除函数的逻辑会直接free对应的chunk然后再清除指针，但指针清除时如果待清除的指针前面的位置有空，则目标指针不会被清除，从而存在uaf漏洞。
+这里可以使用fast bin的double free漏洞。
+首先申请八个chunk填满t
 ```python
 from pwn import *
 from wstube import websocket
