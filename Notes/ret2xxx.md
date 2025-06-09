@@ -94,3 +94,4 @@ bss段要用 `bss + 0x800` 原因，左边是正常的程序，右边是栈迁�
 ![[Pasted image 20250420205842.png]]
 # ret2get
 https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/ret2gets
+https://bbs.kanxue.com/thread-287048.htm
