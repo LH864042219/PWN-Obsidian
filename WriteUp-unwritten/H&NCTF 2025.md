@@ -303,7 +303,7 @@ p.interactive()
 ![[Pasted image 20250609154203.png]]
 之后就可以用double free获得这样的链表
 ![[Pasted image 20250609154355.png]]
-然后修改指针指向heaplist,修改heaplist执行c
+然后修改指针指向heaplist,修改heaplist指向存有flag的chunk就可以将得到flag了。
 ```python
 from pwn import *
 from wstube import websocket
