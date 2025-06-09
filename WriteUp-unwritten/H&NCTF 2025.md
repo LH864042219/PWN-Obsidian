@@ -288,7 +288,9 @@ p.interactive()
 
 ```
 ## 梦中情pwn | Working | CrazyCat
-类似堆的菜单题，flag从环境变量中读取
+堆的菜单题，flag从环境变量中读取，本地调试的时候需要加个环境变量
+这道菜单题有增删查，chunk的size在0x40以内，不是利用tcache bin就是fast bin，结合其他题目版本都是2.35，这题没另外给libc,这题大概率也是2.35，所以有tcache bin。
+
 ```python
 from pwn import *
 from wstube import websocket
