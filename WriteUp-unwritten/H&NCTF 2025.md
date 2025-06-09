@@ -297,6 +297,8 @@ p.interactive()
 这里可以使用fast bin的double free漏洞。
 首先申请八个chunk填满tcache bin进入fast bin，然后通过fast bin泄漏heap基址。
 ![[Pasted image 20250609153700.png]]
+然后再malloc前七个chunk恢复heaplist里的指针，再free该chunk，就会有两个bin都指向这个chunk。
+![[Pasted image 20250609153946.png]]
 
 ```python
 from pwn import *
