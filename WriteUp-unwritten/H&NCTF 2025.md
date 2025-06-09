@@ -301,10 +301,9 @@ p.interactive()
 ![[Pasted image 20250609153946.png]]
 然后再连续两次malloc，就会再heaplist上得到两个指向同一个chunk的指针。
 ![[Pasted image 20250609154203.png]]
-之后就可以获得这样的链表来都变了
-
+之后就可以用double free获得这样的链表
 ![[Pasted image 20250609154355.png]]
-
+然后修改指针指向heaplist,修改heaplist执行c
 ```python
 from pwn import *
 from wstube import websocket
