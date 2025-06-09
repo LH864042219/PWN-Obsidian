@@ -299,6 +299,8 @@ p.interactive()
 ![[Pasted image 20250609153700.png]]
 然后再malloc前七个chunk恢复heaplist里的指针，再free该chunk，就会有两个bin都指向这个chunk。
 ![[Pasted image 20250609153946.png]]
+然后再连续两次malloc，就会再heaplist上得到两个指向同一个chunk的指针。
+![[Pasted image 20250609154203.png]]
 
 ```python
 from pwn import *
