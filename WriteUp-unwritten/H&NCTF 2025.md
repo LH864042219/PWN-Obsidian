@@ -291,6 +291,9 @@ p.interactive()
 堆的菜单题，flag从环境变量中读取，本地调试的时候需要加个环境变量
 这道菜单题有增删查，chunk的size在0x40以内，不是利用tcache bin就是fast bin，结合其他题目版本都是2.35，这题没另外给libc,这题大概率也是2.35，所以有tcache bin。
 题目从环境变量中读取flag然后存放在heap上下标为0的chunk里，
+![[Pasted image 20250609153225.png]]
+删除和查找函数所用的collect_num函数过滤了下标为0的时候的输入所以无法直接对这个chunk来操作。
+但删除时存在漏洞，删除函数的逻辑会直接free对应的chunk然后再清除指针，但指针清除时如果
 ```python
 from pwn import *
 from wstube import websocket
