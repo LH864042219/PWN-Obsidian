@@ -92,3 +92,5 @@ r_offset 域用于保存解析后的符号地址写入内存的位置， r_info 
 
 bss段要用 `bss + 0x800` 原因，左边是正常的程序，右边是栈迁移后模拟执行的绑定，可以看到由于偏移过小，已经覆盖到了got表段，用0x800可以避免这个问题
 ![[Pasted image 20250420205842.png]]
+# ret2get
+https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/ret2gets
