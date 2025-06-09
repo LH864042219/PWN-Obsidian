@@ -357,6 +357,12 @@ p.interactive()
 ```
 
 ## teache bin
+### 概念
+![[Pasted image 20250609151836.png]]
+这是**tcache 保护下的堆利用**，glibc 2.29+（或开启了 safe-linking）后，tcache 链表的 fd 指针会被加密，保护机制如下：
+
+> tcache entry 的 fd 实际存储的是：  
+> **fd = 下一个chunk地址 ^ (heap_base >> 12)**
 ### teache poisoning
 即修改 teache 中的 next ，不需要伪造任何 chunk 结构即可实现 malloc 到任意地址~~，不过在 2.29 后加入了 key 指针，构造的时候需要注意 key 小于 0 后就不会在 bins 中提取地址来作为 malloc 的位置。~~
 总体而言和 fast bins attack 类似，但不像 fast bins attack 一样需要位置上有一个符合 fast bins 条件的 size 。
