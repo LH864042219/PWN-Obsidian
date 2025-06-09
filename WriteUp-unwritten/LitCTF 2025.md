@@ -100,3 +100,4 @@ p.interactive()
 ```
 ## test_your_nc
 nc题的绕过
+命令绕过，有空总结一下
