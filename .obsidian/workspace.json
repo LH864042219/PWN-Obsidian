@@ -20,23 +20,8 @@
               "icon": "lucide-file",
               "title": "heap"
             }
-          },
-          {
-            "id": "b41532bb0d25f796",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "WriteUp-unwritten/LitCTF 2025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "LitCTF 2025"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -157,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp-unwritten/LitCTF 2025.md",
+                "file": "Notes/heap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "LitCTF 2025 的大纲"
+              "title": "heap 的大纲"
             }
           },
           {
@@ -194,10 +179,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b41532bb0d25f796",
+  "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
     "WriteUp-unwritten/轩辕杯 2025.md",
     "WriteUp-unwritten/LitCTF 2025.md",
+    "WriteUp-unwritten/御网杯 2025.md",
     "WriteUp-unwritten/Mini-L CTF 2025.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
     "Notes/heap.md",
@@ -227,7 +213,6 @@
     "Notes/格式化字符串漏洞.md",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/ISCC 2025.md",
-    "WriteUp/GHCTF 2025.md",
     "picture/QQ.jpg",
     "picture/Pasted image 20250531115700.png",
     "picture/Pasted image 20250531112113.png",
