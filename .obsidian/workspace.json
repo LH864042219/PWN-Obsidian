@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "刷题记录/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
+                "file": "Notes/栈迁移.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ret2text HNCTF 2022 WEEK2 ez_backdoor"
+              "title": "栈迁移"
             }
           }
         ]
@@ -181,6 +181,21 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "刷题记录/GDB HGAME 2022 week1 test your gdb.md",
+    "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
+    "刷题记录/HNCTF 2022 Week1 ezr0p32.md",
+    "刷题记录/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
+    "刷题记录/ret2libc BJDCTF 2020 babyrop.md",
+    "刷题记录/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
+    "刷题记录/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
+    "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "刷题记录/ret2syscall CISCN 2023 初赛 烧烤摊儿.md",
+    "刷题记录/ret2syscall WUSTCTF 2020 getshell2.md",
+    "刷题记录/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
+    "刷题记录/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
+    "刷题记录/伪随机 HDCTF 2023 pwnner.md",
+    "刷题记录/伪随机 2024暑假招新pwn1.md",
+    "刷题记录/栈对齐 CISCN 2019东北 PWN2.md",
     "刷题记录/高版本libc 2024暑假招新pwn5.md",
     "刷题记录/堆？NISACTF 2022 ezheap.md",
     "WriteUp/H&NCTF 2025.md",
@@ -198,21 +213,6 @@
     "picture/Pasted image 20250609153225.png",
     "picture/Pasted image 20250609151836.png",
     "WriteUp/PolarCTF 2025.md",
-    "WriteUp/TGCTF 2025.md",
-    "Notes/orw.md",
-    "WriteUp/NewStarCTF 2024.md",
-    "WriteUp/HnuSec Winter 2025.md",
-    "Notes/常用命令.md",
-    "Notes/v8.md",
-    "Notes/SROP.md",
-    "Notes/protobuf.md",
-    "Notes/MISC.md",
-    "Notes/MIPS.md",
-    "Notes/IO_FILE.md",
-    "Notes/栈迁移.md",
-    "Notes/如何commit.md",
-    "Notes/二进制程序保护机制.md",
-    "Notes/格式化字符串漏洞.md",
     "picture/QQ.jpg",
     "picture/Pasted image 20250531115700.png",
     "picture/Pasted image 20250531112113.png",
