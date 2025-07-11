@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/栈迁移.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "栈迁移"
+              "title": "一些常用链接"
             }
           }
         ]
@@ -181,6 +181,7 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/栈迁移.md",
     "刷题记录/GDB HGAME 2022 week1 test your gdb.md",
     "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
     "刷题记录/HNCTF 2022 Week1 ezr0p32.md",
@@ -212,7 +213,6 @@
     "picture/Pasted image 20250609153700.png",
     "picture/Pasted image 20250609153225.png",
     "picture/Pasted image 20250609151836.png",
-    "WriteUp/PolarCTF 2025.md",
     "picture/QQ.jpg",
     "picture/Pasted image 20250531115700.png",
     "picture/Pasted image 20250531112113.png",
