@@ -16,7 +16,7 @@ mmap函数是一个强大的系统调用，用于创建内存映射。它在内�
 相同类型的函数还有mprotect等。
 
 # 如何生成shellcode
-pwntools集合了一个自动生产shellcode的函数
+pwntools集合了一个自动生产shellcode的函数，如下
 ```
 context(arch='i386', os='linux', log_level='debug')
 shellcode = asm(shellcraft.sh())
