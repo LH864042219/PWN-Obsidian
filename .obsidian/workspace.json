@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hnusec Summer2025-shellcode.md",
+                "file": "WriteUp/PolarCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hnusec Summer2025-shellcode"
+              "title": "PolarCTF 2025"
             }
           }
         ],
@@ -194,16 +194,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3061674b0d691f90",
+  "active": "15efc96057a6651a",
   "lastOpenFiles": [
-    "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "WriteUp/NewStarCTF 2024.md",
+    "WriteUp/ISCC 2025.md",
+    "WriteUp/HnuSec Winter 2025.md",
+    "WriteUp/H&NCTF 2025.md",
+    "WriteUp/GHCTF 2025.md",
+    "WriteUp/湘岚杯 2025.md",
+    "WriteUp/启航杯 2025.md",
     "Hnusec Summer2025-shellcode.md",
+    "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
     "picture/Pasted image 20250721170530.png",
     "picture/Pasted image 20250721170343.png",
-    "WriteUp/H&NCTF 2025.md",
     "Notes/ret2xxx.md",
     "一些常用链接.md",
-    "WriteUp/湘岚杯 2025.md",
     "Notes/栈迁移.md",
     "刷题记录/GDB HGAME 2022 week1 test your gdb.md",
     "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
@@ -219,10 +224,6 @@
     "刷题记录/伪随机 HDCTF 2023 pwnner.md",
     "刷题记录/伪随机 2024暑假招新pwn1.md",
     "刷题记录/栈对齐 CISCN 2019东北 PWN2.md",
-    "刷题记录/高版本libc 2024暑假招新pwn5.md",
-    "刷题记录/堆？NISACTF 2022 ezheap.md",
-    "WriteUp-unwritten/LitCTF 2025.md",
-    "WriteUp-unwritten/Mini-L CTF 2025.md",
     "picture/Pasted image 20250609154355.png",
     "picture/Pasted image 20250609154203.png",
     "picture/Pasted image 20250609153946.png",
