@@ -194,13 +194,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "15efc96057a6651a",
+  "active": "3061674b0d691f90",
   "lastOpenFiles": [
+    "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "Hnusec Summer2025-shellcode.md",
     "picture/Pasted image 20250721170530.png",
     "picture/Pasted image 20250721170343.png",
     "WriteUp/H&NCTF 2025.md",
     "Notes/ret2xxx.md",
-    "Hnusec Summer2025-shellcode.md",
     "一些常用链接.md",
     "WriteUp/湘岚杯 2025.md",
     "Notes/栈迁移.md",
@@ -211,7 +212,6 @@
     "刷题记录/ret2libc BJDCTF 2020 babyrop.md",
     "刷题记录/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
     "刷题记录/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
-    "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
     "刷题记录/ret2syscall CISCN 2023 初赛 烧烤摊儿.md",
     "刷题记录/ret2syscall WUSTCTF 2020 getshell2.md",
     "刷题记录/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
@@ -231,7 +231,6 @@
     "picture/Pasted image 20250609151836.png",
     "picture/QQ.jpg",
     "picture/Pasted image 20250531115700.png",
-    "picture/Pasted image 20250531112113.png",
     "WriteUp-unwritten",
     "刷题记录",
     "Notes",
