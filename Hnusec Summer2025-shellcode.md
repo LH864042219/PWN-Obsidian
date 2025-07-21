@@ -15,5 +15,12 @@ mmap函数是一个强大的系统调用，用于创建内存映射。它在内�
 通常来说，在pwn题里，mmap函数用于改变一段地址的权限，通常出现在shellcode类型的题目中来改变某一段地址让其有rwx的权限来供攻击者来注入shellcode获取shell。
 相同类型的函数还有mprotect等。
 
-# 
+# 如何生成shellcode
+pwntools集合了一个自动生产shellcode的函数
+```
+context(arch='i386', os='linux', log_level='debug')
+shellcode = asm(shellcraft.sh())
+```
+用context.arch来设定需要生成shellcode是32位还是64位，即可自动生成一段shellcode
+
 
