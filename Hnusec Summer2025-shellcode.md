@@ -1,2 +1,2 @@
 # 什么是shellcode
-shellcode通常是指一段汇编代码，在执行后
+shellcode通常是指一段汇编代码，在执行后可以让我们来获取shell或者直接cat flag
