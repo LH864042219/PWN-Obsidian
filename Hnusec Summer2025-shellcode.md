@@ -1,0 +1,2 @@
+# 什么是shellcode
+shellcode通常是指一段汇编代码，在执行后
