@@ -10,5 +10,10 @@ shellcode通常是指一段汇编代码，在执行后可以让我们来获取sh
 可以看到同样的代码中如果关闭NX保护，栈部分就有可执行权限，这种情况下就可以注入shellcode来执行。
 
 ## mmap
+`void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);`
+mmap函数是一个强大的系统调用，用于创建内存映射。它在内存管理、文件I/O和进程间通信中有广泛应用。
+通常来说，在pwn题里，mmap函数用于改变一段地址的权限，通常出现在shellcode类型的题目中来改变某一段地址让其有rwx的权限来供攻击者来注入shellcode获取shell。
+相同类型的函数还有mprotect等。
 
+# 
 
