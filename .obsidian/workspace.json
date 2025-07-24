@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/格式化字符串漏洞.md",
+                "file": "WriteUp-unwritten/LitCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "格式化字符串漏洞"
+              "title": "LitCTF 2025"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/格式化字符串漏洞.md",
+                "file": "WriteUp-unwritten/LitCTF 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "格式化字符串漏洞 的大纲"
+              "title": "LitCTF 2025 的大纲"
             }
           },
           {
@@ -196,6 +196,7 @@
   },
   "active": "15efc96057a6651a",
   "lastOpenFiles": [
+    "Notes/格式化字符串漏洞.md",
     "Notes/二进制程序保护机制.md",
     "WriteUp-unwritten/LitCTF 2025.md",
     "WriteUp-unwritten/御网杯 2025.md",
@@ -223,7 +224,6 @@
     "Notes/栈迁移.md",
     "刷题记录/GDB HGAME 2022 week1 test your gdb.md",
     "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
-    "刷题记录/HNCTF 2022 Week1 ezr0p32.md",
     "picture/Pasted image 20250609154355.png",
     "picture/Pasted image 20250609154203.png",
     "picture/Pasted image 20250609153946.png",
