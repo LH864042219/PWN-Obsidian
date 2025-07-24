@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp-unwritten/LitCTF 2025.md",
+                "file": "Notes/格式化字符串漏洞.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LitCTF 2025"
+              "title": "格式化字符串漏洞"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp-unwritten/LitCTF 2025.md",
+                "file": "Notes/格式化字符串漏洞.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "LitCTF 2025 的大纲"
+              "title": "格式化字符串漏洞 的大纲"
             }
           },
           {
@@ -196,10 +196,11 @@
   },
   "active": "15efc96057a6651a",
   "lastOpenFiles": [
+    "Notes/二进制程序保护机制.md",
+    "WriteUp-unwritten/LitCTF 2025.md",
     "WriteUp-unwritten/御网杯 2025.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
     "WriteUp-unwritten/Mini-L CTF 2025.md",
-    "WriteUp-unwritten/LitCTF 2025.md",
     "WriteUp-unwritten/轩辕杯 2025.md",
     "WriteUp/ISCC 2025.md",
     "WriteUp/NewStarCTF 2024.md",
@@ -223,7 +224,6 @@
     "刷题记录/GDB HGAME 2022 week1 test your gdb.md",
     "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
     "刷题记录/HNCTF 2022 Week1 ezr0p32.md",
-    "刷题记录/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
     "picture/Pasted image 20250609154355.png",
     "picture/Pasted image 20250609154203.png",
     "picture/Pasted image 20250609153946.png",
