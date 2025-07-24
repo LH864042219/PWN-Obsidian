@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/湘岚杯 2025.md",
+                "file": "WriteUp/NewStarCTF 2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "湘岚杯 2025"
+              "title": "NewStarCTF 2024"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/湘岚杯 2025.md",
+                "file": "WriteUp/NewStarCTF 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "湘岚杯 2025 的大纲"
+              "title": "NewStarCTF 2024 的大纲"
             }
           },
           {
@@ -196,22 +196,25 @@
   },
   "active": "15efc96057a6651a",
   "lastOpenFiles": [
+    "WriteUp/PolarCTF 2025.md",
+    "WriteUp/SQCTF 2025.md",
+    "WriteUp/TGCTF 2025.md",
+    "WriteUp/XYCTF 2025.md",
+    "Notes/heap.md",
+    "WriteUp-unwritten/ParlooCTF 2025.md",
+    "WriteUp-unwritten/Mini-L CTF 2025.md",
+    "WriteUp-unwritten/LitCTF 2025.md",
+    "WriteUp-unwritten/御网杯 2025.md",
+    "WriteUp-unwritten/轩辕杯 2025.md",
+    "WriteUp/湘岚杯 2025.md",
     "WriteUp/GHCTF 2025.md",
     "WriteUp/H&NCTF 2025.md",
     "WriteUp/HnuSec Winter 2025.md",
     "WriteUp/ISCC 2025.md",
     "WriteUp/NewStarCTF 2024.md",
-    "WriteUp/PolarCTF 2025.md",
-    "WriteUp/SQCTF 2025.md",
-    "WriteUp/XYCTF 2025.md",
-    "WriteUp/TGCTF 2025.md",
-    "Notes/heap.md",
-    "WriteUp-unwritten/Mini-L CTF 2025.md",
-    "WriteUp-unwritten/LitCTF 2025.md",
     "Hnusec Summer2025-shellcode.md",
     "Notes/ret2xxx.md",
     "刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
-    "WriteUp/湘岚杯 2025.md",
     "WriteUp/启航杯 2025.md",
     "picture/Pasted image 20250721170530.png",
     "picture/Pasted image 20250721170343.png",
@@ -221,9 +224,6 @@
     "刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
     "刷题记录/HNCTF 2022 Week1 ezr0p32.md",
     "刷题记录/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
-    "刷题记录/ret2libc BJDCTF 2020 babyrop.md",
-    "刷题记录/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
-    "刷题记录/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
     "picture/Pasted image 20250609154355.png",
     "picture/Pasted image 20250609154203.png",
     "picture/Pasted image 20250609153946.png",
