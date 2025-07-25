@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/nc绕过.md",
+                "file": "Notes/IO_FILE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "nc绕过"
+              "title": "IO_FILE"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/nc绕过.md",
+                "file": "Notes/IO_FILE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "nc绕过 的大纲"
+              "title": "IO_FILE 的大纲"
             }
           },
           {
@@ -181,8 +181,8 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
-    "WriteUp/H&NCTF 2025.md",
     "Notes/nc绕过.md",
+    "WriteUp/H&NCTF 2025.md",
     "Notes/heap.md",
     "Notes/MISC.md",
     "Notes/protobuf.md",
