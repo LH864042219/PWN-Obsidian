@@ -636,13 +636,16 @@ p.interactive()
 
 ### House of Apple
 #轩辕杯
-https://bbs.kanxue.com/thread-273418.htm
+https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/
 #### 使用条件
 1. 程序从main函数返回或能调用能够exit函数
 2. 能泄漏出heap地址和libc地址
 3. 能使用一次largebin attack
 #### 使用原理
 当程序从`main`函数返回或者执行`exit`函数的时候，均会调用`fcloseall`函数，该调用链为：
+- exit
+	- fcloseall
+		- IOcleanup
 最后会遍历`_IO_list_all`存放的每一个`IO_FILE`结构体，如果满足条件的话，会调用每个结构体中`vtable->_overflow`函数指针指向的函数。
 使用`largebin attack`可以劫持`_IO_list_all`变量，将其替换为伪造的`IO_FILE`结构体
 ### House of Orange
