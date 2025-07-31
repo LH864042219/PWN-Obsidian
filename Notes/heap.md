@@ -646,8 +646,61 @@ https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%
 - exit
 	- fcloseall
 		- IOcleanup
+			- IOflushalllockp
+			    - IOOVERFLOW
 最后会遍历`_IO_list_all`存放的每一个`IO_FILE`结构体，如果满足条件的话，会调用每个结构体中`vtable->_overflow`函数指针指向的函数。
-使用`largebin attack`可以劫持`_IO_list_all`变量，将其替换为伪造的`IO_FILE`结构体
+使用 `largebin attack` 可以劫持`_IO_list_all` 变量，将其替换为伪造的 `IO_FILE` 结构体，而在此时，我们其实仍可以继续利用某些 `IO` 流函数去修改其他地方的值。要想修改其他地方的值，就离不开`_IO_FILE` 的一个成员`_wide_data` 的利用。
+```c
+struct _IO_FILE_complete
+{
+  struct _IO_FILE _file;
+  __off64_t _offset;
+  /* Wide character stream stuff.  */
+  struct _IO_codecvt *_codecvt;
+  struct _IO_wide_data *_wide_data; // 劫持这个变量
+  struct _IO_FILE *_freeres_list;
+  void *_freeres_buf;
+  size_t __pad5;
+  int _mode;
+  /* Make sure we don't get into trouble again.  */
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+};
+```
+`amd64` 程序下，`struct _IO_wide_data *_wide_data` 在`_IO_FILE` 中的偏移为 `0xa0`：
+```
+amd64：
+
+0x0:'_flags',
+0x8:'_IO_read_ptr',
+0x10:'_IO_read_end',
+0x18:'_IO_read_base',
+0x20:'_IO_write_base',
+0x28:'_IO_write_ptr',
+0x30:'_IO_write_end',
+0x38:'_IO_buf_base',
+0x40:'_IO_buf_end',
+0x48:'_IO_save_base',
+0x50:'_IO_backup_base',
+0x58:'_IO_save_end',
+0x60:'_markers',
+0x68:'_chain',
+0x70:'_fileno',
+0x74:'_flags2',
+0x78:'_old_offset',
+0x80:'_cur_column',
+0x82:'_vtable_offset',
+0x83:'_shortbuf',
+0x88:'_lock',
+0x90:'_offset',
+0x98:'_codecvt',
+0xa0:'_wide_data',
+0xa8:'_freeres_list',
+0xb0:'_freeres_buf',
+0xb8:'__pad5',
+0xc0:'_mode',
+0xc4:'_unused2',
+0xd8:'vtable'
+```
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
