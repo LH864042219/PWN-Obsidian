@@ -635,7 +635,10 @@ p.interactive()
 ```
 
 ### House of Apple
+
 https://bbs.kanxue.com/thread-273418.htm
+## 使用条件
+1. 程序从main函数返回或能调用能够exit函数
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
