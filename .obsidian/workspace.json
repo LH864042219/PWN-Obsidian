@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "Notes/pwn 题目编译.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IO_FILE"
+              "title": "pwn 题目编译"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "Notes/pwn 题目编译.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "IO_FILE 的反向链接列表"
+              "title": "pwn 题目编译 的反向链接列表"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "Notes/pwn 题目编译.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "IO_FILE 的大纲"
+              "title": "pwn 题目编译 的大纲"
             }
           },
           {
@@ -181,9 +181,10 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/IO_FILE.md",
+    "Notes/pwn 题目编译.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
     "WriteUp-unwritten/轩辕杯 2025.md",
-    "Notes/IO_FILE.md",
     "Notes/heap.md",
     "WriteUp/ISCC 2025.md",
     "WriteUp/TGCTF 2025.md",
@@ -206,7 +207,6 @@
     "WriteUp/LitCTF 2025.md",
     "Notes/nc绕过.md",
     "Notes/MISC.md",
-    "Notes/protobuf.md",
     "picture/Pasted image 20250724163202.png",
     "picture/Pasted image 20250724163129.png",
     "picture/Pasted image 20250724163113.png",
