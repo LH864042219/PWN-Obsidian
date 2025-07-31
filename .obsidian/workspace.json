@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/H&NCTF 2025.md",
+                "file": "Notes/ret2xxx.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "H&NCTF 2025"
+              "title": "ret2xxx"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/H&NCTF 2025.md",
+                "file": "Notes/ret2xxx.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "H&NCTF 2025 的大纲"
+              "title": "ret2xxx 的大纲"
             }
           },
           {
@@ -181,6 +181,8 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/二进制程序保护机制.md",
+    "WriteUp/H&NCTF 2025.md",
     "WriteUp/HnuSec Winter 2025.md",
     "WriteUp/ISCC 2025.md",
     "WriteUp/LitCTF 2025.md",
@@ -193,7 +195,6 @@
     "WriteUp-unwritten/ParlooCTF 2025.md",
     "WriteUp-unwritten/御网杯 2025.md",
     "WriteUp-unwritten/轩辕杯 2025.md",
-    "WriteUp/H&NCTF 2025.md",
     "Notes/heap.md",
     "一些常用链接.md",
     "Notes/pwn 题目编译.md",
@@ -206,7 +207,6 @@
     "WriteUp/湘岚杯 2025.md",
     "WriteUp/GHCTF 2025.md",
     "Notes/nc绕过.md",
-    "Notes/MISC.md",
     "picture/Pasted image 20250724163202.png",
     "picture/Pasted image 20250724163129.png",
     "picture/Pasted image 20250724163113.png",
