@@ -889,52 +889,56 @@ void main()
 
 #### 利用思路
 从上面的分析可以，在只给了 `1` 次 `largebin attack` 的前提下，能利用`_IO_wstrn_overflow` 函数将任意地址空间上的值修改为一个已知地址，并且这个已知地址通常为堆地址。那么，当我们伪造两个甚至多个`_IO_FILE` 结构体，并将这些结构体通过 `chain` 字段串联起来就能进行组合利用。基于此，我总结了 `house of apple` 下至少四种利用思路。
-
-##### 思路一：修改 `tcache` 线程变量[](https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/#%e6%80%9d%e8%b7%af%e4%b8%80%e4%bf%ae%e6%94%b9tcache%e7%ba%bf%e7%a8%8b%e5%8f%98%e9%87%8f)
-
+##### 思路一：修改 `tcache` 线程变量
 该思路需要借助 `house of pig` 的思想，利用`_IO_str_overflow` 中的 `malloc` 进行任意地址分配，`memcpy` 进行任意地址覆盖。其代码片段如下：
-
-|   |   |
-|---|---|
-|```<br> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>```|```c<br>int<br>_IO_str_overflow (FILE *fp, int c)<br>{<br>  	  // ......<br>	  char *new_buf;<br>	  char *old_buf = fp->_IO_buf_base; // 赋值为old_buf<br>	  size_t old_blen = _IO_blen (fp);<br>	  size_t new_size = 2 * old_blen + 100;<br>	  if (new_size < old_blen)<br>	    return EOF;<br>	  new_buf = malloc (new_size); // 这里任意地址分配<br>	  if (new_buf == NULL)<br>	    {<br>	      /*	  __ferror(fp) = 1; */<br>	      return EOF;<br>	    }<br>	  if (old_buf)<br>	    {<br>	      memcpy (new_buf, old_buf, old_blen); // 劫持_IO_buf_base后即可任意地址写任意值<br>	      free (old_buf);<br>      // .......<br>  }<br>```|
-
+```c
+int
+_IO_str_overflow (FILE *fp, int c)
+{
+  	  // ......
+	  char *new_buf;
+	  char *old_buf = fp->_IO_buf_base; // 赋值为old_buf
+	  size_t old_blen = _IO_blen (fp);
+	  size_t new_size = 2 * old_blen + 100;
+	  if (new_size < old_blen)
+	    return EOF;
+	  new_buf = malloc (new_size); // 这里任意地址分配
+	  if (new_buf == NULL)
+	    {
+	      /*	  __ferror(fp) = 1; */
+	      return EOF;
+	    }
+	  if (old_buf)
+	    {
+	      memcpy (new_buf, old_buf, old_blen); // 劫持_IO_buf_base后即可任意地址写任意值
+	      free (old_buf);
+      // .......
+  }
+```
 利用步骤如下：
-
 - 伪造至少两个`_IO_FILE` 结构体
 - 第一个`_IO_FILE` 结构体执行`_IO_OVERFLOW` 的时候，利用`_IO_wstrn_overflow` 函数修改 `tcache` 全局变量为已知值，也就控制了 `tcache bin` 的分配
 - 第二个`_IO_FILE` 结构体执行`_IO_OVERFLOW` 的时候，利用`_IO_str_overflow` 中的 `malloc` 函数任意地址分配，并使用 `memcpy` 使得能够**任意地址写任意值**
 - 利用两次任意地址写任意值修改 `pointer_guard` 和 `IO_accept_foreign_vtables` 的值绕过`_IO_vtable_check` 函数的检测（或者利用一次任意地址写任意值修改 `libc.got` 里面的函数地址，很多 `IO` 流函数调用 `strlen/strcpy/memcpy/memset` 等都会调到 `libc.got` 里面的函数）
 - 利用一个`_IO_FILE`，随意伪造 `vtable` 劫持程序控制流即可
-
 因为可以已经任意地址写任意值了，所以这可以控制的变量和结构体非常多，也非常地灵活，需要结合具体的题目进行利用，比如题目中`_IO_xxx_jumps` 映射的地址空间可写的话直接修改其函数指针即可。
-
-### 思路二：修改 `mp_`结构体[](https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/#%e6%80%9d%e8%b7%af%e4%ba%8c%e4%bf%ae%e6%94%b9mp_%e7%bb%93%e6%9e%84%e4%bd%93)
-
+##### 思路二：修改 `mp_`结构体
 该思路与上述思路差不多，不过对 `tcachebin` 分配的劫持是通过修改 `mp_.tcache_bins` 这个变量。打这个结构体的好处是在攻击远程时不需要爆破地址，因为线程全局变量、`tls` 结构体的地址本地和远程并不一定是一样的，有时需要爆破。
-
 利用步骤如下：
-
 - 伪造至少两个`_IO_FILE` 结构体
 - 第一个`_IO_FILE` 结构体执行`_IO_OVERFLOW` 的时候，利用`_IO_wstrn_overflow` 函数修改 `mp_.tcache_bins` 为很大的值，使得很大的 `chunk` 也通过 `tcachebin` 去管理
 - 接下来的过程与上面的思路是一样的
-
-### 思路三：修改 `pointer_guard` 线程变量之 `house of emma`[](https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/#%e6%80%9d%e8%b7%af%e4%b8%89%e4%bf%ae%e6%94%b9pointer_guard%e7%ba%bf%e7%a8%8b%e5%8f%98%e9%87%8f%e4%b9%8bhouse-of-emma)
-
+##### 思路三：修改 `pointer_guard` 线程变量之 `house of emma`
 该思路其实就是 `house of apple + house of emma`。
-
 利用步骤如下：
-
 - 伪造两个`_IO_FILE` 结构体
 - 第一个`_IO_FILE` 结构体执行`_IO_OVERFLOW` 的时候，利用`_IO_wstrn_overflow` 函数修改 `tls` 结构体 `pointer_guard` 的值为已知值
 - 第二个`_IO_FILE` 结构体用来做 `house of emma` 利用即可控制程序执行流
-
-### 思路四：修改 `global_max_fast` 全局变量[](https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/#%e6%80%9d%e8%b7%af%e5%9b%9b%e4%bf%ae%e6%94%b9global_max_fast%e5%85%a8%e5%b1%80%e5%8f%98%e9%87%8f)
-
+##### 思路四：修改 `global_max_fast` 全局变量
 这个思路也很灵活，修改掉这个变量后，直接释放超大的 `chunk`，去覆盖掉 `point_guard` 或者 `tcache` 变量。我称之为 `house of apple + house of corrision`。
-
 利用过程与前面也基本是大同小异，就不在此详述了。
-
 其实也有其他的思路，比如还可以劫持 `main_arena`，不过这个结构体利用起来会更复杂，所需要的空间将更大。而在上述思路的利用过程中，可以选择错位构造`_IO_FILE` 结构体，只需要保证关键字段满足要求即可，这样可以更加节省空间。
+例题详见轩辕杯
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
