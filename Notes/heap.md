@@ -701,6 +701,40 @@ amd64：
 0xc4:'_unused2',
 0xd8:'vtable'
 ```
+我们在伪造`_IO_FILE` 结构体的时候，伪造`_wide_data` 变量，然后通过某些函数，比如`_IO_wstrn_overflow` 就可以将已知地址空间上的某些值修改为一个已知值。
+```c
+static wint_t
+_IO_wstrn_overflow (FILE *fp, wint_t c)
+{
+  /* When we come to here this means the user supplied buffer is
+     filled.  But since we must return the number of characters which
+     would have been written in total we must provide a buffer for
+     further use.  We can do this by writing on and on in the overflow
+     buffer in the _IO_wstrnfile structure.  */
+  _IO_wstrnfile *snf = (_IO_wstrnfile *) fp;
+
+  if (fp->_wide_data->_IO_buf_base != snf->overflow_buf)
+    {
+      _IO_wsetb (fp, snf->overflow_buf,
+		 snf->overflow_buf + (sizeof (snf->overflow_buf)
+				      / sizeof (wchar_t)), 0);
+
+      fp->_wide_data->_IO_write_base = snf->overflow_buf;
+      fp->_wide_data->_IO_read_base = snf->overflow_buf;
+      fp->_wide_data->_IO_read_ptr = snf->overflow_buf;
+      fp->_wide_data->_IO_read_end = (snf->overflow_buf
+				      + (sizeof (snf->overflow_buf)
+					 / sizeof (wchar_t)));
+    }
+
+  fp->_wide_data->_IO_write_ptr = snf->overflow_buf;
+  fp->_wide_data->_IO_write_end = snf->overflow_buf;
+
+  /* Since we are not really interested in storing the characters
+     which do not fit in the buffer we simply ignore it.  */
+  return c;
+}
+```
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
