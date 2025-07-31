@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "一些常用链接.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "orw"
+              "title": "一些常用链接"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/orw.md",
+                "file": "一些常用链接.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "orw 的大纲"
+              "title": "一些常用链接 的大纲"
             }
           },
           {
@@ -181,6 +181,7 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/orw.md",
     "Notes/ret2xxx.md",
     "Notes/二进制程序保护机制.md",
     "WriteUp/H&NCTF 2025.md",
@@ -202,7 +203,6 @@
     "Notes/IO_FILE.md",
     "Notes/MIPS.md",
     "Notes/SROP.md",
-    "Notes/orw.md",
     "WriteUp/启航杯 2025.md",
     "WriteUp/湘岚杯 2025.md",
     "WriteUp/GHCTF 2025.md",
