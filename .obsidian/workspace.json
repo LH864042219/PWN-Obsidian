@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "WriteUp/XYCTF 2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IO_FILE"
+              "title": "XYCTF 2025"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/IO_FILE.md",
+                "file": "WriteUp/XYCTF 2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "IO_FILE 的大纲"
+              "title": "XYCTF 2025 的大纲"
             }
           },
           {
@@ -181,16 +181,21 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/TGCTF 2025.md",
+    "WriteUp/SQCTF 2025.md",
+    "WriteUp/PolarCTF 2025.md",
+    "WriteUp/NewStarCTF 2024.md",
+    "WriteUp/LitCTF 2025.md",
+    "WriteUp/ISCC 2025.md",
+    "WriteUp/H&NCTF 2025.md",
+    "Notes/IO_FILE.md",
     "WriteUp-unwritten/轩辕杯 2025.md",
     "WriteUp-unwritten/Mini-L CTF 2025.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
-    "WriteUp/ISCC 2025.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/SROP.md",
     "Notes/heap.md",
-    "Notes/IO_FILE.md",
     "Notes/nc绕过.md",
-    "WriteUp/H&NCTF 2025.md",
     "Notes/MISC.md",
     "Notes/protobuf.md",
     "Notes/ret2xxx.md",
@@ -198,17 +203,12 @@
     "Notes/常用命令.md",
     "Notes/二进制程序保护机制.md",
     "Notes/格式化字符串漏洞.md",
-    "WriteUp/LitCTF 2025.md",
     "WriteUp-unwritten/御网杯 2025.md",
     "picture/Pasted image 20250724163202.png",
     "picture/Pasted image 20250724163129.png",
     "picture/Pasted image 20250724163113.png",
     "picture/Pasted image 20250724162642.png",
     "picture/Pasted image 20250724162557.png",
-    "WriteUp/NewStarCTF 2024.md",
-    "WriteUp/PolarCTF 2025.md",
-    "WriteUp/SQCTF 2025.md",
-    "WriteUp/TGCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
     "WriteUp/湘岚杯 2025.md",
     "WriteUp/GHCTF 2025.md",
