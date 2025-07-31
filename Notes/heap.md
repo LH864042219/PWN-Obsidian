@@ -635,10 +635,16 @@ p.interactive()
 ```
 
 ### House of Apple
-
+#轩辕杯
 https://bbs.kanxue.com/thread-273418.htm
-## 使用条件
+#### 使用条件
 1. 程序从main函数返回或能调用能够exit函数
+2. 能泄漏出heap地址和libc地址
+3. 能使用一次largebin attack
+#### 使用原理
+当程序从`main`函数返回或者执行`exit`函数的时候，均会调用`fcloseall`函数，该调用链为：
+最后会遍历`_IO_list_all`存放的每一个`IO_FILE`结构体，如果满足条件的话，会调用每个结构体中`vtable->_overflow`函数指针指向的函数。
+使用`largebin attack`可以劫持`_IO_list_all`变量，将其替换为伪造的`IO_FILE`结构体
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
