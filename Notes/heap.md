@@ -636,6 +636,7 @@ p.interactive()
 
 ### House of Apple
 #轩辕杯
+知识点来源：
 https://www.roderickchan.cn/zh-cn/house-of-apple-%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84glibc%E4%B8%ADio%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95-1/
 #### 使用条件
 1. 程序从main函数返回或能调用能够exit函数
@@ -753,7 +754,72 @@ _IO_wsetb (FILE *f, wchar_t *b, wchar_t *eb, int a)
     f->_flags2 |= _IO_FLAGS2_USER_WBUF;
 }
 ```
+`_IO_wstrnfile` 涉及到的结构体如下：
+```c
+struct _IO_str_fields
+{
+  _IO_alloc_type _allocate_buffer_unused;
+  _IO_free_type _free_buffer_unused;
+};
 
+struct _IO_streambuf
+{
+  FILE _f;
+  const struct _IO_jump_t *vtable;
+};
+
+typedef struct _IO_strfile_
+{
+  struct _IO_streambuf _sbf;
+  struct _IO_str_fields _s;
+} _IO_strfile;
+
+typedef struct
+{
+  _IO_strfile f;
+  /* This is used for the characters which do not fit in the buffer
+     provided by the user.  */
+  char overflow_buf[64];
+} _IO_strnfile;
+
+
+typedef struct
+{
+  _IO_strfile f;
+  /* This is used for the characters which do not fit in the buffer
+     provided by the user.  */
+  wchar_t overflow_buf[64]; // overflow_buf在这里********
+} _IO_wstrnfile;
+```
+其中，`overflow_buf` 相对于`_IO_FILE` 结构体的偏移为 `0xf0`，在 `vtable` 后面。
+而 `struct _IO_wide_data` 结构体如下：
+```c
+struct _IO_wide_data
+{
+  wchar_t *_IO_read_ptr;	/* Current read pointer */
+  wchar_t *_IO_read_end;	/* End of get area. */
+  wchar_t *_IO_read_base;	/* Start of putback+get area. */
+  wchar_t *_IO_write_base;	/* Start of put area. */
+  wchar_t *_IO_write_ptr;	/* Current put pointer. */
+  wchar_t *_IO_write_end;	/* End of put area. */
+  wchar_t *_IO_buf_base;	/* Start of reserve area. */
+  wchar_t *_IO_buf_end;		/* End of reserve area. */
+  /* The following fields are used to support backing up and undo. */
+  wchar_t *_IO_save_base;	/* Pointer to start of non-current get area. */
+  wchar_t *_IO_backup_base;	/* Pointer to first valid character of
+				   backup area */
+  wchar_t *_IO_save_end;	/* Pointer to end of non-current get area. */
+
+  __mbstate_t _IO_state;
+  __mbstate_t _IO_last_state;
+  struct _IO_codecvt _codecvt;
+  wchar_t _shortbuf[1];
+  const struct _IO_jump_t *_wide_vtable;
+};
+```
+==换而言之，假如此时在堆上伪造一个 `_IO_FILE` 结构体并已知其地址为 `A`，将 `A + 0xd8` 替换为 `_IO_wstrn_jumps` 地址，`A + 0xa0` 设置为 `B`，并设置其他成员以便能调用到 `_IO_OVERFLOW`。`exit` 函数则会一路调用到 `_IO_wstrn_overflow` 函数，并将 `B` 至 `B + 0x38` 的地址区域的内容都替换为 `A + 0xf0` 或者 `A + 0x1f0`。==
+
+简单写一个 `demo` 程序进行验证：
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
