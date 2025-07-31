@@ -735,6 +735,25 @@ _IO_wstrn_overflow (FILE *fp, wint_t c)
   return c;
 }
 ```
+分析一下这个函数，首先将 `fp` 强转为`_IO_wstrnfile *` 指针，然后判断 `fp->_wide_data->_IO_buf_base != snf->overflow_buf` 是否成立（一般肯定是成立的），如果成立则会对 `fp->_wide_data` 的`_IO_write_base`、`_IO_read_base`、`_IO_read_ptr` 和`_IO_read_end` 赋值为 `snf->overflow_buf` 或者与该地址一定范围内偏移的值；最后对 `fp->_wide_data` 的`_IO_write_ptr` 和`_IO_write_end` 赋值。
+
+==也就是说，只要控制了 `fp->_wide_data`，就可以控制从 `fp->_wide_data` 开始一定范围内的内存的值，也就等同于**任意地址写已知地址**。==
+这里有时候需要绕过`_IO_wsetb` 函数里面的 `free`：
+```c
+void
+_IO_wsetb (FILE *f, wchar_t *b, wchar_t *eb, int a)
+{
+  if (f->_wide_data->_IO_buf_base && !(f->_flags2 & _IO_FLAGS2_USER_WBUF))
+    free (f->_wide_data->_IO_buf_base); // 其不为0的时候不要执行到这里
+  f->_wide_data->_IO_buf_base = b;
+  f->_wide_data->_IO_buf_end = eb;
+  if (a)
+    f->_flags2 &= ~_IO_FLAGS2_USER_WBUF;
+  else
+    f->_flags2 |= _IO_FLAGS2_USER_WBUF;
+}
+```
+
 ### House of Orange
  libc2.23->libc2.26
 在题目中没用free类型的操作时利用。House of orange 核心就是通过漏洞利用获得free的效果。
