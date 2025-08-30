@@ -1,3 +1,4 @@
+https://www.cnblogs.com/JmpCliff/articles/17621413.html
 # 基础知识
 ## Operating System Kernel
 操作系统内核(Operation System Kernel)本质上也是一种软件，可以看作是普通应用程式与硬件之间的一层中间层，其主要作用便是调度系统资源、控制 IO 设备、操作网络与文件系统等，并为上层应用提供便捷、抽象的应用接口。
