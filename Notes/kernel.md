@@ -101,20 +101,20 @@ CISCN2017_babydriver [master●] bat boot.sh ───────┬───�
 
 其他的 qemu 参数可以通过 --help 查看。
 ## Protection and Bypass
-## Kernel stack cookies【canary】
+### Kernel stack cookies【canary】
 防止内核栈溢出
-## Kernel address space layout【KASLR】
+### Kernel address space layout【KASLR】
 内核地址随机化，难以爆破，需泄漏地址
-## Supervisor mode executionprotection【SMEP】
+### Supervisor mode executionprotection【SMEP】
 内核态中不能执行用户空间的代码。在内核中可以将CR4寄存器的第20比特设置为1，表示启用。
     - 开启：在-cpu参数中设置+smep
     - 关闭：nosmep添加到-append
 类比就像用户态开启了NX保护，可用ROP，addr_limit
-## Supervisor Mode AccessPrevention【SMAP】
+### Supervisor Mode AccessPrevention【SMAP】
 在内核态中不能读写用户页的数据。在内核中可以将CR4寄存器的第21比特设置为1，表示启用。
     - 开启：在-cpu参数中设置+smap
     - 关闭：nosmap添加到-append
-## Kernel page-tableisolation【KPTI】
+### Kernel page-tableisolation【KPTI】
 将用户页与内核页分隔开，在用户态时只使用用户页，而在内核态时使用内核页。
     - 开启：kpti=1
     - 关闭：nopti添加到-append
