@@ -109,7 +109,7 @@ CISCN2017_babydriver [master●] bat boot.sh ───────┬───�
 内核态中不能执行用户空间的代码。在内核中可以将CR4寄存器的第20比特设置为1，表示启用。
     - 开启：在-cpu参数中设置+smep
     - 关闭：nosmep添加到-append
-
+类比就像用户态开启了NX保护，可用ROP
 ## Supervisor Mode AccessPrevention【SMAP】
 在内核态中不能读写用户页的数据。在内核中可以将CR4寄存器的第21比特设置为1，表示启用。
     - 开启：在-cpu参数中设置+smap
