@@ -20,14 +20,10 @@ CPU 在不同的特权级间进行切换主要有两个途径：
 - 特权级相关指令：当 CPU 运行这些指令时会发生运行状态的改变，例如 iret 指令（ring0->ring3）或是 sysenter 指令（ring3->ring0）。
 
 基于这些特权级切换的方式，现代操作系统的开发者包装出了系统调用（syscall），作为由 “用户态” 切换到 “内核态” 的入口，从而执行内核代码来完成用户进程所需的一些功能。当用户进程想要请求更高权限的服务时，便需要通过由系统提供的应用接口，使用系统调用以陷入内核态，再由操作系统完成请求。
-### user space to kernel space （系统调用
-
+### user space to kernel space(系统调用)
 当发生 `系统调用`，`产生异常`，`外设产生中断` 等事件时，会发生用户态到内核态的切换，进入到内核相对应的处理程序中进行处理。
-
 系统调用是内核与用户通信的直接接口，因此我们主要关注用户空间比较常用的系统调用这一行为，其具体的过程为：
-
 > 注意：当系统调用指令执行后，CPU 便进入内核态，以下操作在内核态完成。
-
 1. 通过 `swapgs` 切换 GS 段寄存器，将 GS 寄存器值和一个特定位置的值进行交换，目的是保存 GS 值，同时将该位置的值作为内核执行时的 GS 值使用。
 2. 将当前栈顶（用户空间栈顶）记录在 CPU 独占变量区域里，将 CPU 独占区域里记录的内核栈顶放入 rsp/esp。
 3. 通过 push 保存各寄存器值，具体的代码如下:
@@ -62,10 +58,7 @@ sub $(6*8), %rsp                  /* pt_regs->bp, bx, r12-15 not saved */
 ```
 4. 通过汇编指令判断是否为 `x32_abi`。
 5. 通过系统调用号，跳到全局变量 `sys_call_table` 相应位置继续执行系统调用。
-
-### kernel space to user space[¶](https://ctf-wiki.org/pwn/linux/kernel-mode/basic-knowledge/#kernel-space-to-user-space "Permanent link")
-
+### kernel space to user space
 退出时，流程如下：
-
 1. 通过 `swapgs` 恢复 GS 值。
 2. 通过 `sysretq` 或者 `iretq` 恢复到用户控件继续执行。如果使用 `iretq` 还需要给出用户空间的一些信息（CS, eflags/rflags, esp/rsp 等）。
