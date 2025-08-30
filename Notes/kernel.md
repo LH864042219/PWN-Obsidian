@@ -35,16 +35,32 @@ CPU 在不同的特权级间进行切换主要有两个途径：
 ENTRY(entry_SYSCALL_64) 
 /* SWAPGS_UNSAFE_STACK是一个宏，x86直接定义为swapgs指令 */ 
 SWAPGS_UNSAFE_STACK 
-/* 保存栈值，并设置内核栈 */ 
+
+/* 保存栈值，并设置内核栈 */
 movq %rsp, PER_CPU_VAR(rsp_scratch) 
 movq PER_CPU_VAR(cpu_current_top_of_stack), %rsp 
+
+
 /* 通过push保存寄存器值，形成一个pt_regs结构 */ 
 /* Construct struct pt_regs on stack */ 
-pushq $__USER_DS /* pt_regs->ss */ 
-pushq PER_CPU_VAR(rsp_scratch) /* pt_regs->sp */ pushq %r11 /* pt_regs->flags */ pushq $__USER_CS /* pt_regs->cs */ pushq %rcx /* pt_regs->ip */ pushq %rax /* pt_regs->orig_ax */ pushq %rdi /* pt_regs->di */ pushq %rsi /* pt_regs->si */ pushq %rdx /* pt_regs->dx */ pushq %rcx tuichu /* pt_regs->cx */ pushq $-ENOSYS /* pt_regs->ax */ pushq %r8 /* pt_regs->r8 */ pushq %r9 /* pt_regs->r9 */ pushq %r10 /* pt_regs->r10 */ pushq %r11 /* pt_regs->r11 */ sub $(6*8), %rsp /* pt_regs->bp, bx, r12-15 not saved */
+pushq $__USER_DS                  /* pt_regs->ss */ 
+pushq PER_CPU_VAR(rsp_scratch)    /* pt_regs->sp */ 
+pushq %r11                        /* pt_regs->flags */ 
+pushq $__USER_CS                  /* pt_regs->cs */ 
+pushq %rcx                        /* pt_regs->ip */ 
+pushq %rax                        /* pt_regs->orig_ax */ 
+pushq %rdi                        /* pt_regs->di */ 
+pushq %rsi                        /* pt_regs->si */ 
+pushq %rdx                        /* pt_regs->dx */ 
+pushq %rcx tuichu                 /* pt_regs->cx */ 
+pushq $-ENOSYS                    /* pt_regs->ax */ 
+pushq %r8                         /* pt_regs->r8 */ 
+pushq %r9                         /* pt_regs->r9 */ 
+pushq %r10                        /* pt_regs->r10 */ 
+pushq %r11                        /* pt_regs->r11 */ 
+sub $(6*8), %rsp                  /* pt_regs->bp, bx, r12-15 not saved */
 ```
 4. 通过汇编指令判断是否为 `x32_abi`。
-    
 5. 通过系统调用号，跳到全局变量 `sys_call_table` 相应位置继续执行系统调用。
 
 ### kernel space to user space[¶](https://ctf-wiki.org/pwn/linux/kernel-mode/basic-knowledge/#kernel-space-to-user-space "Permanent link")
