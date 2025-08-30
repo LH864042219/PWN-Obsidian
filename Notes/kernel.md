@@ -62,3 +62,9 @@ sub $(6*8), %rsp                  /* pt_regs->bp, bx, r12-15 not saved */
 退出时，流程如下：
 1. 通过 `swapgs` 恢复 GS 值。
 2. 通过 `sysretq` 或者 `iretq` 恢复到用户控件继续执行。如果使用 `iretq` 还需要给出用户空间的一些信息（CS, eflags/rflags, esp/rsp 等）。
+
+# CTF kernel pwn 相关
+传统的 kernel pwn 题目通常会给以下三个文件：
+1. boot.sh: 一个用于启动 kernel 的 shell 的脚本，多用 qemu，保护措施与 qemu 不同的启动参数有关
+2. bzImage: compressed kernel binary
+3. rootfs.cpio: 文件系统映像
