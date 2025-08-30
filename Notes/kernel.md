@@ -64,6 +64,7 @@ sub $(6*8), %rsp                  /* pt_regs->bp, bx, r12-15 not saved */
 2. 通过 `sysretq` 或者 `iretq` 恢复到用户控件继续执行。如果使用 `iretq` 还需要给出用户空间的一些信息（CS, eflags/rflags, esp/rsp 等）。
 
 # CTF kernel pwn 相关
+## 基础文件
 传统的 kernel pwn 题目通常会给以下三个文件：
 1. boot.sh: 一个用于启动 kernel 的 shell 的脚本，多用 qemu，保护措施与 qemu 不同的启动参数有关
 2. bzImage: compressed kernel binary
@@ -99,3 +100,15 @@ CISCN2017_babydriver [master●] bat boot.sh ───────┬───�
 - -m 64M，设置虚拟 RAM 为 64M，默认为 128M
 
 其他的 qemu 参数可以通过 --help 查看。
+## 保护
+- Kernel stack cookies【canary】：防止内核栈溢出
+- Kernel address space layout【KASLR】：内核地址随机化
+- Supervisor mode executionprotection【SMEP】：内核态中不能执行用户空间的代码。在内核中可以将CR4寄存器的第20比特设置为1，表示启用。
+    - 开启：在-cpu参数中设置+smep
+    - 关闭：nosmep添加到-append
+- Supervisor Mode AccessPrevention【SMAP】：在内核态中不能读写用户页的数据。在内核中可以将CR4寄存器的第21比特设置为1，表示启用。
+    - 开启：在-cpu参数中设置+smap
+    - 关闭：nosmap添加到-append
+- Kernel page-tableisolation【KPTI】：将用户页与内核页分隔开，在用户态时只使用用户页，而在内核态时使用内核页。
+    - 开启：kpti=1
+    - 关闭：nopti添加到-append
