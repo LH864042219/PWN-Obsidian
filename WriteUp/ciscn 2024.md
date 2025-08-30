@@ -1,2 +1,3 @@
 # gostack
-一道go语言的题目
+一道go语言的栈溢出题目
+这种情况下可以看出ghidra和ida的一些区别，ghidra无法识别d
