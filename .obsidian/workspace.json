@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/kernel.md",
+                "file": "Notes/webpwn.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kernel"
+              "title": "webpwn"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/kernel.md",
+                "file": "Notes/webpwn.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "kernel 的大纲"
+              "title": "webpwn 的大纲"
             }
           },
           {
@@ -181,10 +181,11 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "Notes/kernel.md",
+    "Notes/webpwn.md",
     "picture/Pasted image 20250830153000.png",
     "picture/Pasted image 20250830152853.png",
     "WriteUp/ISCC 2025.md",
-    "Notes/kernel.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/heap.md",
     "Notes/栈迁移.md",
@@ -216,7 +217,6 @@
     "picture/Pasted image 20250721170530.png",
     "picture/Pasted image 20250721170343.png",
     "picture/Pasted image 20250609154355.png",
-    "picture/Pasted image 20250609154203.png",
     "WriteUp-unwritten",
     "刷题记录",
     "Notes",
