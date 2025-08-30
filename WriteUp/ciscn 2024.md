@@ -1,4 +1,5 @@
 # gostack
 一道go语言的栈溢出题目
 这种情况下可以看出ghidra和ida的一些区别，ghidra无法识别到函数的符号名称，但ida可以至少识别出函数的名称来帮助理解分析。
-这题有两种解法，第一种是func2直接是后门函数，栈溢出直接执行func2就可以getshell，但虽然func2有一个执行executeCommand的m的我没看出为什么func2可以getshell
+这题有两种解法，第一种是func2直接是后门函数，栈溢出直接执行func2就可以getshell，但虽然func2有一个执行executeCommand的命令，的我没看出这个参数是怎么设定的来可以getshell。
+第二种就是通过gadgets来构造rop链，这个不是很难，直接构造即可
