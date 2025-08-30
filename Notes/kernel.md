@@ -68,3 +68,25 @@ sub $(6*8), %rsp                  /* pt_regs->bp, bx, r12-15 not saved */
 1. boot.sh: 一个用于启动 kernel 的 shell 的脚本，多用 qemu，保护措施与 qemu 不同的启动参数有关
 2. bzImage: compressed kernel binary
 3. rootfs.cpio: 文件系统映像
+这里我们以 CISCN2017 - babydriver 为例：
+```bash
+CISCN2017_babydriver [master●] ls 
+babydriver.tar 
+CISCN2017_babydriver [master●] x babydriver.tar 
+boot.sh bzImage rootfs.cpio 
+CISCN2017_babydriver [master●] ls 
+babydriver.tar boot.sh bzImage rootfs.cpio 
+CISCN2017_babydriver [master●] file bzImage 
+bzImage: Linux kernel x86 boot executable bzImage, version 4.4.72 (atum@ubuntu) #1 SMP Thu Jun 15 19:52:50 PDT 2017, RO-rootFS, swap_dev 0x6, Normal VGA 
+CISCN2017_babydriver [master●] file rootfs.cpio 
+rootfs.cpio: gzip compressed data, last modified: Tue Jul 4 08:39:15 2017, max compression, from Unix, original size 2844672 CISCN2017_babydriver [master●] file boot.sh boot.sh: Bourne-Again shell script, ASCII text executable CISCN2017_babydriver [master●] bat boot.sh ───────┬───────────────────────────────────────────────────────────────────────────────── │ File: boot.sh ───────┼───────────────────────────────────────────────────────────────────────────────── 1 │ #!/bin/bash 2 │ 3 │ qemu-system-x86_64 -initrd rootfs.cpio -kernel bzImage -append 'console=ttyS0 ro │ ot=/dev/ram oops=panic panic=1' -enable-kvm -monitor /dev/null -m 64M --nographi │ c -smp cores=1,threads=1 -cpu kvm64,+smep ───────┴─────────────────────────────────────────────────────────────────────────────────
+```
+
+其中主要的 qemu 参数含义如下：
+
+- -initrd rootfs.cpio，使用 rootfs.cpio 作为内核启动的文件系统
+- -kernel bzImage，使用 bzImage 作为 kernel 映像
+- -cpu kvm64,+smep，设置 CPU 的安全选项，这里开启了 smep
+- -m 64M，设置虚拟 RAM 为 64M，默认为 128M
+
+其他的 qemu 参数可以通过 --help 查看。
