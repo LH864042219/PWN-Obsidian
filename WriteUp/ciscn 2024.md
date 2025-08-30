@@ -1,3 +1,3 @@
 # gostack
 一道go语言的栈溢出题目
-这种情况下可以看出ghidra和ida的一些区别，ghidra无法识别d
+这种情况下可以看出ghidra和ida的一些区别，ghidra无法识别到函数的符号名称，但ida可以至少识别出函数的名称来帮助理解分析
