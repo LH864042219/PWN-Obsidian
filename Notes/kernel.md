@@ -79,7 +79,16 @@ babydriver.tar boot.sh bzImage rootfs.cpio
 CISCN2017_babydriver [master●] file bzImage 
 bzImage: Linux kernel x86 boot executable bzImage, version 4.4.72 (atum@ubuntu) #1 SMP Thu Jun 15 19:52:50 PDT 2017, RO-rootFS, swap_dev 0x6, Normal VGA 
 CISCN2017_babydriver [master●] file rootfs.cpio 
-rootfs.cpio: gzip compressed data, last modified: Tue Jul 4 08:39:15 2017, max compression, from Unix, original size 2844672 CISCN2017_babydriver [master●] file boot.sh boot.sh: Bourne-Again shell script, ASCII text executable CISCN2017_babydriver [master●] bat boot.sh ───────┬───────────────────────────────────────────────────────────────────────────────── │ File: boot.sh ───────┼───────────────────────────────────────────────────────────────────────────────── 1 │ #!/bin/bash 2 │ 3 │ qemu-system-x86_64 -initrd rootfs.cpio -kernel bzImage -append 'console=ttyS0 ro │ ot=/dev/ram oops=panic panic=1' -enable-kvm -monitor /dev/null -m 64M --nographi │ c -smp cores=1,threads=1 -cpu kvm64,+smep ───────┴─────────────────────────────────────────────────────────────────────────────────
+rootfs.cpio: gzip compressed data, last modified: Tue Jul 4 08:39:15 2017, max compression, from Unix, original size 2844672 
+CISCN2017_babydriver [master●] file boot.sh 
+boot.sh: Bourne-Again shell script, ASCII text executable 
+CISCN2017_babydriver [master●] bat boot.sh ───────┬───────────────────────────────────────────────────────────────────────────────── 
+       │ File: boot.sh 
+───────┼───────────────────────────────────────────────────────────────────────────────── 
+     1 │ #!/bin/bash 
+     2 │ 
+     3 │ qemu-system-x86_64 -initrd rootfs.cpio -kernel bzImage -append 'console=ttyS0 ro │ ot=/dev/ram oops=panic panic=1' -enable-kvm -monitor /dev/null -m 64M --nographi │ c -smp cores=1,threads=1 -cpu kvm64,+smep 
+───────┴─────────────────────────────────────────────────────────────────────────────────
 ```
 
 其中主要的 qemu 参数含义如下：
