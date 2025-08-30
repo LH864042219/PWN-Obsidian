@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WriteUp/ISCC 2025.md",
+                "file": "Notes/kernel.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ISCC 2025"
+              "title": "kernel"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/ISCC 2025.md",
+                "file": "Notes/kernel.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ISCC 2025 的大纲"
+              "title": "kernel 的大纲"
             }
           },
           {
@@ -181,9 +181,10 @@
   },
   "active": "12aa8a665d44e2dd",
   "lastOpenFiles": [
+    "WriteUp/ISCC 2025.md",
+    "Notes/kernel.md",
     "WriteUp/HnuSec Winter 2025.md",
     "Notes/heap.md",
-    "WriteUp/ISCC 2025.md",
     "Notes/栈迁移.md",
     "WriteUp/H&NCTF 2025.md",
     "Notes/orw.md",
@@ -206,7 +207,6 @@
     "Notes/SROP.md",
     "WriteUp/启航杯 2025.md",
     "WriteUp/湘岚杯 2025.md",
-    "WriteUp/GHCTF 2025.md",
     "picture/Pasted image 20250724163202.png",
     "picture/Pasted image 20250724163129.png",
     "picture/Pasted image 20250724163113.png",
