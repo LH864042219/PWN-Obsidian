@@ -35,7 +35,8 @@
               "title": "ciscn 2024"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -156,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/heap.md",
+                "file": "WriteUp/ciscn 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "heap 的大纲"
+              "title": "ciscn 2024 的大纲"
             }
           },
           {
@@ -194,10 +195,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "12aa8a665d44e2dd",
+  "active": "93de41e18ee7017e",
   "lastOpenFiles": [
-    "WriteUp/ciscn 2024.md",
     "Notes/heap.md",
+    "WriteUp/ciscn 2024.md",
     "Notes/webpwn.md",
     "Notes/kernel.md",
     "picture/Pasted image 20250830153000.png",
