@@ -1,4 +1,5 @@
 # gostack
+#栈溢出 #GO
 一道go语言的栈溢出题目
 这种情况下可以看出ghidra和ida的一些区别，ghidra无法识别到函数的符号名称，但ida可以至少识别出函数的名称来帮助理解分析。
 这题有两种解法，第一种是func2直接是后门函数，栈溢出直接执行func2就可以getshell，但虽然func2有一个执行executeCommand的命令，的我没看出这个参数是怎么设定的来可以getshell。
@@ -66,6 +67,7 @@ p.interactive()
 
 ```
 # orange_cat_diary
+#House_of_Orange
 从题目可以看出要使用House of orange来解决问题
 分析附件也可以发现只有一次free的机会，edit可以溢出修改，
 修改top chunk后即可得到一个unsorted bins
