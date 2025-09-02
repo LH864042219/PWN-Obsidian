@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/IO_FILE-1.md",
+                "file": "Notes/IO_FILE-2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "IO_FILE-1 的大纲"
+              "title": "IO_FILE-2 的大纲"
             }
           },
           {
@@ -209,10 +209,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1451e4a28698e2eb",
+  "active": "93de41e18ee7017e",
   "lastOpenFiles": [
-    "Notes/IO_FILE-2.md",
     "Notes/IO_FILE-1.md",
+    "Notes/IO_FILE-2.md",
     "一些常用链接.md",
     "Notes/protobuf.md",
     "WriteUp/ciscn 2024.md",
