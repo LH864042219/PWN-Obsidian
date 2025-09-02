@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/protobuf.md",
+                "file": "Notes/IO_FILE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "protobuf"
+              "title": "IO_FILE"
             }
           }
         ],
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/protobuf.md",
+                "file": "Notes/IO_FILE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "protobuf 的大纲"
+              "title": "IO_FILE 的大纲"
             }
           },
           {
@@ -197,6 +197,7 @@
   },
   "active": "93de41e18ee7017e",
   "lastOpenFiles": [
+    "Notes/protobuf.md",
     "WriteUp/ciscn 2024.md",
     "Notes/heap.md",
     "WriteUp-unwritten/ParlooCTF 2025.md",
@@ -224,7 +225,6 @@
     "WriteUp/PolarCTF 2025.md",
     "WriteUp/SQCTF 2025.md",
     "WriteUp/XYCTF 2025.md",
-    "WriteUp/TGCTF 2025.md",
     "picture/Pasted image 20250724163202.png",
     "picture/Pasted image 20250724163129.png",
     "picture/Pasted image 20250724163113.png",
