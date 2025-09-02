@@ -134,7 +134,7 @@ setvbuf(stderr, 0LL, 2, 0LL);
 3. 程序从`main`函数返回时。
 
 当libc检测到内存错误时会产生下面的函数调用路径。
-malloc_printerr
+`malloc_printerr->__libc_message->__GT_ABort->_IO_flush_all_lockp->_IO_OVERFLOW`
 源码：
 ```c
 int _IO_flush_all_lockp (int do_lock)
