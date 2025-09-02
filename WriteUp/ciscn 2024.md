@@ -66,3 +66,4 @@ p.interactive()
 
 ```
 # orange_cat_diary
+从题目可以看出要使用House of orange来解决问题
