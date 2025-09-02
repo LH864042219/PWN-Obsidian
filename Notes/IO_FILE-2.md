@@ -126,3 +126,73 @@ setvbuf(stderr, 0LL, 2, 0LL);
 ```
 这是初始化程序的`io`结构体，只有初始化之后，`io`函数才能在程序过程中打印数据，如果不初始化，就只能在`exit`结束的时候，才能一起把数据打印出来。
 # FSOP (libc  2.23 &2.24)
+主要原理为劫持`vtable`与`_chain`，伪造`IO_FILE`，主要利用方式为调用`IO_flush_all_lockp()`函数触发。  
+`IO_flush_all_lockp()`函数将在以下三种情况下被调用：
+
+1. `libc`检测到**内存错误**，从而执行`abort`函数时（在`glibc-2.26`删除）。
+2. 程序执行`exit`函数时。
+3. 程序从`main`函数返回时。
+
+当libc检测到内存错误时会产生下面的函数调用路径。
+malloc_printerr
+源码：
+```c
+int _IO_flush_all_lockp (int do_lock)
+{
+  int result = 0;
+  struct _IO_FILE *fp;
+  int last_stamp;
+ 
+  fp = (_IO_FILE *) _IO_list_all;
+  while (fp != NULL)
+    {
+        ...
+      if (((fp->_mode <= 0 && fp->_IO_write_ptr > fp->_IO_write_base)
+#if defined _LIBC || defined _GLIBCPP_USE_WCHAR_T
+       || (_IO_vtable_offset (fp) == 0
+           && fp->_mode > 0 && (fp->_wide_data->_IO_write_ptr
+                    > fp->_wide_data->_IO_write_base))
+#endif
+       )
+      && _IO_OVERFLOW (fp, EOF) == EOF)   //如果输出缓冲区有数据，刷新输出缓冲区
+    result = EOF;
+ 
+ 
+    fp = fp->_chain; //遍历链表
+    }
+    [...]
+}
+```
+可以看到，当满足：
+```c
+fp->_mode = 0
+fp->_IO_write_ptr > fp->_IO_write_base
+```
+就会调用`_IO_OVERFLOW()`函数，而这里的`_IO_OVERFLOW`就是**文件流对象虚表的第四项**指向的内容`_IO_new_file_overflow`，因此在`libc-2.23`版本下可如下构造，进行`FSOP`：
+```c
+._chain => chunk_addr
+chunk_addr
+{
+  file = {
+    _flags = "/bin/sh\x00", //对应此结构体首地址(fp)
+    _IO_read_ptr = 0x0,
+    _IO_read_end = 0x0,
+    _IO_read_base = 0x0,
+    _IO_write_base = 0x0,
+    _IO_write_ptr = 0x1,
+      ...
+      _mode = 0x0, //一般不用特意设置
+      _unused2 = '\000' <repeats 19 times>
+  },
+  vtable = heap_addr
+}
+heap_addr
+{
+  __dummy = 0x0,
+  __dummy2 = 0x0,
+  __finish = 0x0,
+  __overflow = system_addr,
+    ...
+}
+```
+因此这样构造，通过`_IO_OVERFLOW (fp)`，我们就实现了`system("/bin/sh\x00")`。
