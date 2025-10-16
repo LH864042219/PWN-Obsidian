@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/IO_FILE-2.md",
+                "file": "WriteUp/ciscn 2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IO_FILE-2"
+              "title": "ciscn 2024"
             }
           },
           {
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes/IO_FILE-2.md",
+                "file": "WriteUp/ciscn 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "IO_FILE-2 的大纲"
+              "title": "ciscn 2024 的大纲"
             }
           },
           {
@@ -211,8 +211,8 @@
   },
   "active": "93de41e18ee7017e",
   "lastOpenFiles": [
-    "Notes/IO_FILE-1.md",
     "Notes/IO_FILE-2.md",
+    "Notes/IO_FILE-1.md",
     "一些常用链接.md",
     "Notes/protobuf.md",
     "WriteUp/ciscn 2024.md",
