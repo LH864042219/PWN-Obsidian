@@ -4,53 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "4d7462af39434a94",
+        "id": "f3691f69eccac80f",
         "type": "tabs",
         "children": [
           {
-            "id": "12aa8a665d44e2dd",
+            "id": "b86c71c270675b0f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notes/heap.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "heap"
-            }
-          },
-          {
-            "id": "93de41e18ee7017e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "WriteUp/ciscn 2024.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ciscn 2024"
-            }
-          },
-          {
-            "id": "1451e4a28698e2eb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notes/IO_FILE-1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "IO_FILE-1"
+              "title": "新标签页"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -171,13 +138,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WriteUp/ciscn 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ciscn 2024 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -191,7 +157,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -209,54 +175,54 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "93de41e18ee7017e",
+  "active": "7331725d96de70f4",
   "lastOpenFiles": [
-    "Notes/IO_FILE-2.md",
-    "Notes/IO_FILE-1.md",
-    "一些常用链接.md",
-    "Notes/protobuf.md",
-    "WriteUp/ciscn 2024.md",
-    "Notes/heap.md",
-    "WriteUp-unwritten/ParlooCTF 2025.md",
-    "WriteUp-unwritten/Mini-L CTF 2025.md",
-    "WriteUp-unwritten/御网杯 2025.md",
-    "WriteUp-unwritten/轩辕杯 2025.md",
-    "Hnusec Summer2025-shellcode.md",
-    "WriteUp/ISCC 2025.md",
-    "WriteUp/HnuSec Winter 2025.md",
-    "WriteUp/启航杯 2025.md",
-    "WriteUp/湘岚杯 2025.md",
-    "WriteUp/GHCTF 2025.md",
-    "WriteUp/H&NCTF 2025.md",
-    "WriteUp/LitCTF 2025.md",
-    "Notes/webpwn.md",
-    "Notes/kernel.md",
-    "picture/Pasted image 20250830153000.png",
-    "picture/Pasted image 20250830152853.png",
-    "Notes/栈迁移.md",
-    "Notes/orw.md",
-    "Notes/ret2xxx.md",
-    "Notes/二进制程序保护机制.md",
-    "WriteUp/NewStarCTF 2024.md",
-    "WriteUp/PolarCTF 2025.md",
-    "picture/Pasted image 20250724163202.png",
-    "picture/Pasted image 20250724163129.png",
-    "picture/Pasted image 20250724163113.png",
-    "picture/Pasted image 20250724162642.png",
-    "picture/Pasted image 20250724162557.png",
-    "picture/Pasted image 20250721170530.png",
-    "picture/Pasted image 20250721170343.png",
-    "picture/Pasted image 20250609154355.png",
-    "WriteUp-unwritten",
-    "刷题记录",
-    "Notes",
-    "WriteUp",
-    "WriteUp/WinterStudy/class 1",
-    "WriteUp/WinterStudy",
-    "普通题目/newstar2024/week1/re",
-    "普通题目/newstar2024/week1/pwn",
-    "普通题目/newstar2024/week1",
-    "WriteUp/newstar2024",
+    "PWN/刷题记录/高版本libc 2024暑假招新pwn5.md",
+    "PWN/刷题记录/格式化字符串 2024暑假招新pwn2.md",
+    "PWN/刷题记录/栈对齐 CISCN 2019东北 PWN2.md",
+    "PWN/刷题记录/堆？NISACTF 2022 ezheap.md",
+    "PWN/刷题记录/伪随机 HDCTF 2023 pwnner.md",
+    "PWN/刷题记录/伪随机 2024暑假招新pwn1.md",
+    "PWN/刷题记录/SWPUCTF 2022 新生赛 有手就行的栈溢出.md",
+    "PWN/刷题记录/ret2text HNCTF 2022 WEEK2 ez_backdoor.md",
+    "PWN/刷题记录/ret2syscall WUSTCTF 2020 getshell2.md",
+    "PWN/刷题记录/ret2syscall CISCN 2023 初赛 烧烤摊儿.md",
+    "PWN/刷题记录/ret2shellcode SWPUCTF 2022 新生赛 shellcode？.md",
+    "PWN/刷题记录/ret2libc SWPUCTF 2021 新生赛 whitegive_pwn.md",
+    "PWN/刷题记录/ret2libc LitCTF 2023 狠狠的溢出涅~.md",
+    "PWN/刷题记录/ret2libc HNCTF 2022 Week1 ezr0p64.md",
+    "PWN/刷题记录/ret2libc BJDCTF 2020 babyrop.md",
+    "PWN/刷题记录/ret2libc 2021 鹤城杯 babyof.md",
+    "PWN/刷题记录/ret2libc 2021 鹤城杯 littleof.md",
+    "PWN/刷题记录/mprotect HNCTF 2022 Week1 ret2shellcode.md",
+    "PWN/刷题记录/GDB HNCTF 2022 Week1 ezcmp.md",
+    "PWN/刷题记录/Int Overflow SWPUCTF 2022 新生赛 Integer Overflow.md",
+    "PWN/刷题记录/LitCTF 2023 口算题卡.md",
+    "PWN/刷题记录/HNCTF 2022 Week1 ezr0p32.md",
+    "PWN/刷题记录/GDB HGAME 2022 week1 test your gdb.md",
+    "PWN/刷题记录/fmt 栈迁移 HDCTF 2023 KEEP ON.md",
+    "PWN/刷题记录/fmt HUBUCTF 2022 新生赛 fmt.md",
+    "PWN/刷题记录/CANARY+PIE 深育杯 2021 find_flag.md",
+    "PWN/刷题记录",
+    "PWN/WriteUp-unwritten",
+    "PWN/WriteUp",
+    "PWN/picture/湘岚杯.png",
+    "PWN/picture/QQ.jpg",
+    "PWN/picture/pwn5",
+    "PWN/picture/Pasted image 20250830153000.png",
+    "PWN/picture/Pasted image 20250830152853.png",
+    "PWN/picture/Pasted image 20250724163202.png",
+    "PWN/picture/Pasted image 20250724163129.png",
+    "PWN/picture/Pasted image 20250724163113.png",
+    "PWN/picture/Pasted image 20250724162642.png",
+    "PWN/picture/Pasted image 20250724162557.png",
+    "PWN/picture/Pasted image 20250721170530.png",
+    "PWN/picture",
+    "PWN/Notes",
+    "PWN",
+    "Android-Reserve/picture",
+    "Android-Reserve/Frida-lab",
+    "Android-Reserve",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
